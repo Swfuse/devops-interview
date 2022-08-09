@@ -4363,18 +4363,3 @@ ssh
 
 [https://www.wisereport.ru/ssh-encryption-process/](https://www.wisereport.ru/ssh-encryption-process/)
 
----
-
-# Практика
-
-Недоступен сайт на vm13. Нужно понять, что сайт должен работать с этого сервера и восстановить доступ у нему.
-
-Блокировка адреса в iptables
-
-добавлен в ipset
-
-блокировка на уровне вирт. хостов nginx/apache/.htaccess
-
-Сломанный acl для файлов сайта?
-
-Можно попробовать в вариант с блокировкой адреса для SSH/FTP
