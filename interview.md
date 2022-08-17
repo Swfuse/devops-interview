@@ -1,32 +1,228 @@
+
+<!-- TOC -->
+
+- [Вопросы админам 2.0](#%D0%B2%D0%BE%D0%BF%D1%80%D0%BE%D1%81%D1%8B-%D0%B0%D0%B4%D0%BC%D0%B8%D0%BD%D0%B0%D0%BC-20)
+    - [Железячные вопросы](#%D0%B6%D0%B5%D0%BB%D0%B5%D0%B7%D1%8F%D1%87%D0%BD%D1%8B%D0%B5-%D0%B2%D0%BE%D0%BF%D1%80%D0%BE%D1%81%D1%8B)
+        - [Сервер не отвечает, как можно получить доступ к серверу, не находясь непосредственно в ЦОДЕ](#%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80-%D0%BD%D0%B5-%D0%BE%D1%82%D0%B2%D0%B5%D1%87%D0%B0%D0%B5%D1%82-%D0%BA%D0%B0%D0%BA-%D0%BC%D0%BE%D0%B6%D0%BD%D0%BE-%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B8%D1%82%D1%8C-%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF-%D0%BA-%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80%D1%83-%D0%BD%D0%B5-%D0%BD%D0%B0%D1%85%D0%BE%D0%B4%D1%8F%D1%81%D1%8C-%D0%BD%D0%B5%D0%BF%D0%BE%D1%81%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D0%BE-%D0%B2-%D1%86%D0%BE%D0%B4%D0%B5)
+        - [Что такое kvmне гипервизор? Как можно его использовать?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-kvm%D0%BD%D0%B5-%D0%B3%D0%B8%D0%BF%D0%B5%D1%80%D0%B2%D0%B8%D0%B7%D0%BE%D1%80-%D0%BA%D0%B0%D0%BA-%D0%BC%D0%BE%D0%B6%D0%BD%D0%BE-%D0%B5%D0%B3%D0%BE-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C)
+        - [Что такое IPMI? Какие подсистемы он в себя включает?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-ipmi-%D0%BA%D0%B0%D0%BA%D0%B8%D0%B5-%D0%BF%D0%BE%D0%B4%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D1%8B-%D0%BE%D0%BD-%D0%B2-%D1%81%D0%B5%D0%B1%D1%8F-%D0%B2%D0%BA%D0%BB%D1%8E%D1%87%D0%B0%D0%B5%D1%82)
+        - [Какие преимущества предоставляет IPMI в сравнении с kvm? ipmi](#%D0%BA%D0%B0%D0%BA%D0%B8%D0%B5-%D0%BF%D1%80%D0%B5%D0%B8%D0%BC%D1%83%D1%89%D0%B5%D1%81%D1%82%D0%B2%D0%B0-%D0%BF%D1%80%D0%B5%D0%B4%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D1%8F%D0%B5%D1%82-ipmi-%D0%B2-%D1%81%D1%80%D0%B0%D0%B2%D0%BD%D0%B5%D0%BD%D0%B8%D0%B8-%D1%81-kvm-ipmi)
+    - [Просмотр информации о железной составляющей сервера](#%D0%BF%D1%80%D0%BE%D1%81%D0%BC%D0%BE%D1%82%D1%80-%D0%B8%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D0%B8-%D0%BE-%D0%B6%D0%B5%D0%BB%D0%B5%D0%B7%D0%BD%D0%BE%D0%B9-%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D1%8F%D1%8E%D1%89%D0%B5%D0%B9-%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80%D0%B0)
+        - [Модели процессора, количестве физических и логических ядер, поддерживаемых инструкциях, режиме работы?](#%D0%BC%D0%BE%D0%B4%D0%B5%D0%BB%D0%B8-%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%BE%D1%80%D0%B0-%D0%BA%D0%BE%D0%BB%D0%B8%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%B5-%D1%84%D0%B8%D0%B7%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D1%85-%D0%B8-%D0%BB%D0%BE%D0%B3%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D1%85-%D1%8F%D0%B4%D0%B5%D1%80-%D0%BF%D0%BE%D0%B4%D0%B4%D0%B5%D1%80%D0%B6%D0%B8%D0%B2%D0%B0%D0%B5%D0%BC%D1%8B%D1%85-%D0%B8%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D0%B8%D1%8F%D1%85-%D1%80%D0%B5%D0%B6%D0%B8%D0%BC%D0%B5-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B)
+        - [Типы оперативной памяти, модели материнской платы, версии BIOS?](#%D1%82%D0%B8%D0%BF%D1%8B-%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D0%BE%D0%B9-%D0%BF%D0%B0%D0%BC%D1%8F%D1%82%D0%B8-%D0%BC%D0%BE%D0%B4%D0%B5%D0%BB%D0%B8-%D0%BC%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%BD%D1%81%D0%BA%D0%BE%D0%B9-%D0%BF%D0%BB%D0%B0%D1%82%D1%8B-%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D0%B8-bios)
+        - [Текущих значениях датчиков напряжения, температуры, оборотов вентиляторов?](#%D1%82%D0%B5%D0%BA%D1%83%D1%89%D0%B8%D1%85-%D0%B7%D0%BD%D0%B0%D1%87%D0%B5%D0%BD%D0%B8%D1%8F%D1%85-%D0%B4%D0%B0%D1%82%D1%87%D0%B8%D0%BA%D0%BE%D0%B2-%D0%BD%D0%B0%D0%BF%D1%80%D1%8F%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F-%D1%82%D0%B5%D0%BC%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D1%83%D1%80%D1%8B-%D0%BE%D0%B1%D0%BE%D1%80%D0%BE%D1%82%D0%BE%D0%B2-%D0%B2%D0%B5%D0%BD%D1%82%D0%B8%D0%BB%D1%8F%D1%82%D0%BE%D1%80%D0%BE%D0%B2)
+        - [Типе используемого сетевого адаптера и состоянии его интерфейсов?](#%D1%82%D0%B8%D0%BF%D0%B5-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D1%83%D0%B5%D0%BC%D0%BE%D0%B3%D0%BE-%D1%81%D0%B5%D1%82%D0%B5%D0%B2%D0%BE%D0%B3%D0%BE-%D0%B0%D0%B4%D0%B0%D0%BF%D1%82%D0%B5%D1%80%D0%B0-%D0%B8-%D1%81%D0%BE%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B8-%D0%B5%D0%B3%D0%BE-%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81%D0%BE%D0%B2)
+        - [Подключённых USB и PCI устройствах?](#%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D1%91%D0%BD%D0%BD%D1%8B%D1%85-usb-%D0%B8-pci-%D1%83%D1%81%D1%82%D1%80%D0%BE%D0%B9%D1%81%D1%82%D0%B2%D0%B0%D1%85)
+    - [Linux](#linux)
+        - [Расскажи, как происходит процесс загрузки ОС linux с момента нажатия кнопки питания.](#%D1%80%D0%B0%D1%81%D1%81%D0%BA%D0%B0%D0%B6%D0%B8-%D0%BA%D0%B0%D0%BA-%D0%BF%D1%80%D0%BE%D0%B8%D1%81%D1%85%D0%BE%D0%B4%D0%B8%D1%82-%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81-%D0%B7%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%BA%D0%B8-%D0%BE%D1%81-linux-%D1%81-%D0%BC%D0%BE%D0%BC%D0%B5%D0%BD%D1%82%D0%B0-%D0%BD%D0%B0%D0%B6%D0%B0%D1%82%D0%B8%D1%8F-%D0%BA%D0%BD%D0%BE%D0%BF%D0%BA%D0%B8-%D0%BF%D0%B8%D1%82%D0%B0%D0%BD%D0%B8%D1%8F)
+        - [Что такое POSIX](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-posix)
+        - [Что такое уровни выполнения](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-%D1%83%D1%80%D0%BE%D0%B2%D0%BD%D0%B8-%D0%B2%D1%8B%D0%BF%D0%BE%D0%BB%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F)
+        - [Какие основные части компоненты включает в себя система на базе дистрибутива linux?](#%D0%BA%D0%B0%D0%BA%D0%B8%D0%B5-%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%BD%D1%8B%D0%B5-%D1%87%D0%B0%D1%81%D1%82%D0%B8-%D0%BA%D0%BE%D0%BC%D0%BF%D0%BE%D0%BD%D0%B5%D0%BD%D1%82%D1%8B-%D0%B2%D0%BA%D0%BB%D1%8E%D1%87%D0%B0%D0%B5%D1%82-%D0%B2-%D1%81%D0%B5%D0%B1%D1%8F-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0-%D0%BD%D0%B0-%D0%B1%D0%B0%D0%B7%D0%B5-%D0%B4%D0%B8%D1%81%D1%82%D1%80%D0%B8%D0%B1%D1%83%D1%82%D0%B8%D0%B2%D0%B0-linux)
+        - [Что такое BIOS, UEFI?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-bios-uefi)
+        - [Что такое PXE? Как загрузиться по сети?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-pxe-%D0%BA%D0%B0%D0%BA-%D0%B7%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%B8%D1%82%D1%8C%D1%81%D1%8F-%D0%BF%D0%BE-%D1%81%D0%B5%D1%82%D0%B8)
+        - [Что такое ядро, initramfs, загрузчик?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-%D1%8F%D0%B4%D1%80%D0%BE-initramfs-%D0%B7%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D1%87%D0%B8%D0%BA)
+        - [Зачем нужна система инициализации? Какие системы инициализации используются в современных дистрибутивах? 2 - 5 штук init](#%D0%B7%D0%B0%D1%87%D0%B5%D0%BC-%D0%BD%D1%83%D0%B6%D0%BD%D0%B0-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0-%D0%B8%D0%BD%D0%B8%D1%86%D0%B8%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8-%D0%BA%D0%B0%D0%BA%D0%B8%D0%B5-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D1%8B-%D0%B8%D0%BD%D0%B8%D1%86%D0%B8%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D1%83%D1%8E%D1%82%D1%81%D1%8F-%D0%B2-%D1%81%D0%BE%D0%B2%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D1%8B%D1%85-%D0%B4%D0%B8%D1%81%D1%82%D1%80%D0%B8%D0%B1%D1%83%D1%82%D0%B8%D0%B2%D0%B0%D1%85-2---5-%D1%88%D1%82%D1%83%D0%BA-init)
+        - [Что такое systemd и init ? В чем основное преимущество первого над вторым ?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-systemd-%D0%B8-init--%D0%B2-%D1%87%D0%B5%D0%BC-%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%BD%D0%BE%D0%B5-%D0%BF%D1%80%D0%B5%D0%B8%D0%BC%D1%83%D1%89%D0%B5%D1%81%D1%82%D0%B2%D0%BE-%D0%BF%D0%B5%D1%80%D0%B2%D0%BE%D0%B3%D0%BE-%D0%BD%D0%B0%D0%B4-%D0%B2%D1%82%D0%BE%D1%80%D1%8B%D0%BC-)
+        - [Как понять используется ли в системе systemd?](#%D0%BA%D0%B0%D0%BA-%D0%BF%D0%BE%D0%BD%D1%8F%D1%82%D1%8C-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D1%83%D0%B5%D1%82%D1%81%D1%8F-%D0%BB%D0%B8-%D0%B2-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B5-systemd)
+        - [Опишите, что происходит с точки зрения процессов, при выполнении любой команды в консоли, например:](#%D0%BE%D0%BF%D0%B8%D1%88%D0%B8%D1%82%D0%B5-%D1%87%D1%82%D0%BE-%D0%BF%D1%80%D0%BE%D0%B8%D1%81%D1%85%D0%BE%D0%B4%D0%B8%D1%82-%D1%81-%D1%82%D0%BE%D1%87%D0%BA%D0%B8-%D0%B7%D1%80%D0%B5%D0%BD%D0%B8%D1%8F-%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%BE%D0%B2-%D0%BF%D1%80%D0%B8-%D0%B2%D1%8B%D0%BF%D0%BE%D0%BB%D0%BD%D0%B5%D0%BD%D0%B8%D0%B8-%D0%BB%D1%8E%D0%B1%D0%BE%D0%B9-%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D1%8B-%D0%B2-%D0%BA%D0%BE%D0%BD%D1%81%D0%BE%D0%BB%D0%B8-%D0%BD%D0%B0%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80)
+        - [Как посмотреть нагрузку на диски?](#%D0%BA%D0%B0%D0%BA-%D0%BF%D0%BE%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C-%D0%BD%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%BA%D1%83-%D0%BD%D0%B0-%D0%B4%D0%B8%D1%81%D0%BA%D0%B8)
+        - [В чем разница между объявлением переменной export VAR="VALUE" и VAR="VALUE" в bash?](#%D0%B2-%D1%87%D0%B5%D0%BC-%D1%80%D0%B0%D0%B7%D0%BD%D0%B8%D1%86%D0%B0-%D0%BC%D0%B5%D0%B6%D0%B4%D1%83-%D0%BE%D0%B1%D1%8A%D1%8F%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%D0%BC-%D0%BF%D0%B5%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D0%BE%D0%B9-export-varvalue-%D0%B8-varvalue-%D0%B2-bash)
+        - [Что значит $@ в bash?](#%D1%87%D1%82%D0%BE-%D0%B7%D0%BD%D0%B0%D1%87%D0%B8%D1%82--%D0%B2-bash)
+        - [Как выполнить фильтрацию вывода команды, чтобы на экран были выведены только ошибки STDERR, истрорируя STDOUT?](#%D0%BA%D0%B0%D0%BA-%D0%B2%D1%8B%D0%BF%D0%BE%D0%BB%D0%BD%D0%B8%D1%82%D1%8C-%D1%84%D0%B8%D0%BB%D1%8C%D1%82%D1%80%D0%B0%D1%86%D0%B8%D1%8E-%D0%B2%D1%8B%D0%B2%D0%BE%D0%B4%D0%B0-%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D1%8B-%D1%87%D1%82%D0%BE%D0%B1%D1%8B-%D0%BD%D0%B0-%D1%8D%D0%BA%D1%80%D0%B0%D0%BD-%D0%B1%D1%8B%D0%BB%D0%B8-%D0%B2%D1%8B%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D1%8B-%D1%82%D0%BE%D0%BB%D1%8C%D0%BA%D0%BE-%D0%BE%D1%88%D0%B8%D0%B1%D0%BA%D0%B8-stderr-%D0%B8%D1%81%D1%82%D1%80%D0%BE%D1%80%D0%B8%D1%80%D1%83%D1%8F-stdout)
+        - [Как посмотреть описание дискриптора? Как посмотреть время последней модификации файла?](#%D0%BA%D0%B0%D0%BA-%D0%BF%D0%BE%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C-%D0%BE%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B5-%D0%B4%D0%B8%D1%81%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D0%BE%D1%80%D0%B0-%D0%BA%D0%B0%D0%BA-%D0%BF%D0%BE%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C-%D0%B2%D1%80%D0%B5%D0%BC%D1%8F-%D0%BF%D0%BE%D1%81%D0%BB%D0%B5%D0%B4%D0%BD%D0%B5%D0%B9-%D0%BC%D0%BE%D0%B4%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D0%B8-%D1%84%D0%B0%D0%B9%D0%BB%D0%B0)
+        - [Как работает sudo? Для чего она используется?](#%D0%BA%D0%B0%D0%BA-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D0%B5%D1%82-sudo-%D0%B4%D0%BB%D1%8F-%D1%87%D0%B5%D0%B3%D0%BE-%D0%BE%D0%BD%D0%B0-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D1%83%D0%B5%D1%82%D1%81%D1%8F)
+        - [Что такое userspace, kernelspace? Чем они отличаются?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-userspace-kernelspace-%D1%87%D0%B5%D0%BC-%D0%BE%D0%BD%D0%B8-%D0%BE%D1%82%D0%BB%D0%B8%D1%87%D0%B0%D1%8E%D1%82%D1%81%D1%8F)
+        - [Что такое системные вызовы? Зачем они нужны и как они работают? Какие системные вызовы знаешь 5-10](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%BD%D1%8B%D0%B5-%D0%B2%D1%8B%D0%B7%D0%BE%D0%B2%D1%8B-%D0%B7%D0%B0%D1%87%D0%B5%D0%BC-%D0%BE%D0%BD%D0%B8-%D0%BD%D1%83%D0%B6%D0%BD%D1%8B-%D0%B8-%D0%BA%D0%B0%D0%BA-%D0%BE%D0%BD%D0%B8-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D1%8E%D1%82-%D0%BA%D0%B0%D0%BA%D0%B8%D0%B5-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%BD%D1%8B%D0%B5-%D0%B2%D1%8B%D0%B7%D0%BE%D0%B2%D1%8B-%D0%B7%D0%BD%D0%B0%D0%B5%D1%88%D1%8C-5-10)
+        - [Где можно найти информацию о конкретном системном вызове?](#%D0%B3%D0%B4%D0%B5-%D0%BC%D0%BE%D0%B6%D0%BD%D0%BE-%D0%BD%D0%B0%D0%B9%D1%82%D0%B8-%D0%B8%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D1%8E-%D0%BE-%D0%BA%D0%BE%D0%BD%D0%BA%D1%80%D0%B5%D1%82%D0%BD%D0%BE%D0%BC-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%BD%D0%BE%D0%BC-%D0%B2%D1%8B%D0%B7%D0%BE%D0%B2%D0%B5)
+        - [Что делает команда kill?](#%D1%87%D1%82%D0%BE-%D0%B4%D0%B5%D0%BB%D0%B0%D0%B5%D1%82-%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B0-kill)
+        - [Текущая load average на сервере - 900, 900, 900. Сервер работает с незначительной потерей производительности. Каким образом можно понять, является ли это нормальной ситуацией?](#%D1%82%D0%B5%D0%BA%D1%83%D1%89%D0%B0%D1%8F-load-average-%D0%BD%D0%B0-%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80%D0%B5---900-900-900-%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D0%B5%D1%82-%D1%81-%D0%BD%D0%B5%D0%B7%D0%BD%D0%B0%D1%87%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%B9-%D0%BF%D0%BE%D1%82%D0%B5%D1%80%D0%B5%D0%B9-%D0%BF%D1%80%D0%BE%D0%B8%D0%B7%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D0%B8-%D0%BA%D0%B0%D0%BA%D0%B8%D0%BC-%D0%BE%D0%B1%D1%80%D0%B0%D0%B7%D0%BE%D0%BC-%D0%BC%D0%BE%D0%B6%D0%BD%D0%BE-%D0%BF%D0%BE%D0%BD%D1%8F%D1%82%D1%8C-%D1%8F%D0%B2%D0%BB%D1%8F%D0%B5%D1%82%D1%81%D1%8F-%D0%BB%D0%B8-%D1%8D%D1%82%D0%BE-%D0%BD%D0%BE%D1%80%D0%BC%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B9-%D1%81%D0%B8%D1%82%D1%83%D0%B0%D1%86%D0%B8%D0%B5%D0%B9)
+        - [Что такое процесс? Что такое тред? В чем заключаются их главные отличия?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81-%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-%D1%82%D1%80%D0%B5%D0%B4-%D0%B2-%D1%87%D0%B5%D0%BC-%D0%B7%D0%B0%D0%BA%D0%BB%D1%8E%D1%87%D0%B0%D1%8E%D1%82%D1%81%D1%8F-%D0%B8%D1%85-%D0%B3%D0%BB%D0%B0%D0%B2%D0%BD%D1%8B%D0%B5-%D0%BE%D1%82%D0%BB%D0%B8%D1%87%D0%B8%D1%8F)
+        - [Где в linux хранится информация о процессах?](#%D0%B3%D0%B4%D0%B5-%D0%B2-linux-%D1%85%D1%80%D0%B0%D0%BD%D0%B8%D1%82%D1%81%D1%8F-%D0%B8%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D1%8F-%D0%BE-%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0%D1%85)
+        - [Представлен вывод команды *top*. Что означает каждая запись в выводе?](#%D0%BF%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD-%D0%B2%D1%8B%D0%B2%D0%BE%D0%B4-%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D1%8B-top-%D1%87%D1%82%D0%BE-%D0%BE%D0%B7%D0%BD%D0%B0%D1%87%D0%B0%D0%B5%D1%82-%D0%BA%D0%B0%D0%B6%D0%B4%D0%B0%D1%8F-%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D1%8C-%D0%B2-%D0%B2%D1%8B%D0%B2%D0%BE%D0%B4%D0%B5)
+        - [Что показывает статус процессов? Какие статусы используются в linux?](#%D1%87%D1%82%D0%BE-%D0%BF%D0%BE%D0%BA%D0%B0%D0%B7%D1%8B%D0%B2%D0%B0%D0%B5%D1%82-%D1%81%D1%82%D0%B0%D1%82%D1%83%D1%81-%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%BE%D0%B2-%D0%BA%D0%B0%D0%BA%D0%B8%D0%B5-%D1%81%D1%82%D0%B0%D1%82%D1%83%D1%81%D1%8B-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D1%83%D1%8E%D1%82%D1%81%D1%8F-%D0%B2-linux)
+        - [Что такое зомби-процесс? Как можно создать такой процесс?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-%D0%B7%D0%BE%D0%BC%D0%B1%D0%B8-%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81-%D0%BA%D0%B0%D0%BA-%D0%BC%D0%BE%D0%B6%D0%BD%D0%BE-%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D1%82%D1%8C-%D1%82%D0%B0%D0%BA%D0%BE%D0%B9-%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81)
+        - [Чем опасны зомби процессы, какие проблемы они могут создать?](#%D1%87%D0%B5%D0%BC-%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D1%8B-%D0%B7%D0%BE%D0%BC%D0%B1%D0%B8-%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B-%D0%BA%D0%B0%D0%BA%D0%B8%D0%B5-%D0%BF%D1%80%D0%BE%D0%B1%D0%BB%D0%B5%D0%BC%D1%8B-%D0%BE%D0%BD%D0%B8-%D0%BC%D0%BE%D0%B3%D1%83%D1%82-%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D1%82%D1%8C)
+        - [Что такое SIGCHLD? В какой ситуации процесс может его получить?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-sigchld-%D0%B2-%D0%BA%D0%B0%D0%BA%D0%BE%D0%B9-%D1%81%D0%B8%D1%82%D1%83%D0%B0%D1%86%D0%B8%D0%B8-%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81-%D0%BC%D0%BE%D0%B6%D0%B5%D1%82-%D0%B5%D0%B3%D0%BE-%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B8%D1%82%D1%8C)
+        - [Что такое файловый дескриптор, какая информация в нем бывает?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-%D1%84%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2%D1%8B%D0%B9-%D0%B4%D0%B5%D1%81%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D0%BE%D1%80-%D0%BA%D0%B0%D0%BA%D0%B0%D1%8F-%D0%B8%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D1%8F-%D0%B2-%D0%BD%D0%B5%D0%BC-%D0%B1%D1%8B%D0%B2%D0%B0%D0%B5%D1%82)
+        - [Для чего нужны сигналы? Какие сигналы используются чаще всего? 5 - 10 штук](#%D0%B4%D0%BB%D1%8F-%D1%87%D0%B5%D0%B3%D0%BE-%D0%BD%D1%83%D0%B6%D0%BD%D1%8B-%D1%81%D0%B8%D0%B3%D0%BD%D0%B0%D0%BB%D1%8B-%D0%BA%D0%B0%D0%BA%D0%B8%D0%B5-%D1%81%D0%B8%D0%B3%D0%BD%D0%B0%D0%BB%D1%8B-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D1%83%D1%8E%D1%82%D1%81%D1%8F-%D1%87%D0%B0%D1%89%D0%B5-%D0%B2%D1%81%D0%B5%D0%B3%D0%BE-5---10-%D1%88%D1%82%D1%83%D0%BA)
+        - [Как осуществляется обработка сигналов? Чем отличается SIGTERM от SIGKILL?](#%D0%BA%D0%B0%D0%BA-%D0%BE%D1%81%D1%83%D1%89%D0%B5%D1%81%D1%82%D0%B2%D0%BB%D1%8F%D0%B5%D1%82%D1%81%D1%8F-%D0%BE%D0%B1%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B0-%D1%81%D0%B8%D0%B3%D0%BD%D0%B0%D0%BB%D0%BE%D0%B2-%D1%87%D0%B5%D0%BC-%D0%BE%D1%82%D0%BB%D0%B8%D1%87%D0%B0%D0%B5%D1%82%D1%81%D1%8F-sigterm-%D0%BE%D1%82-sigkill)
+        - [Какой сигнал получит активный процесс при нажатии Ctrl+C в консоли?](#%D0%BA%D0%B0%D0%BA%D0%BE%D0%B9-%D1%81%D0%B8%D0%B3%D0%BD%D0%B0%D0%BB-%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B8%D1%82-%D0%B0%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D1%8B%D0%B9-%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81-%D0%BF%D1%80%D0%B8-%D0%BD%D0%B0%D0%B6%D0%B0%D1%82%D0%B8%D0%B8-ctrlc-%D0%B2-%D0%BA%D0%BE%D0%BD%D1%81%D0%BE%D0%BB%D0%B8)
+        - [Что такое load average? Что показывает эта метрика? Почему load average состоит из трёх значений?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-load-average-%D1%87%D1%82%D0%BE-%D0%BF%D0%BE%D0%BA%D0%B0%D0%B7%D1%8B%D0%B2%D0%B0%D0%B5%D1%82-%D1%8D%D1%82%D0%B0-%D0%BC%D0%B5%D1%82%D1%80%D0%B8%D0%BA%D0%B0-%D0%BF%D0%BE%D1%87%D0%B5%D0%BC%D1%83-load-average-%D1%81%D0%BE%D1%81%D1%82%D0%BE%D0%B8%D1%82-%D0%B8%D0%B7-%D1%82%D1%80%D1%91%D1%85-%D0%B7%D0%BD%D0%B0%D1%87%D0%B5%D0%BD%D0%B8%D0%B9)
+        - [Можно ли сделать так, чтобы пользователи могли получать информацию только о своих процессах?](#%D0%BC%D0%BE%D0%B6%D0%BD%D0%BE-%D0%BB%D0%B8-%D1%81%D0%B4%D0%B5%D0%BB%D0%B0%D1%82%D1%8C-%D1%82%D0%B0%D0%BA-%D1%87%D1%82%D0%BE%D0%B1%D1%8B-%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D0%B8-%D0%BC%D0%BE%D0%B3%D0%BB%D0%B8-%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B0%D1%82%D1%8C-%D0%B8%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D1%8E-%D1%82%D0%BE%D0%BB%D1%8C%D0%BA%D0%BE-%D0%BE-%D1%81%D0%B2%D0%BE%D0%B8%D1%85-%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0%D1%85)
+        - [Что такое физическая память?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-%D1%84%D0%B8%D0%B7%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F-%D0%BF%D0%B0%D0%BC%D1%8F%D1%82%D1%8C)
+        - [Что такое виртуальная память?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-%D0%B2%D0%B8%D1%80%D1%82%D1%83%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F-%D0%BF%D0%B0%D0%BC%D1%8F%D1%82%D1%8C)
+        - [Почему в htop может быть не до конца корректная сводка по потребляемой памяти](#%D0%BF%D0%BE%D1%87%D0%B5%D0%BC%D1%83-%D0%B2-htop-%D0%BC%D0%BE%D0%B6%D0%B5%D1%82-%D0%B1%D1%8B%D1%82%D1%8C-%D0%BD%D0%B5-%D0%B4%D0%BE-%D0%BA%D0%BE%D0%BD%D1%86%D0%B0-%D0%BA%D0%BE%D1%80%D1%80%D0%B5%D0%BA%D1%82%D0%BD%D0%B0%D1%8F-%D1%81%D0%B2%D0%BE%D0%B4%D0%BA%D0%B0-%D0%BF%D0%BE-%D0%BF%D0%BE%D1%82%D1%80%D0%B5%D0%B1%D0%BB%D1%8F%D0%B5%D0%BC%D0%BE%D0%B9-%D0%BF%D0%B0%D0%BC%D1%8F%D1%82%D0%B8)
+        - [Где в системе можно посмотреть сводку по текущему потреблению памяти?](#%D0%B3%D0%B4%D0%B5-%D0%B2-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B5-%D0%BC%D0%BE%D0%B6%D0%BD%D0%BE-%D0%BF%D0%BE%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C-%D1%81%D0%B2%D0%BE%D0%B4%D0%BA%D1%83-%D0%BF%D0%BE-%D1%82%D0%B5%D0%BA%D1%83%D1%89%D0%B5%D0%BC%D1%83-%D0%BF%D0%BE%D1%82%D1%80%D0%B5%D0%B1%D0%BB%D0%B5%D0%BD%D0%B8%D1%8E-%D0%BF%D0%B0%D0%BC%D1%8F%D1%82%D0%B8)
+        - [Как работает оом киллер и для чего нужен? Out of memory, oom](#%D0%BA%D0%B0%D0%BA-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D0%B5%D1%82-%D0%BE%D0%BE%D0%BC-%D0%BA%D0%B8%D0%BB%D0%BB%D0%B5%D1%80-%D0%B8-%D0%B4%D0%BB%D1%8F-%D1%87%D0%B5%D0%B3%D0%BE-%D0%BD%D1%83%D0%B6%D0%B5%D0%BD-out-of-memory-oom)
+        - [Как процессы в системе взаимодействуют между собой?](#%D0%BA%D0%B0%D0%BA-%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B-%D0%B2-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B5-%D0%B2%D0%B7%D0%B0%D0%B8%D0%BC%D0%BE%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D1%83%D1%8E%D1%82-%D0%BC%D0%B5%D0%B6%D0%B4%D1%83-%D1%81%D0%BE%D0%B1%D0%BE%D0%B9)
+        - [Что такое QEMU](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-qemu)
+        - [Что такое KVM гипервизор](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-kvm-%D0%B3%D0%B8%D0%BF%D0%B5%D1%80%D0%B2%D0%B8%D0%B7%D0%BE%D1%80)
+        - [Что такое qemu-kvm?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-qemu-kvm)
+        - [Что такое iowait и почему он может появляться?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-iowait-%D0%B8-%D0%BF%D0%BE%D1%87%D0%B5%D0%BC%D1%83-%D0%BE%D0%BD-%D0%BC%D0%BE%D0%B6%D0%B5%D1%82-%D0%BF%D0%BE%D1%8F%D0%B2%D0%BB%D1%8F%D1%82%D1%8C%D1%81%D1%8F)
+- [Диски и файловая система](#%D0%B4%D0%B8%D1%81%D0%BA%D0%B8-%D0%B8-%D1%84%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2%D0%B0%D1%8F-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0)
+        - [Что такое символьные устройства? Какие элементарные операции с ними можно производить?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-%D1%81%D0%B8%D0%BC%D0%B2%D0%BE%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5-%D1%83%D1%81%D1%82%D1%80%D0%BE%D0%B9%D1%81%D1%82%D0%B2%D0%B0-%D0%BA%D0%B0%D0%BA%D0%B8%D0%B5-%D1%8D%D0%BB%D0%B5%D0%BC%D0%B5%D0%BD%D1%82%D0%B0%D1%80%D0%BD%D1%8B%D0%B5-%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8-%D1%81-%D0%BD%D0%B8%D0%BC%D0%B8-%D0%BC%D0%BE%D0%B6%D0%BD%D0%BE-%D0%BF%D1%80%D0%BE%D0%B8%D0%B7%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D1%8C)
+        - [Что такое major and minor numbers блочных устройств, чему они соответствуют?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-major-and-minor-numbers-%D0%B1%D0%BB%D0%BE%D1%87%D0%BD%D1%8B%D1%85-%D1%83%D1%81%D1%82%D1%80%D0%BE%D0%B9%D1%81%D1%82%D0%B2-%D1%87%D0%B5%D0%BC%D1%83-%D0%BE%D0%BD%D0%B8-%D1%81%D0%BE%D0%BE%D1%82%D0%B2%D0%B5%D1%82%D1%81%D1%82%D0%B2%D1%83%D1%8E%D1%82)
+        - [Что такое файловая система? Для чего она нужна?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-%D1%84%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2%D0%B0%D1%8F-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0-%D0%B4%D0%BB%D1%8F-%D1%87%D0%B5%D0%B3%D0%BE-%D0%BE%D0%BD%D0%B0-%D0%BD%D1%83%D0%B6%D0%BD%D0%B0)
+        - [Как создать файловую систему на блочном устройстве? Какие параметры можно задать при создании?](#%D0%BA%D0%B0%D0%BA-%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D1%82%D1%8C-%D1%84%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2%D1%83%D1%8E-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D1%83-%D0%BD%D0%B0-%D0%B1%D0%BB%D0%BE%D1%87%D0%BD%D0%BE%D0%BC-%D1%83%D1%81%D1%82%D1%80%D0%BE%D0%B9%D1%81%D1%82%D0%B2%D0%B5-%D0%BA%D0%B0%D0%BA%D0%B8%D0%B5-%D0%BF%D0%B0%D1%80%D0%B0%D0%BC%D0%B5%D1%82%D1%80%D1%8B-%D0%BC%D0%BE%D0%B6%D0%BD%D0%BE-%D0%B7%D0%B0%D0%B4%D0%B0%D1%82%D1%8C-%D0%BF%D1%80%D0%B8-%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B8)
+        - [Где физически находятся inodes айноды](#%D0%B3%D0%B4%D0%B5-%D1%84%D0%B8%D0%B7%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8-%D0%BD%D0%B0%D1%85%D0%BE%D0%B4%D1%8F%D1%82%D1%81%D1%8F-inodes-%D0%B0%D0%B9%D0%BD%D0%BE%D0%B4%D1%8B)
+        - [По какой причине и на какого типа системах айноды могут закончиться? И к чему это может привести?](#%D0%BF%D0%BE-%D0%BA%D0%B0%D0%BA%D0%BE%D0%B9-%D0%BF%D1%80%D0%B8%D1%87%D0%B8%D0%BD%D0%B5-%D0%B8-%D0%BD%D0%B0-%D0%BA%D0%B0%D0%BA%D0%BE%D0%B3%D0%BE-%D1%82%D0%B8%D0%BF%D0%B0-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%D1%85-%D0%B0%D0%B9%D0%BD%D0%BE%D0%B4%D1%8B-%D0%BC%D0%BE%D0%B3%D1%83%D1%82-%D0%B7%D0%B0%D0%BA%D0%BE%D0%BD%D1%87%D0%B8%D1%82%D1%8C%D1%81%D1%8F-%D0%B8-%D0%BA-%D1%87%D0%B5%D0%BC%D1%83-%D1%8D%D1%82%D0%BE-%D0%BC%D0%BE%D0%B6%D0%B5%D1%82-%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%81%D1%82%D0%B8)
+        - [Какая файловая система бывает  динамическими айнодами?](#%D0%BA%D0%B0%D0%BA%D0%B0%D1%8F-%D1%84%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2%D0%B0%D1%8F-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0-%D0%B1%D1%8B%D0%B2%D0%B0%D0%B5%D1%82--%D0%B4%D0%B8%D0%BD%D0%B0%D0%BC%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%BC%D0%B8-%D0%B0%D0%B9%D0%BD%D0%BE%D0%B4%D0%B0%D0%BC%D0%B8)
+        - [Где хранится информация об именах файлов, директорий?](#%D0%B3%D0%B4%D0%B5-%D1%85%D1%80%D0%B0%D0%BD%D0%B8%D1%82%D1%81%D1%8F-%D0%B8%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D1%8F-%D0%BE%D0%B1-%D0%B8%D0%BC%D0%B5%D0%BD%D0%B0%D1%85-%D1%84%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2-%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%D0%B8%D0%B9)
+        - [Каким образом осуществляется монтирование ФС? Как можно посмотреть список примонтированных ФС? 2 - 3](#%D0%BA%D0%B0%D0%BA%D0%B8%D0%BC-%D0%BE%D0%B1%D1%80%D0%B0%D0%B7%D0%BE%D0%BC-%D0%BE%D1%81%D1%83%D1%89%D0%B5%D1%81%D1%82%D0%B2%D0%BB%D1%8F%D0%B5%D1%82%D1%81%D1%8F-%D0%BC%D0%BE%D0%BD%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D1%84%D1%81-%D0%BA%D0%B0%D0%BA-%D0%BC%D0%BE%D0%B6%D0%BD%D0%BE-%D0%BF%D0%BE%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C-%D1%81%D0%BF%D0%B8%D1%81%D0%BE%D0%BA-%D0%BF%D1%80%D0%B8%D0%BC%D0%BE%D0%BD%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D1%8B%D1%85-%D1%84%D1%81-2---3)
+        - [Что такое псевдофайловая система?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-%D0%BF%D1%81%D0%B5%D0%B2%D0%B4%D0%BE%D1%84%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2%D0%B0%D1%8F-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0)
+        - [Как определить, на каком физическом жёстком диске находится раздел с файловой системой? Как можно идентифицировать этот носитель без выключения сервера?](#%D0%BA%D0%B0%D0%BA-%D0%BE%D0%BF%D1%80%D0%B5%D0%B4%D0%B5%D0%BB%D0%B8%D1%82%D1%8C-%D0%BD%D0%B0-%D0%BA%D0%B0%D0%BA%D0%BE%D0%BC-%D1%84%D0%B8%D0%B7%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%BC-%D0%B6%D1%91%D1%81%D1%82%D0%BA%D0%BE%D0%BC-%D0%B4%D0%B8%D1%81%D0%BA%D0%B5-%D0%BD%D0%B0%D1%85%D0%BE%D0%B4%D0%B8%D1%82%D1%81%D1%8F-%D1%80%D0%B0%D0%B7%D0%B4%D0%B5%D0%BB-%D1%81-%D1%84%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2%D0%BE%D0%B9-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%BE%D0%B9-%D0%BA%D0%B0%D0%BA-%D0%BC%D0%BE%D0%B6%D0%BD%D0%BE-%D0%B8%D0%B4%D0%B5%D0%BD%D1%82%D0%B8%D1%84%D0%B8%D1%86%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-%D1%8D%D1%82%D0%BE%D1%82-%D0%BD%D0%BE%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1%8C-%D0%B1%D0%B5%D0%B7-%D0%B2%D1%8B%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D1%8F-%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80%D0%B0)
+        - [Как узнать, какими процессами используется раздел? lsof, fuser, grep within procfs](#%D0%BA%D0%B0%D0%BA-%D1%83%D0%B7%D0%BD%D0%B0%D1%82%D1%8C-%D0%BA%D0%B0%D0%BA%D0%B8%D0%BC%D0%B8-%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0%D0%BC%D0%B8-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D1%83%D0%B5%D1%82%D1%81%D1%8F-%D1%80%D0%B0%D0%B7%D0%B4%D0%B5%D0%BB-lsof-fuser-grep-within-procfs)
+        - [Для чего необходимы файлы /etc/fstab, /etc/mtab, /etc/mdadm/mdadm.conf?](#%D0%B4%D0%BB%D1%8F-%D1%87%D0%B5%D0%B3%D0%BE-%D0%BD%D0%B5%D0%BE%D0%B1%D1%85%D0%BE%D0%B4%D0%B8%D0%BC%D1%8B-%D1%84%D0%B0%D0%B9%D0%BB%D1%8B-etcfstab-etcmtab-etcmdadmmdadmconf)
+        - [Отличие хардлинков от симлинков hardlinks symlinks](#%D0%BE%D1%82%D0%BB%D0%B8%D1%87%D0%B8%D0%B5-%D1%85%D0%B0%D1%80%D0%B4%D0%BB%D0%B8%D0%BD%D0%BA%D0%BE%D0%B2-%D0%BE%D1%82-%D1%81%D0%B8%D0%BC%D0%BB%D0%B8%D0%BD%D0%BA%D0%BE%D0%B2-hardlinks-symlinks)
+        - [Что такое RAID? Какие основные типы RAID существуют, чем они](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-raid-%D0%BA%D0%B0%D0%BA%D0%B8%D0%B5-%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%BD%D1%8B%D0%B5-%D1%82%D0%B8%D0%BF%D1%8B-raid-%D1%81%D1%83%D1%89%D0%B5%D1%81%D1%82%D0%B2%D1%83%D1%8E%D1%82-%D1%87%D0%B5%D0%BC-%D0%BE%D0%BD%D0%B8)
+        - [Какие средства для работы с программными RAID массивами существуют в linux?](#%D0%BA%D0%B0%D0%BA%D0%B8%D0%B5-%D1%81%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B0-%D0%B4%D0%BB%D1%8F-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B-%D1%81-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%BD%D1%8B%D0%BC%D0%B8-raid-%D0%BC%D0%B0%D1%81%D1%81%D0%B8%D0%B2%D0%B0%D0%BC%D0%B8-%D1%81%D1%83%D1%89%D0%B5%D1%81%D1%82%D0%B2%D1%83%D1%8E%D1%82-%D0%B2-linux)
+        - [Что такое LVM? Для решения каких задач он предназначен?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-lvm-%D0%B4%D0%BB%D1%8F-%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F-%D0%BA%D0%B0%D0%BA%D0%B8%D1%85-%D0%B7%D0%B0%D0%B4%D0%B0%D1%87-%D0%BE%D0%BD-%D0%BF%D1%80%D0%B5%D0%B4%D0%BD%D0%B0%D0%B7%D0%BD%D0%B0%D1%87%D0%B5%D0%BD)
+        - [Что такое loop devices? Как их можно использовать?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-loop-devices-%D0%BA%D0%B0%D0%BA-%D0%B8%D1%85-%D0%BC%D0%BE%D0%B6%D0%BD%D0%BE-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C)
+        - [При создании нового файла система возвращает ошибку no space left device](#%D0%BF%D1%80%D0%B8-%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B8-%D0%BD%D0%BE%D0%B2%D0%BE%D0%B3%D0%BE-%D1%84%D0%B0%D0%B9%D0%BB%D0%B0-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0-%D0%B2%D0%BE%D0%B7%D0%B2%D1%80%D0%B0%D1%89%D0%B0%D0%B5%D1%82-%D0%BE%D1%88%D0%B8%D0%B1%D0%BA%D1%83-no-space-left-device)
+        - [df сообщает о наличии 20 Гб занятого пространства, подсчёт занятого файлами места при помощи du даёт результат в 20 Мб. При каких обстоятельствах может возникнуть описанная ситуация?deleted files](#df-%D1%81%D0%BE%D0%BE%D0%B1%D1%89%D0%B0%D0%B5%D1%82-%D0%BE-%D0%BD%D0%B0%D0%BB%D0%B8%D1%87%D0%B8%D0%B8-20-%D0%B3%D0%B1-%D0%B7%D0%B0%D0%BD%D1%8F%D1%82%D0%BE%D0%B3%D0%BE-%D0%BF%D1%80%D0%BE%D1%81%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%82%D0%B2%D0%B0-%D0%BF%D0%BE%D0%B4%D1%81%D1%87%D1%91%D1%82-%D0%B7%D0%B0%D0%BD%D1%8F%D1%82%D0%BE%D0%B3%D0%BE-%D1%84%D0%B0%D0%B9%D0%BB%D0%B0%D0%BC%D0%B8-%D0%BC%D0%B5%D1%81%D1%82%D0%B0-%D0%BF%D1%80%D0%B8-%D0%BF%D0%BE%D0%BC%D0%BE%D1%89%D0%B8-du-%D0%B4%D0%B0%D1%91%D1%82-%D1%80%D0%B5%D0%B7%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%82-%D0%B2-20-%D0%BC%D0%B1-%D0%BF%D1%80%D0%B8-%D0%BA%D0%B0%D0%BA%D0%B8%D1%85-%D0%BE%D0%B1%D1%81%D1%82%D0%BE%D1%8F%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D1%82%D0%B2%D0%B0%D1%85-%D0%BC%D0%BE%D0%B6%D0%B5%D1%82-%D0%B2%D0%BE%D0%B7%D0%BD%D0%B8%D0%BA%D0%BD%D1%83%D1%82%D1%8C-%D0%BE%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%BD%D0%B0%D1%8F-%D1%81%D0%B8%D1%82%D1%83%D0%B0%D1%86%D0%B8%D1%8Fdeleted-files)
+        - [При создании нового файла пользователем система возвращает ошибку no space left on device](#%D0%BF%D1%80%D0%B8-%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B8-%D0%BD%D0%BE%D0%B2%D0%BE%D0%B3%D0%BE-%D1%84%D0%B0%D0%B9%D0%BB%D0%B0-%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D0%B5%D0%BC-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0-%D0%B2%D0%BE%D0%B7%D0%B2%D1%80%D0%B0%D1%89%D0%B0%D0%B5%D1%82-%D0%BE%D1%88%D0%B8%D0%B1%D0%BA%D1%83-no-space-left-on-device)
+- [Debug](#debug)
+        - [Сервер не отвечает, как можно получить доступ к серверу, не находясь непосредственно в ЦОДе](#%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80-%D0%BD%D0%B5-%D0%BE%D1%82%D0%B2%D0%B5%D1%87%D0%B0%D0%B5%D1%82-%D0%BA%D0%B0%D0%BA-%D0%BC%D0%BE%D0%B6%D0%BD%D0%BE-%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B8%D1%82%D1%8C-%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF-%D0%BA-%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80%D1%83-%D0%BD%D0%B5-%D0%BD%D0%B0%D1%85%D0%BE%D0%B4%D1%8F%D1%81%D1%8C-%D0%BD%D0%B5%D0%BF%D0%BE%D1%81%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D0%BE-%D0%B2-%D1%86%D0%BE%D0%B4%D0%B5)
+        - [Веб-сервер, работающий на сервере в нашей сети, отдаёт ошибку 502. Каким образом можно найти причину ошибки?](#%D0%B2%D0%B5%D0%B1-%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D1%8E%D1%89%D0%B8%D0%B9-%D0%BD%D0%B0-%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80%D0%B5-%D0%B2-%D0%BD%D0%B0%D1%88%D0%B5%D0%B9-%D1%81%D0%B5%D1%82%D0%B8-%D0%BE%D1%82%D0%B4%D0%B0%D1%91%D1%82-%D0%BE%D1%88%D0%B8%D0%B1%D0%BA%D1%83-502-%D0%BA%D0%B0%D0%BA%D0%B8%D0%BC-%D0%BE%D0%B1%D1%80%D0%B0%D0%B7%D0%BE%D0%BC-%D0%BC%D0%BE%D0%B6%D0%BD%D0%BE-%D0%BD%D0%B0%D0%B9%D1%82%D0%B8-%D0%BF%D1%80%D0%B8%D1%87%D0%B8%D0%BD%D1%83-%D0%BE%D1%88%D0%B8%D0%B1%D0%BA%D0%B8)
+        - [В директории находится файл с нечитаемым содержимым. Каким образом можно узнать  формат хранения данных и предназначение файла?](#%D0%B2-%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%D0%B8%D0%B8-%D0%BD%D0%B0%D1%85%D0%BE%D0%B4%D0%B8%D1%82%D1%81%D1%8F-%D1%84%D0%B0%D0%B9%D0%BB-%D1%81-%D0%BD%D0%B5%D1%87%D0%B8%D1%82%D0%B0%D0%B5%D0%BC%D1%8B%D0%BC-%D1%81%D0%BE%D0%B4%D0%B5%D1%80%D0%B6%D0%B8%D0%BC%D1%8B%D0%BC-%D0%BA%D0%B0%D0%BA%D0%B8%D0%BC-%D0%BE%D0%B1%D1%80%D0%B0%D0%B7%D0%BE%D0%BC-%D0%BC%D0%BE%D0%B6%D0%BD%D0%BE-%D1%83%D0%B7%D0%BD%D0%B0%D1%82%D1%8C--%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%82-%D1%85%D1%80%D0%B0%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85-%D0%B8-%D0%BF%D1%80%D0%B5%D0%B4%D0%BD%D0%B0%D0%B7%D0%BD%D0%B0%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-%D1%84%D0%B0%D0%B9%D0%BB%D0%B0)
+        - [Попытка запуска исполняемого файла завершается ошибкой no such file or directory. Почему?](#%D0%BF%D0%BE%D0%BF%D1%8B%D1%82%D0%BA%D0%B0-%D0%B7%D0%B0%D0%BF%D1%83%D1%81%D0%BA%D0%B0-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D0%BD%D1%8F%D0%B5%D0%BC%D0%BE%D0%B3%D0%BE-%D1%84%D0%B0%D0%B9%D0%BB%D0%B0-%D0%B7%D0%B0%D0%B2%D0%B5%D1%80%D1%88%D0%B0%D0%B5%D1%82%D1%81%D1%8F-%D0%BE%D1%88%D0%B8%D0%B1%D0%BA%D0%BE%D0%B9-no-such-file-or-directory-%D0%BF%D0%BE%D1%87%D0%B5%D0%BC%D1%83)
+        - [Программа сообщает о том, что не может найти свой конфигурационный файл. Каким образом можно узнать, где она пытается его найти?](#%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0-%D1%81%D0%BE%D0%BE%D0%B1%D1%89%D0%B0%D0%B5%D1%82-%D0%BE-%D1%82%D0%BE%D0%BC-%D1%87%D1%82%D0%BE-%D0%BD%D0%B5-%D0%BC%D0%BE%D0%B6%D0%B5%D1%82-%D0%BD%D0%B0%D0%B9%D1%82%D0%B8-%D1%81%D0%B2%D0%BE%D0%B9-%D0%BA%D0%BE%D0%BD%D1%84%D0%B8%D0%B3%D1%83%D1%80%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D1%8B%D0%B9-%D1%84%D0%B0%D0%B9%D0%BB-%D0%BA%D0%B0%D0%BA%D0%B8%D0%BC-%D0%BE%D0%B1%D1%80%D0%B0%D0%B7%D0%BE%D0%BC-%D0%BC%D0%BE%D0%B6%D0%BD%D0%BE-%D1%83%D0%B7%D0%BD%D0%B0%D1%82%D1%8C-%D0%B3%D0%B4%D0%B5-%D0%BE%D0%BD%D0%B0-%D0%BF%D1%8B%D1%82%D0%B0%D0%B5%D1%82%D1%81%D1%8F-%D0%B5%D0%B3%D0%BE-%D0%BD%D0%B0%D0%B9%D1%82%D0%B8)
+        - [Что будешь делать если у команды chmod убрали права на исполнение? chmod -x chmod](#%D1%87%D1%82%D0%BE-%D0%B1%D1%83%D0%B4%D0%B5%D1%88%D1%8C-%D0%B4%D0%B5%D0%BB%D0%B0%D1%82%D1%8C-%D0%B5%D1%81%D0%BB%D0%B8-%D1%83-%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D1%8B-chmod-%D1%83%D0%B1%D1%80%D0%B0%D0%BB%D0%B8-%D0%BF%D1%80%D0%B0%D0%B2%D0%B0-%D0%BD%D0%B0-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5-chmod--x-chmod)
+        - [setfacl -m u::rwx,g::rx,o::x /usr/bin/chmod](#setfacl--m-urwxgrxox-usrbinchmod)
+        - [/usr/lib64/ld-linux-x86-64.so.2 /usr/bin/chmod +x /usr/bin/chmod](#usrlib64ld-linux-x86-64so2-usrbinchmod-x-usrbinchmod)
+        - [cp --attributes-only /usr/bin/ls ./new_chmod](#cp---attributes-only-usrbinls-new_chmod)
+        - [cat /usr/bin/chmod > ./new_chmod](#cat-usrbinchmod--new_chmod)
+        - [/new_chmod +x /usr/bin/chmod](#new_chmod-x-usrbinchmod)
+        - [install -m 755 /usr/bin/chmod ./new_chmod](#install--m-755-usrbinchmod-new_chmod)
+        - [База сейчас сидит и упирается в диск. И с ней ничего не сделать — больше сервер никто покупать не будет. Как сделать так, чтобы оно работало быстрее прямо сейчас?](#%D0%B1%D0%B0%D0%B7%D0%B0-%D1%81%D0%B5%D0%B9%D1%87%D0%B0%D1%81-%D1%81%D0%B8%D0%B4%D0%B8%D1%82-%D0%B8-%D1%83%D0%BF%D0%B8%D1%80%D0%B0%D0%B5%D1%82%D1%81%D1%8F-%D0%B2-%D0%B4%D0%B8%D1%81%D0%BA-%D0%B8-%D1%81-%D0%BD%D0%B5%D0%B9-%D0%BD%D0%B8%D1%87%D0%B5%D0%B3%D0%BE-%D0%BD%D0%B5-%D1%81%D0%B4%D0%B5%D0%BB%D0%B0%D1%82%D1%8C--%D0%B1%D0%BE%D0%BB%D1%8C%D1%88%D0%B5-%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80-%D0%BD%D0%B8%D0%BA%D1%82%D0%BE-%D0%BF%D0%BE%D0%BA%D1%83%D0%BF%D0%B0%D1%82%D1%8C-%D0%BD%D0%B5-%D0%B1%D1%83%D0%B4%D0%B5%D1%82-%D0%BA%D0%B0%D0%BA-%D1%81%D0%B4%D0%B5%D0%BB%D0%B0%D1%82%D1%8C-%D1%82%D0%B0%D0%BA-%D1%87%D1%82%D0%BE%D0%B1%D1%8B-%D0%BE%D0%BD%D0%BE-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D0%BB%D0%BE-%D0%B1%D1%8B%D1%81%D1%82%D1%80%D0%B5%D0%B5-%D0%BF%D1%80%D1%8F%D0%BC%D0%BE-%D1%81%D0%B5%D0%B9%D1%87%D0%B0%D1%81)
+        - [Почему доступной available памяти сейчас 2919, если свободной free памяти 843?](#%D0%BF%D0%BE%D1%87%D0%B5%D0%BC%D1%83-%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%BD%D0%BE%D0%B9-available-%D0%BF%D0%B0%D0%BC%D1%8F%D1%82%D0%B8-%D1%81%D0%B5%D0%B9%D1%87%D0%B0%D1%81-2919-%D0%B5%D1%81%D0%BB%D0%B8-%D1%81%D0%B2%D0%BE%D0%B1%D0%BE%D0%B4%D0%BD%D0%BE%D0%B9-free-%D0%BF%D0%B0%D0%BC%D1%8F%D1%82%D0%B8-843)
+        - [Что такое разделяемая память?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-%D1%80%D0%B0%D0%B7%D0%B4%D0%B5%D0%BB%D1%8F%D0%B5%D0%BC%D0%B0%D1%8F-%D0%BF%D0%B0%D0%BC%D1%8F%D1%82%D1%8C)
+- [Docker контейнеры](#docker-%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%B9%D0%BD%D0%B5%D1%80%D1%8B)
+        - [Что такое docker и какие инструменты liunx лежат в основе? Для чего он используется?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-docker-%D0%B8-%D0%BA%D0%B0%D0%BA%D0%B8%D0%B5-%D0%B8%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D1%8B-liunx-%D0%BB%D0%B5%D0%B6%D0%B0%D1%82-%D0%B2-%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B5-%D0%B4%D0%BB%D1%8F-%D1%87%D0%B5%D0%B3%D0%BE-%D0%BE%D0%BD-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D1%83%D0%B5%D1%82%D1%81%D1%8F)
+        - [Что такое контейнеры, образы? В чём заключаются концепции их использования?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%B9%D0%BD%D0%B5%D1%80%D1%8B-%D0%BE%D0%B1%D1%80%D0%B0%D0%B7%D1%8B-%D0%B2-%D1%87%D1%91%D0%BC-%D0%B7%D0%B0%D0%BA%D0%BB%D1%8E%D1%87%D0%B0%D1%8E%D1%82%D1%81%D1%8F-%D0%BA%D0%BE%D0%BD%D1%86%D0%B5%D0%BF%D1%86%D0%B8%D0%B8-%D0%B8%D1%85-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F)
+        - [В каком виде хранятся образы? Для чего используются слои? Что представляет собой overlayfs?](#%D0%B2-%D0%BA%D0%B0%D0%BA%D0%BE%D0%BC-%D0%B2%D0%B8%D0%B4%D0%B5-%D1%85%D1%80%D0%B0%D0%BD%D1%8F%D1%82%D1%81%D1%8F-%D0%BE%D0%B1%D1%80%D0%B0%D0%B7%D1%8B-%D0%B4%D0%BB%D1%8F-%D1%87%D0%B5%D0%B3%D0%BE-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D1%83%D1%8E%D1%82%D1%81%D1%8F-%D1%81%D0%BB%D0%BE%D0%B8-%D1%87%D1%82%D0%BE-%D0%BF%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D1%8F%D0%B5%D1%82-%D1%81%D0%BE%D0%B1%D0%BE%D0%B9-overlayfs)
+        - [Каким образом в docker реализована изоляция контейнеров друг от друга? Какие средства linux для этого используются?namespace](#%D0%BA%D0%B0%D0%BA%D0%B8%D0%BC-%D0%BE%D0%B1%D1%80%D0%B0%D0%B7%D0%BE%D0%BC-%D0%B2-docker-%D1%80%D0%B5%D0%B0%D0%BB%D0%B8%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B0-%D0%B8%D0%B7%D0%BE%D0%BB%D1%8F%D1%86%D0%B8%D1%8F-%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%B9%D0%BD%D0%B5%D1%80%D0%BE%D0%B2-%D0%B4%D1%80%D1%83%D0%B3-%D0%BE%D1%82-%D0%B4%D1%80%D1%83%D0%B3%D0%B0-%D0%BA%D0%B0%D0%BA%D0%B8%D0%B5-%D1%81%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B0-linux-%D0%B4%D0%BB%D1%8F-%D1%8D%D1%82%D0%BE%D0%B3%D0%BE-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D1%83%D1%8E%D1%82%D1%81%D1%8Fnamespace)
+        - [Почему в контейнере можно увидеть только процессы, запущенные в самом контейнере?](#%D0%BF%D0%BE%D1%87%D0%B5%D0%BC%D1%83-%D0%B2-%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%B9%D0%BD%D0%B5%D1%80%D0%B5-%D0%BC%D0%BE%D0%B6%D0%BD%D0%BE-%D1%83%D0%B2%D0%B8%D0%B4%D0%B5%D1%82%D1%8C-%D1%82%D0%BE%D0%BB%D1%8C%D0%BA%D0%BE-%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B-%D0%B7%D0%B0%D0%BF%D1%83%D1%89%D0%B5%D0%BD%D0%BD%D1%8B%D0%B5-%D0%B2-%D1%81%D0%B0%D0%BC%D0%BE%D0%BC-%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%B9%D0%BD%D0%B5%D1%80%D0%B5)
+        - [В папке /var/lib/docker/ как понять какая папка к какому контейнеру принадлежит](#%D0%B2-%D0%BF%D0%B0%D0%BF%D0%BA%D0%B5-varlibdocker-%D0%BA%D0%B0%D0%BA-%D0%BF%D0%BE%D0%BD%D1%8F%D1%82%D1%8C-%D0%BA%D0%B0%D0%BA%D0%B0%D1%8F-%D0%BF%D0%B0%D0%BF%D0%BA%D0%B0-%D0%BA-%D0%BA%D0%B0%D0%BA%D0%BE%D0%BC%D1%83-%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%B9%D0%BD%D0%B5%D1%80%D1%83-%D0%BF%D1%80%D0%B8%D0%BD%D0%B0%D0%B4%D0%BB%D0%B5%D0%B6%D0%B8%D1%82)
+        - [Можно ли настроить сетевое взаимодействие между двумя docker-контейнерами? Как это реализовано?](#%D0%BC%D0%BE%D0%B6%D0%BD%D0%BE-%D0%BB%D0%B8-%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B8%D1%82%D1%8C-%D1%81%D0%B5%D1%82%D0%B5%D0%B2%D0%BE%D0%B5-%D0%B2%D0%B7%D0%B0%D0%B8%D0%BC%D0%BE%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D0%B5-%D0%BC%D0%B5%D0%B6%D0%B4%D1%83-%D0%B4%D0%B2%D1%83%D0%BC%D1%8F-docker-%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%B9%D0%BD%D0%B5%D1%80%D0%B0%D0%BC%D0%B8-%D0%BA%D0%B0%D0%BA-%D1%8D%D1%82%D0%BE-%D1%80%D0%B5%D0%B0%D0%BB%D0%B8%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%BE)
+        - [Можно ли ограничить использование ресурсов cpu, ram, io, network для docker контейнера? Как это реализовано? cgroup**](#%D0%BC%D0%BE%D0%B6%D0%BD%D0%BE-%D0%BB%D0%B8-%D0%BE%D0%B3%D1%80%D0%B0%D0%BD%D0%B8%D1%87%D0%B8%D1%82%D1%8C-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D1%80%D0%B5%D1%81%D1%83%D1%80%D1%81%D0%BE%D0%B2-cpu-ram-io-network-%D0%B4%D0%BB%D1%8F-docker-%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%B9%D0%BD%D0%B5%D1%80%D0%B0-%D0%BA%D0%B0%D0%BA-%D1%8D%D1%82%D0%BE-%D1%80%D0%B5%D0%B0%D0%BB%D0%B8%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%BE-cgroup)
+        - [Для решения каких задач применяется docker-compose?](#%D0%B4%D0%BB%D1%8F-%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F-%D0%BA%D0%B0%D0%BA%D0%B8%D1%85-%D0%B7%D0%B0%D0%B4%D0%B0%D1%87-%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D0%BD%D1%8F%D0%B5%D1%82%D1%81%D1%8F-docker-compose)
+        - [Что такое виртуализация? Чем виртуализация отличается от эмуляции?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-%D0%B2%D0%B8%D1%80%D1%82%D1%83%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F-%D1%87%D0%B5%D0%BC-%D0%B2%D0%B8%D1%80%D1%82%D1%83%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F-%D0%BE%D1%82%D0%BB%D0%B8%D1%87%D0%B0%D0%B5%D1%82%D1%81%D1%8F-%D0%BE%D1%82-%D1%8D%D0%BC%D1%83%D0%BB%D1%8F%D1%86%D0%B8%D0%B8)
+        - [В чем разница между docker stop и docker pause?](#%D0%B2-%D1%87%D0%B5%D0%BC-%D1%80%D0%B0%D0%B7%D0%BD%D0%B8%D1%86%D0%B0-%D0%BC%D0%B5%D0%B6%D0%B4%D1%83-docker-stop-%D0%B8-docker-pause)
+        - [Что такое слои в докере?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-%D1%81%D0%BB%D0%BE%D0%B8-%D0%B2-%D0%B4%D0%BE%D0%BA%D0%B5%D1%80%D0%B5)
+        - [В чем разница между ADD и COPY](#%D0%B2-%D1%87%D0%B5%D0%BC-%D1%80%D0%B0%D0%B7%D0%BD%D0%B8%D1%86%D0%B0-%D0%BC%D0%B5%D0%B6%D0%B4%D1%83-add-%D0%B8-copy)
+        - [Почему latest образы использовать нежелательно?](#%D0%BF%D0%BE%D1%87%D0%B5%D0%BC%D1%83-latest-%D0%BE%D0%B1%D1%80%D0%B0%D0%B7%D1%8B-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-%D0%BD%D0%B5%D0%B6%D0%B5%D0%BB%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE)
+        - [В чем отличие ARG от ENV?](#%D0%B2-%D1%87%D0%B5%D0%BC-%D0%BE%D1%82%D0%BB%D0%B8%D1%87%D0%B8%D0%B5-arg-%D0%BE%D1%82-env)
+        - [От кого по умолчанию запускается контейнер? Почему это плохо?](#%D0%BE%D1%82-%D0%BA%D0%BE%D0%B3%D0%BE-%D0%BF%D0%BE-%D1%83%D0%BC%D0%BE%D0%BB%D1%87%D0%B0%D0%BD%D0%B8%D1%8E-%D0%B7%D0%B0%D0%BF%D1%83%D1%81%D0%BA%D0%B0%D0%B5%D1%82%D1%81%D1%8F-%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%B9%D0%BD%D0%B5%D1%80-%D0%BF%D0%BE%D1%87%D0%B5%D0%BC%D1%83-%D1%8D%D1%82%D0%BE-%D0%BF%D0%BB%D0%BE%D1%85%D0%BE)
+        - [Как убить контейнер изнутри?](#%D0%BA%D0%B0%D0%BA-%D1%83%D0%B1%D0%B8%D1%82%D1%8C-%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%B9%D0%BD%D0%B5%D1%80-%D0%B8%D0%B7%D0%BD%D1%83%D1%82%D1%80%D0%B8)
+        - [Возможен ли самостоятельный перезапуск контейнера?](#%D0%B2%D0%BE%D0%B7%D0%BC%D0%BE%D0%B6%D0%B5%D0%BD-%D0%BB%D0%B8-%D1%81%D0%B0%D0%BC%D0%BE%D1%81%D1%82%D0%BE%D1%8F%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9-%D0%BF%D0%B5%D1%80%D0%B5%D0%B7%D0%B0%D0%BF%D1%83%D1%81%D0%BA-%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%B9%D0%BD%D0%B5%D1%80%D0%B0)
+        - [Какие есть best practices для написания Dockerfile?](#%D0%BA%D0%B0%D0%BA%D0%B8%D0%B5-%D0%B5%D1%81%D1%82%D1%8C-best-practices-%D0%B4%D0%BB%D1%8F-%D0%BD%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D1%8F-dockerfile)
+        - [Что такое ката kata контейнер?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-%D0%BA%D0%B0%D1%82%D0%B0-kata-%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%B9%D0%BD%D0%B5%D1%80)
+- [**Сети сеть**](#%D1%81%D0%B5%D1%82%D0%B8-%D1%81%D0%B5%D1%82%D1%8C)
+        - [Расскажи мне, как неподготовленному слушателю как устанавливает соединение SSH и происходит авторизация разными методами: по паролю и SSH-ключам.](#%D1%80%D0%B0%D1%81%D1%81%D0%BA%D0%B0%D0%B6%D0%B8-%D0%BC%D0%BD%D0%B5-%D0%BA%D0%B0%D0%BA-%D0%BD%D0%B5%D0%BF%D0%BE%D0%B4%D0%B3%D0%BE%D1%82%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%BD%D0%BE%D0%BC%D1%83-%D1%81%D0%BB%D1%83%D1%88%D0%B0%D1%82%D0%B5%D0%BB%D1%8E-%D0%BA%D0%B0%D0%BA-%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%B0%D0%B2%D0%BB%D0%B8%D0%B2%D0%B0%D0%B5%D1%82-%D1%81%D0%BE%D0%B5%D0%B4%D0%B8%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5-ssh-%D0%B8-%D0%BF%D1%80%D0%BE%D0%B8%D1%81%D1%85%D0%BE%D0%B4%D0%B8%D1%82-%D0%B0%D0%B2%D1%82%D0%BE%D1%80%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F-%D1%80%D0%B0%D0%B7%D0%BD%D1%8B%D0%BC%D0%B8-%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%D0%B0%D0%BC%D0%B8-%D0%BF%D0%BE-%D0%BF%D0%B0%D1%80%D0%BE%D0%BB%D1%8E-%D0%B8-ssh-%D0%BA%D0%BB%D1%8E%D1%87%D0%B0%D0%BC)
+        - [Что такое IP и маска подсети?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-ip-%D0%B8-%D0%BC%D0%B0%D1%81%D0%BA%D0%B0-%D0%BF%D0%BE%D0%B4%D1%81%D0%B5%D1%82%D0%B8)
+        - [Что такое и зачем нужен ARP протокол?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-%D0%B8-%D0%B7%D0%B0%D1%87%D0%B5%D0%BC-%D0%BD%D1%83%D0%B6%D0%B5%D0%BD-arp-%D0%BF%D1%80%D0%BE%D1%82%D0%BE%D0%BA%D0%BE%D0%BB)
+        - [Зачем нужен VLAN?](#%D0%B7%D0%B0%D1%87%D0%B5%D0%BC-%D0%BD%D1%83%D0%B6%D0%B5%D0%BD-vlan)
+        - [Чем отличается TCP от UDP?](#%D1%87%D0%B5%D0%BC-%D0%BE%D1%82%D0%BB%D0%B8%D1%87%D0%B0%D0%B5%D1%82%D1%81%D1%8F-tcp-%D0%BE%D1%82-udp)
+        - [Как TCP устанавливает соединение?](#%D0%BA%D0%B0%D0%BA-tcp-%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%B0%D0%B2%D0%BB%D0%B8%D0%B2%D0%B0%D0%B5%D1%82-%D1%81%D0%BE%D0%B5%D0%B4%D0%B8%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5)
+        - [Как TCP поддерживает соединение?](#%D0%BA%D0%B0%D0%BA-tcp-%D0%BF%D0%BE%D0%B4%D0%B4%D0%B5%D1%80%D0%B6%D0%B8%D0%B2%D0%B0%D0%B5%D1%82-%D1%81%D0%BE%D0%B5%D0%B4%D0%B8%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5)
+        - [Что происходит когда в браузере вводишь yandex.ru? Описать процесс](#%D1%87%D1%82%D0%BE-%D0%BF%D1%80%D0%BE%D0%B8%D1%81%D1%85%D0%BE%D0%B4%D0%B8%D1%82-%D0%BA%D0%BE%D0%B3%D0%B4%D0%B0-%D0%B2-%D0%B1%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80%D0%B5-%D0%B2%D0%B2%D0%BE%D0%B4%D0%B8%D1%88%D1%8C-yandexru-%D0%BE%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C-%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81)
+        - [На каком уровне работает протокол TCP?](#%D0%BD%D0%B0-%D0%BA%D0%B0%D0%BA%D0%BE%D0%BC-%D1%83%D1%80%D0%BE%D0%B2%D0%BD%D0%B5-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D0%B5%D1%82-%D0%BF%D1%80%D0%BE%D1%82%D0%BE%D0%BA%D0%BE%D0%BB-tcp)
+        - [На каком уровне оси работает ssh?](#%D0%BD%D0%B0-%D0%BA%D0%B0%D0%BA%D0%BE%D0%BC-%D1%83%D1%80%D0%BE%D0%B2%D0%BD%D0%B5-%D0%BE%D1%81%D0%B8-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D0%B5%D1%82-ssh)
+        - [Как работает DNS, зачем он нужен?](#%D0%BA%D0%B0%D0%BA-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D0%B5%D1%82-dns-%D0%B7%D0%B0%D1%87%D0%B5%D0%BC-%D0%BE%D0%BD-%D0%BD%D1%83%D0%B6%D0%B5%D0%BD)
+        - [Как работает NAT, зачем он нужен?](#%D0%BA%D0%B0%D0%BA-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D0%B5%D1%82-nat-%D0%B7%D0%B0%D1%87%D0%B5%D0%BC-%D0%BE%D0%BD-%D0%BD%D1%83%D0%B6%D0%B5%D0%BD)
+        - [Что такое ARP, зачем нужен? Также зачем нужен IP и MAC](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-arp-%D0%B7%D0%B0%D1%87%D0%B5%D0%BC-%D0%BD%D1%83%D0%B6%D0%B5%D0%BD-%D1%82%D0%B0%D0%BA%D0%B6%D0%B5-%D0%B7%D0%B0%D1%87%D0%B5%D0%BC-%D0%BD%D1%83%D0%B6%D0%B5%D0%BD-ip-%D0%B8-mac)
+        - [Что такое SNI?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-sni)
+        - [Что такое TLS и SSL](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-tls-%D0%B8-ssl)
+        - [Чем симметричное шифрование отличается от ассиметричного?](#%D1%87%D0%B5%D0%BC-%D1%81%D0%B8%D0%BC%D0%BC%D0%B5%D1%82%D1%80%D0%B8%D1%87%D0%BD%D0%BE%D0%B5-%D1%88%D0%B8%D1%84%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D0%BE%D1%82%D0%BB%D0%B8%D1%87%D0%B0%D0%B5%D1%82%D1%81%D1%8F-%D0%BE%D1%82-%D0%B0%D1%81%D1%81%D0%B8%D0%BC%D0%B5%D1%82%D1%80%D0%B8%D1%87%D0%BD%D0%BE%D0%B3%D0%BE)
+        - [Почему DNS использует UDP?](#%D0%BF%D0%BE%D1%87%D0%B5%D0%BC%D1%83-dns-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D1%83%D0%B5%D1%82-udp)
+        - [Как работает ICMP](#%D0%BA%D0%B0%D0%BA-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D0%B5%D1%82-icmp)
+        - [Что такое authority в DNS?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-authority-%D0%B2-dns)
+        - [Что такое рекурсивный DNS](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-%D1%80%D0%B5%D0%BA%D1%83%D1%80%D1%81%D0%B8%D0%B2%D0%BD%D1%8B%D0%B9-dns)
+        - [Рекурсивный и нерекурсивный запрос к серверу dns](#%D1%80%D0%B5%D0%BA%D1%83%D1%80%D1%81%D0%B8%D0%B2%D0%BD%D1%8B%D0%B9-%D0%B8-%D0%BD%D0%B5%D1%80%D0%B5%D0%BA%D1%83%D1%80%D1%81%D0%B8%D0%B2%D0%BD%D1%8B%D0%B9-%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81-%D0%BA-%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80%D1%83-dns)
+        - [Базовая http аутентификация авторизация, как работает](#%D0%B1%D0%B0%D0%B7%D0%BE%D0%B2%D0%B0%D1%8F-http-%D0%B0%D1%83%D1%82%D0%B5%D0%BD%D1%82%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D1%8F-%D0%B0%D0%B2%D1%82%D0%BE%D1%80%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F-%D0%BA%D0%B0%D0%BA-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D0%B5%D1%82)
+        - [Как работают сертификаты? Как подтверждается соединение?](#%D0%BA%D0%B0%D0%BA-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D1%8E%D1%82-%D1%81%D0%B5%D1%80%D1%82%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%82%D1%8B-%D0%BA%D0%B0%D0%BA-%D0%BF%D0%BE%D0%B4%D1%82%D0%B2%D0%B5%D1%80%D0%B6%D0%B4%D0%B0%D0%B5%D1%82%D1%81%D1%8F-%D1%81%D0%BE%D0%B5%D0%B4%D0%B8%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5)
+        - [Опиши принцип работы ssl-шифрования](#%D0%BE%D0%BF%D0%B8%D1%88%D0%B8-%D0%BF%D1%80%D0%B8%D0%BD%D1%86%D0%B8%D0%BF-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B-ssl-%D1%88%D0%B8%D1%84%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F)
+        - [Какие стандартные коды ответов есть у веб-серверов?](#%D0%BA%D0%B0%D0%BA%D0%B8%D0%B5-%D1%81%D1%82%D0%B0%D0%BD%D0%B4%D0%B0%D1%80%D1%82%D0%BD%D1%8B%D0%B5-%D0%BA%D0%BE%D0%B4%D1%8B-%D0%BE%D1%82%D0%B2%D0%B5%D1%82%D0%BE%D0%B2-%D0%B5%D1%81%D1%82%D1%8C-%D1%83-%D0%B2%D0%B5%D0%B1-%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80%D0%BE%D0%B2)
+        - [Какие существуют основные типы запросов HTTP?](#%D0%BA%D0%B0%D0%BA%D0%B8%D0%B5-%D1%81%D1%83%D1%89%D0%B5%D1%81%D1%82%D0%B2%D1%83%D1%8E%D1%82-%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%BD%D1%8B%D0%B5-%D1%82%D0%B8%D0%BF%D1%8B-%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81%D0%BE%D0%B2-http)
+        - [Что такое маска подсети?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-%D0%BC%D0%B0%D1%81%D0%BA%D0%B0-%D0%BF%D0%BE%D0%B4%D1%81%D0%B5%D1%82%D0%B8)
+- [Ansible](#ansible)
+        - [Для чего нужен ad hoc в ansible?](#%D0%B4%D0%BB%D1%8F-%D1%87%D0%B5%D0%B3%D0%BE-%D0%BD%D1%83%D0%B6%D0%B5%D0%BD-ad-hoc-%D0%B2-ansible)
+        - [Что такое роли в ansible, пример](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-%D1%80%D0%BE%D0%BB%D0%B8-%D0%B2-ansible-%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80)
+        - [Что такое идемпотентность? Приведи пример таких операций, и противоположных им](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-%D0%B8%D0%B4%D0%B5%D0%BC%D0%BF%D0%BE%D1%82%D0%B5%D0%BD%D1%82%D0%BD%D0%BE%D1%81%D1%82%D1%8C-%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D0%B4%D0%B8-%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80-%D1%82%D0%B0%D0%BA%D0%B8%D1%85-%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B9-%D0%B8-%D0%BF%D1%80%D0%BE%D1%82%D0%B8%D0%B2%D0%BE%D0%BF%D0%BE%D0%BB%D0%BE%D0%B6%D0%BD%D1%8B%D1%85-%D0%B8%D0%BC)
+        - [Для чего нужны хендлеры, handlers?](#%D0%B4%D0%BB%D1%8F-%D1%87%D0%B5%D0%B3%D0%BE-%D0%BD%D1%83%D0%B6%D0%BD%D1%8B-%D1%85%D0%B5%D0%BD%D0%B4%D0%BB%D0%B5%D1%80%D1%8B-handlers)
+        - [В чем разница pull и push модели?](#%D0%B2-%D1%87%D0%B5%D0%BC-%D1%80%D0%B0%D0%B7%D0%BD%D0%B8%D1%86%D0%B0-pull-%D0%B8-push-%D0%BC%D0%BE%D0%B4%D0%B5%D0%BB%D0%B8)
+        - [В чем плюсы ансибла?](#%D0%B2-%D1%87%D0%B5%D0%BC-%D0%BF%D0%BB%D1%8E%D1%81%D1%8B-%D0%B0%D0%BD%D1%81%D0%B8%D0%B1%D0%BB%D0%B0)
+        - [Опишите основные примитивы Ansible](#%D0%BE%D0%BF%D0%B8%D1%88%D0%B8%D1%82%D0%B5-%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%BD%D1%8B%D0%B5-%D0%BF%D1%80%D0%B8%D0%BC%D0%B8%D1%82%D0%B8%D0%B2%D1%8B-ansible)
+        - [В чем разница между модулем и плагином**](#%D0%B2-%D1%87%D0%B5%D0%BC-%D1%80%D0%B0%D0%B7%D0%BD%D0%B8%D1%86%D0%B0-%D0%BC%D0%B5%D0%B6%D0%B4%D1%83-%D0%BC%D0%BE%D0%B4%D1%83%D0%BB%D0%B5%D0%BC-%D0%B8-%D0%BF%D0%BB%D0%B0%D0%B3%D0%B8%D0%BD%D0%BE%D0%BC)
+- [СУБД Базы Mysql](#%D1%81%D1%83%D0%B1%D0%B4-%D0%B1%D0%B0%D0%B7%D1%8B-mysql)
+    - [Что такое индексы, зачем они нужны?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-%D0%B8%D0%BD%D0%B4%D0%B5%D0%BA%D1%81%D1%8B-%D0%B7%D0%B0%D1%87%D0%B5%D0%BC-%D0%BE%D0%BD%D0%B8-%D0%BD%D1%83%D0%B6%D0%BD%D1%8B)
+        - [Какая будет проблема если проставить много индексов?](#%D0%BA%D0%B0%D0%BA%D0%B0%D1%8F-%D0%B1%D1%83%D0%B4%D0%B5%D1%82-%D0%BF%D1%80%D0%BE%D0%B1%D0%BB%D0%B5%D0%BC%D0%B0-%D0%B5%D1%81%D0%BB%D0%B8-%D0%BF%D1%80%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%B8%D1%82%D1%8C-%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE-%D0%B8%D0%BD%D0%B4%D0%B5%D0%BA%D1%81%D0%BE%D0%B2)
+        - [Как настроить мастер слейв репликацию в мускуле?](#%D0%BA%D0%B0%D0%BA-%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B8%D1%82%D1%8C-%D0%BC%D0%B0%D1%81%D1%82%D0%B5%D1%80-%D1%81%D0%BB%D0%B5%D0%B9%D0%B2-%D1%80%D0%B5%D0%BF%D0%BB%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D1%8E-%D0%B2-%D0%BC%D1%83%D1%81%D0%BA%D1%83%D0%BB%D0%B5)
+        - [В чем разница между truncate delete  и drop?](#%D0%B2-%D1%87%D0%B5%D0%BC-%D1%80%D0%B0%D0%B7%D0%BD%D0%B8%D1%86%D0%B0-%D0%BC%D0%B5%D0%B6%D0%B4%D1%83-truncate-delete--%D0%B8-drop)
+    - [Что такое роли в pgsql](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-%D1%80%D0%BE%D0%BB%D0%B8-%D0%B2-pgsql)
+        - [Почему не следует использовать утилиту mysqldump на большой активной базе данных? Какие Вы знаете альтернативы?](#%D0%BF%D0%BE%D1%87%D0%B5%D0%BC%D1%83-%D0%BD%D0%B5-%D1%81%D0%BB%D0%B5%D0%B4%D1%83%D0%B5%D1%82-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-%D1%83%D1%82%D0%B8%D0%BB%D0%B8%D1%82%D1%83-mysqldump-%D0%BD%D0%B0-%D0%B1%D0%BE%D0%BB%D1%8C%D1%88%D0%BE%D0%B9-%D0%B0%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D0%BE%D0%B9-%D0%B1%D0%B0%D0%B7%D0%B5-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85-%D0%BA%D0%B0%D0%BA%D0%B8%D0%B5-%D0%B2%D1%8B-%D0%B7%D0%BD%D0%B0%D0%B5%D1%82%D0%B5-%D0%B0%D0%BB%D1%8C%D1%82%D0%B5%D1%80%D0%BD%D0%B0%D1%82%D0%B8%D0%B2%D1%8B)
+- [PYTHON](#python)
+        - [Что такое хеш таблица?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-%D1%85%D0%B5%D1%88-%D1%82%D0%B0%D0%B1%D0%BB%D0%B8%D1%86%D0%B0)
+        - [Что такое генератор, что такое итератор?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80-%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80)
+        - [В чем разница между кортежем и списком?](#%D0%B2-%D1%87%D0%B5%D0%BC-%D1%80%D0%B0%D0%B7%D0%BD%D0%B8%D1%86%D0%B0-%D0%BC%D0%B5%D0%B6%D0%B4%D1%83-%D0%BA%D0%BE%D1%80%D1%82%D0%B5%D0%B6%D0%B5%D0%BC-%D0%B8-%D1%81%D0%BF%D0%B8%D1%81%D0%BA%D0%BE%D0%BC)
+        - [Что такое декоратор?**](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-%D0%B4%D0%B5%D0%BA%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80)
+    - [Какое значение принимает переменная в Python, которая не имеет значения?](#%D0%BA%D0%B0%D0%BA%D0%BE%D0%B5-%D0%B7%D0%BD%D0%B0%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BF%D1%80%D0%B8%D0%BD%D0%B8%D0%BC%D0%B0%D0%B5%D1%82-%D0%BF%D0%B5%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D0%B0%D1%8F-%D0%B2-python-%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D0%B0%D1%8F-%D0%BD%D0%B5-%D0%B8%D0%BC%D0%B5%D0%B5%D1%82-%D0%B7%D0%BD%D0%B0%D1%87%D0%B5%D0%BD%D0%B8%D1%8F)
+- [KUBERNETES](#kubernetes)
+        - [Что такое kubernetes?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-kubernetes)
+        - [Какую проблему решает kubernetes?](#%D0%BA%D0%B0%D0%BA%D1%83%D1%8E-%D0%BF%D1%80%D0%BE%D0%B1%D0%BB%D0%B5%D0%BC%D1%83-%D1%80%D0%B5%D1%88%D0%B0%D0%B5%D1%82-kubernetes)
+        - [Что такое minikube?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-minikube)
+        - [Приведи пример проблемы, которая упрощает работу именно с использованием кубернетеса?](#%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D0%B4%D0%B8-%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80-%D0%BF%D1%80%D0%BE%D0%B1%D0%BB%D0%B5%D0%BC%D1%8B-%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D0%B0%D1%8F-%D1%83%D0%BF%D1%80%D0%BE%D1%89%D0%B0%D0%B5%D1%82-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%83-%D0%B8%D0%BC%D0%B5%D0%BD%D0%BD%D0%BE-%D1%81-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%D0%BC-%D0%BA%D1%83%D0%B1%D0%B5%D1%80%D0%BD%D0%B5%D1%82%D0%B5%D1%81%D0%B0)
+        - [В чем отличие statefulset от Deployment?**](#%D0%B2-%D1%87%D0%B5%D0%BC-%D0%BE%D1%82%D0%BB%D0%B8%D1%87%D0%B8%D0%B5-statefulset-%D0%BE%D1%82-deployment)
+        - [В чем отличие Deployment от Replicaset?](#%D0%B2-%D1%87%D0%B5%D0%BC-%D0%BE%D1%82%D0%BB%D0%B8%D1%87%D0%B8%D0%B5-deployment-%D0%BE%D1%82-replicaset)
+        - [Что такое Readiness, Liveness, Startup пробы, какое отличие?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-readiness-liveness-startup-%D0%BF%D1%80%D0%BE%D0%B1%D1%8B-%D0%BA%D0%B0%D0%BA%D0%BE%D0%B5-%D0%BE%D1%82%D0%BB%D0%B8%D1%87%D0%B8%D0%B5)
+        - [Что такое оператор в kubernetes?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80-%D0%B2-kubernetes)
+        - [Что такое узел, нода?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-%D1%83%D0%B7%D0%B5%D0%BB-%D0%BD%D0%BE%D0%B4%D0%B0)
+        - [Опиши архитектуру кубернетес кластера, из чего состоит?](#%D0%BE%D0%BF%D0%B8%D1%88%D0%B8-%D0%B0%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D1%83-%D0%BA%D1%83%D0%B1%D0%B5%D1%80%D0%BD%D0%B5%D1%82%D0%B5%D1%81-%D0%BA%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%B0-%D0%B8%D0%B7-%D1%87%D0%B5%D0%B3%D0%BE-%D1%81%D0%BE%D1%81%D1%82%D0%BE%D0%B8%D1%82)
+        - [Что такое pod?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-pod)
+        - [В чем разница между подом и контейнером?**](#%D0%B2-%D1%87%D0%B5%D0%BC-%D1%80%D0%B0%D0%B7%D0%BD%D0%B8%D1%86%D0%B0-%D0%BC%D0%B5%D0%B6%D0%B4%D1%83-%D0%BF%D0%BE%D0%B4%D0%BE%D0%BC-%D0%B8-%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%B9%D0%BD%D0%B5%D1%80%D0%BE%D0%BC)
+        - [Может ли под запуститься на двух разных узлах?](#%D0%BC%D0%BE%D0%B6%D0%B5%D1%82-%D0%BB%D0%B8-%D0%BF%D0%BE%D0%B4-%D0%B7%D0%B0%D0%BF%D1%83%D1%81%D1%82%D0%B8%D1%82%D1%8C%D1%81%D1%8F-%D0%BD%D0%B0-%D0%B4%D0%B2%D1%83%D1%85-%D1%80%D0%B0%D0%B7%D0%BD%D1%8B%D1%85-%D1%83%D0%B7%D0%BB%D0%B0%D1%85)
+        - [Что такое ReplicaSet?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-replicaset)
+        - [Что такое Deployment?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-deployment)
+        - [Что такое Service](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-service)
+        - [Какие типы service бывают?](#%D0%BA%D0%B0%D0%BA%D0%B8%D0%B5-%D1%82%D0%B8%D0%BF%D1%8B-service-%D0%B1%D1%8B%D0%B2%D0%B0%D1%8E%D1%82)
+        - [то такое Ingress](#%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-ingress)
+        - [Что такое Job](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-job)
+        - [Что такое CronJob](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-cronjob)
+        - [Что означает версия api apiVersion](#%D1%87%D1%82%D0%BE-%D0%BE%D0%B7%D0%BD%D0%B0%D1%87%D0%B0%D0%B5%D1%82-%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%8F-api-apiversion)
+        - [Что такое namespace?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-namespace)
+        - [Что такое Volume](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-volume)
+        - [Какие бывают типы файловых хранилищ](#%D0%BA%D0%B0%D0%BA%D0%B8%D0%B5-%D0%B1%D1%8B%D0%B2%D0%B0%D1%8E%D1%82-%D1%82%D0%B8%D0%BF%D1%8B-%D1%84%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2%D1%8B%D1%85-%D1%85%D1%80%D0%B0%D0%BD%D0%B8%D0%BB%D0%B8%D1%89)
+        - [Что такое configMap?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-configmap)
+        - [Что такое Secret](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-secret)
+        - [Что такое nodeSelector, nodeName?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-nodeselector-nodename)
+        - [DaemonSet зачем нужен для чего его обычно используют?**](#daemonset-%D0%B7%D0%B0%D1%87%D0%B5%D0%BC-%D0%BD%D1%83%D0%B6%D0%B5%D0%BD-%D0%B4%D0%BB%D1%8F-%D1%87%D0%B5%D0%B3%D0%BE-%D0%B5%D0%B3%D0%BE-%D0%BE%D0%B1%D1%8B%D1%87%D0%BD%D0%BE-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D1%83%D1%8E%D1%82)
+        - [Что такое Taints, Tolerations?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-taints-tolerations)
+        - [Что такое Requests, Limits?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-requests-limits)
+        - [Affinity, anti-affinity**](#affinity-anti-affinity)
+        - [Что такое Helm](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-helm)
+        - [Через что реализованы сети в kubernetes? need answer](#%D1%87%D0%B5%D1%80%D0%B5%D0%B7-%D1%87%D1%82%D0%BE-%D1%80%D0%B5%D0%B0%D0%BB%D0%B8%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D1%8B-%D1%81%D0%B5%D1%82%D0%B8-%D0%B2-kubernetes-need-answer)
+        - [Что произойдет при изменении имейджа? Как будут докатываться изменения?](#%D1%87%D1%82%D0%BE-%D0%BF%D1%80%D0%BE%D0%B8%D0%B7%D0%BE%D0%B9%D0%B4%D0%B5%D1%82-%D0%BF%D1%80%D0%B8-%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D0%B8-%D0%B8%D0%BC%D0%B5%D0%B9%D0%B4%D0%B6%D0%B0-%D0%BA%D0%B0%D0%BA-%D0%B1%D1%83%D0%B4%D1%83%D1%82-%D0%B4%D0%BE%D0%BA%D0%B0%D1%82%D1%8B%D0%B2%D0%B0%D1%82%D1%8C%D1%81%D1%8F-%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F)
+- [GIT](#git)
+        - [Чем merge отличается от rebase?](#%D1%87%D0%B5%D0%BC-merge-%D0%BE%D1%82%D0%BB%D0%B8%D1%87%D0%B0%D0%B5%D1%82%D1%81%D1%8F-%D0%BE%D1%82-rebase)
+        - [Когда нужно использовать merge, когда rebase?](#%D0%BA%D0%BE%D0%B3%D0%B4%D0%B0-%D0%BD%D1%83%D0%B6%D0%BD%D0%BE-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-merge-%D0%BA%D0%BE%D0%B3%D0%B4%D0%B0-rebase)
+        - [Чем отличается git pull и git fetch](#%D1%87%D0%B5%D0%BC-%D0%BE%D1%82%D0%BB%D0%B8%D1%87%D0%B0%D0%B5%D1%82%D1%81%D1%8F-git-pull-%D0%B8-git-fetch)
+        - [Что такое cherry pick ?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-cherry-pick-)
+        - [Какие пратики работы с гитом вы знаете? Форки](#%D0%BA%D0%B0%D0%BA%D0%B8%D0%B5-%D0%BF%D1%80%D0%B0%D1%82%D0%B8%D0%BA%D0%B8-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B-%D1%81-%D0%B3%D0%B8%D1%82%D0%BE%D0%BC-%D0%B2%D1%8B-%D0%B7%D0%BD%D0%B0%D0%B5%D1%82%D0%B5-%D1%84%D0%BE%D1%80%D0%BA%D0%B8)
+        - [Что такое GitFlow?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-gitflow)
+
+<!-- /TOC -->
+
 # Вопросы админам 2.0
 
-**Железячные вопросы**   
-[Сервер не отвечает, как можно получить доступ к серверу, не находясь непосредственно в ЦОДе](#cod)    
-[Что такое kvm(не гипервизор)? Как можно его использовать?](#kvm-cod)    
-[Что такое IPMI? Какие подсистемы он в себя включает?](#ipmi-cod)  
-[Какие преимущества предоставляет IPMI в сравнении с kvm?](#ipmi-kvm-cod)  
-
-
-**Просмотр информации о железной составляющей сервера**
-[Модели процессора, количестве физических и логических ядер, поддерживаемых инструкциях, режиме работы?](#cod-proc)  
-[Типы оперативной памяти, модели материнской платы, версии BIOS?](#bios-cod-mother)  
-[Текущих значениях датчиков напряжения, температуры, оборотов вентиляторов?](#info-temp)  
-[Типе используемого сетевого адаптера и состоянии его интерфейсов?](#info-network-io)  
-[Подключённых USB и PCI устройствах?](#info-usb-pci)  
-
-**Linux**
-[Расскажи, как происходит процесс загрузки ОС linux с момента нажатия кнопки питания](#info-oc-load)  
-[Что такое POSIX](#info-posix)  
-[Что такое уровни выполнения](#info-linux-level)  
-[Какие основные части компоненты включает в себя система на базе дистрибутива linux?](#components-linux)  
-[Что такое BIOS, UEFI?](#bios-uefi)
 
 
 
 
 ---
+## Железячные вопросы
 
-**Сервер не отвечает, как можно получить доступ к серверу, не находясь непосредственно в ЦОДе <a name="cod"></a>**
+### Сервер не отвечает, как можно получить доступ к серверу, не находясь непосредственно в ЦОДЕ
 
 - Ответ
 
@@ -35,7 +231,7 @@
 ---
 
 
-**Что такое kvm(не гипервизор)? Как можно его использовать? <a name="kvm-cod"></a>**
+### Что такое kvm(не гипервизор)? Как можно его использовать?
 
 - Ответ
     
@@ -48,7 +244,7 @@
 
 ---
 
-**Что такое IPMI? Какие подсистемы он в себя включает? <a name="ipmi-cod"></a>**
+### Что такое IPMI? Какие подсистемы он в себя включает?
 
 - Ответ
     
@@ -89,7 +285,7 @@
 
 ---
 
-**Какие преимущества предоставляет IPMI в сравнении с kvm? <a name="ipmi-kvm-cod"></a>**
+### Какие преимущества предоставляет IPMI в сравнении с kvm? ipmi
 
 - Ответ
     
@@ -111,9 +307,9 @@
 
 ---
 
-# Просмотр информации о железной составляющей сервера
+## Просмотр информации о железной составляющей сервера
 
-**Модели процессора, количестве физических и логических ядер, поддерживаемых инструкциях, режиме работы?<a name="cod-proc"></a>**
+### Модели процессора, количестве физических и логических ядер, поддерживаемых инструкциях, режиме работы?
 
 - Ответ
     - Модель процессора `proc/cpuinfo`
@@ -184,7 +380,7 @@
     
     ---
     
-    **Типы оперативной памяти, модели материнской платы, версии BIOS?  <a name="bios-info-mother"></a>**
+    ### Типы оперативной памяти, модели материнской платы, версии BIOS?
     
     Оперативная память
     
@@ -272,15 +468,11 @@
     ```
     
 
----
 
-**Типы и характеристиках устройств хранения данных?**
-
-- Ответа пока нет
 
 ---
 
-**Текущих значениях датчиков напряжения, температуры, оборотов вентиляторов? <a name="info-temp"></a>**
+### Текущих значениях датчиков напряжения, температуры, оборотов вентиляторов?
 
 - Ответ, нужно дополнить
     
@@ -356,7 +548,7 @@
 
 ---
 
-**Типе используемого сетевого адаптера и состоянии его интерфейсов? <a name="info-network-io"></a>**
+### Типе используемого сетевого адаптера и состоянии его интерфейсов? 
 
 - Ответ дополнить
     
@@ -427,7 +619,7 @@
 
 ---
 
-**Подключённых USB и PCI устройствах? <a name="info-usb-pci"></a>**
+### Подключённых USB и PCI устройствах? 
 
 - Ответ
     
@@ -448,7 +640,7 @@
 
 ## Linux
 
-**Расскажи, как происходит процесс загрузки ОС linux с момента нажатия кнопки питания. <a name="info-oc-load"></a>**
+### Расскажи, как происходит процесс загрузки ОС linux с момента нажатия кнопки питания. 
 
 - Написать как грузится система
     
@@ -491,7 +683,7 @@
 
 ---
 
-**Что такое POSIX <a name="info-posix"></a>**
+### Что такое POSIX 
 
 - Ответ
     
@@ -507,7 +699,7 @@
     Как управлять потоками, как держаться, и все такое. 
     
 
-**Что такое уровни выполнения <a name="info-linux-level"></a>**
+### Что такое уровни выполнения
 
 - Ответ
     
@@ -534,7 +726,7 @@
 
 ---
 
-**Какие основные части компоненты включает в себя система на базе дистрибутива linux? <a name="components-linux"></a>**
+### Какие основные части компоненты включает в себя система на базе дистрибутива linux? 
 
 - Написать ответ
     1. Начальный загрузчик. GRUB
@@ -548,7 +740,7 @@
 
 ---
 
-**Что такое BIOS, UEFI? <a name="bios-uefi"></a>**
+### Что такое BIOS, UEFI? 
 
 - Написать ответ
     
@@ -580,7 +772,7 @@
 
 ---
 
-**Что такое PXE? Как загрузиться по сети?**
+### Что такое PXE? Как загрузиться по сети?
 
 - Написать ответ
     
@@ -597,7 +789,7 @@
 
 ---
 
-**Что такое ядро, initramfs, загрузчик?**
+### Что такое ядро, initramfs, загрузчик?
 
 - Написать ответ
     
@@ -610,7 +802,7 @@
 
 ---
 
-**Зачем нужна система инициализации? Какие системы инициализации используются в современных дистрибутивах? (2 - 5 штук) (init)**
+### Зачем нужна система инициализации? Какие системы инициализации используются в современных дистрибутивах? (2 - 5 штук) (init)
 
 - Ответ
     
@@ -637,7 +829,7 @@
     Здесь запускаются скрипты инициализации, отслеживает события, и реагирует на них. Более гибкий процесс инициализации. Если какая-то служба не запустилась, или вдруг упала, то апстарт это отследит и запустит повторно.
     
 
-**Что такое systemd и init ? В чем основное преимущество первого над вторым ?**
+### Что такое systemd и init ? В чем основное преимущество первого над вторым ?
 
 - Ответ
     
@@ -655,7 +847,7 @@
     - Он не только загрузчик, но и система инициализирующая демоны
     
 
-**Как понять используется ли в системе systemd?**
+### Как понять используется ли в системе systemd?
 
 - Ответ
     
@@ -688,7 +880,7 @@ Change: 2022-06-09 17:19:41.581240179 +0000
 
 ---
 
-**Опишите, что происходит (с точки зрения процессов), при выполнении любой команды в консоли, например:**
+### Опишите, что происходит (с точки зрения процессов), при выполнении любой команды в консоли, например:
 `$ ls -l`
 
 - **Ответ**
@@ -720,7 +912,7 @@ Change: 2022-06-09 17:19:41.581240179 +0000
 
 ---
 
-**Как посмотреть нагрузку на диски?**
+### Как посмотреть нагрузку на диски?
 
 - Ответ
     
@@ -730,7 +922,7 @@ Change: 2022-06-09 17:19:41.581240179 +0000
 
 ---
 
-**В чем разница между объявлением переменной `export VAR="VALUE"` и `VAR="VALUE"` в bash?**
+### В чем разница между объявлением переменной `export VAR="VALUE"` и `VAR="VALUE"` в bash?
 
 - Ответ
     
@@ -741,7 +933,7 @@ Change: 2022-06-09 17:19:41.581240179 +0000
 
 ---
 
-**Что значит `$@` в bash?**
+### Что значит `$@` в bash?
 
 - Ответ
     
@@ -750,7 +942,7 @@ Change: 2022-06-09 17:19:41.581240179 +0000
 
 ---
 
-**Как выполнить фильтрацию вывода команды, чтобы на экран были выведены только ошибки (STDERR), истрорируя STDOUT?**
+### Как выполнить фильтрацию вывода команды, чтобы на экран были выведены только ошибки (STDERR), истрорируя STDOUT?
 
 - Ответ
     
@@ -761,7 +953,7 @@ Change: 2022-06-09 17:19:41.581240179 +0000
 
 ---
 
-**Как посмотреть описание дискриптора? Как посмотреть время последней модификации файла?**
+### Как посмотреть описание дискриптора? Как посмотреть время последней модификации файла?
 
 - Ответ
     
@@ -774,7 +966,7 @@ Change: 2022-06-09 17:19:41.581240179 +0000
 
 ---
 
-**Как работает sudo? Для чего она используется?**
+### Как работает sudo? Для чего она используется?
 
 - Ответ
     
@@ -806,8 +998,7 @@ Change: 2022-06-09 17:19:41.581240179 +0000
 
 ---
 
-**Что такое userspace, kernelspace? Чем они
-отличаются?**
+### Что такое userspace, kernelspace? Чем они отличаются?
 
 - Ответ
     
@@ -834,8 +1025,7 @@ Change: 2022-06-09 17:19:41.581240179 +0000
 
 ---
 
-**Что такое системные вызовы? Зачем они нужны и как они работают? 
-Какие системные вызовы знаешь (5-10)**
+### Что такое системные вызовы? Зачем они нужны и как они работают? Какие системные вызовы знаешь (5-10)
 
 - Ответ
     
@@ -903,7 +1093,7 @@ Change: 2022-06-09 17:19:41.581240179 +0000
 
 ---
 
-**Где можно найти информацию о конкретном системном вызове?**
+### Где можно найти информацию о конкретном системном вызове?
 
 - Ответ
     
@@ -918,7 +1108,7 @@ Change: 2022-06-09 17:19:41.581240179 +0000
 
 ---
 
-**Что делает команда kill?**
+### Что делает команда kill?
 
 - Ответ
     
@@ -927,8 +1117,7 @@ Change: 2022-06-09 17:19:41.581240179 +0000
 
 ---
 
-**Текущая load average на сервере - 900, 900, 900. Сервер работает с незначительной потерей производительности.
-Каким образом можно понять, является ли это нормальной ситуацией?**
+### Текущая load average на сервере - 900, 900, 900. Сервер работает с незначительной потерей производительности. Каким образом можно понять, является ли это нормальной ситуацией? 
 
 - Ответ
     
@@ -948,9 +1137,7 @@ Change: 2022-06-09 17:19:41.581240179 +0000
 
 ---
 
-**Что такое процесс? 
-Что такое тред? 
-В чем заключаются их главные отличия?**
+### Что такое процесс? Что такое тред? В чем заключаются их главные отличия?
 
 - Ответ
     
@@ -988,7 +1175,7 @@ Change: 2022-06-09 17:19:41.581240179 +0000
 
 ---
 
-**Где в linux хранится информация о процессах?**
+### Где в linux хранится информация о процессах?
 
 - Ответ
     
@@ -1023,7 +1210,7 @@ Change: 2022-06-09 17:19:41.581240179 +0000
 
 ---
 
-**Представлен вывод команды *top*. Что означает каждая запись в выводе?**
+### Представлен вывод команды *top*. Что означает каждая запись в выводе?
 
 ```bash
 top - 10:44:36 up 91 days, 19:29,  7 users,  load average: 0,00, 0,02, 0,05
@@ -1064,7 +1251,7 @@ KiB Swap:        0 total,        0 free,        0 used. 10090148 avail Mem
 
 ---
 
-**Что показывает статус процессов? Какие статусы используются в linux?**
+### Что показывает статус процессов? Какие статусы используются в linux?
 
 - Ответ
     
@@ -1086,7 +1273,7 @@ KiB Swap:        0 total,        0 free,        0 used. 10090148 avail Mem
 
 ---
 
-**Что такое зомби-процесс? Как можно создать такой процесс?**
+### Что такое зомби-процесс? Как можно создать такой процесс?
 
 - Ответ
     
@@ -1122,7 +1309,7 @@ KiB Swap:        0 total,        0 free,        0 used. 10090148 avail Mem
 
 ---
 
-**Чем опасны зомби процессы, какие проблемы они могут создать?**
+### Чем опасны зомби процессы, какие проблемы они могут создать?
 
 - Ответ
     
@@ -1137,8 +1324,7 @@ KiB Swap:        0 total,        0 free,        0 used. 10090148 avail Mem
 
 ---
 
-**Что такое SIGCHLD? В какой ситуации процесс может его
-получить?**
+### Что такое SIGCHLD? В какой ситуации процесс может его получить?
 
 - Ответ
     
@@ -1149,7 +1335,7 @@ KiB Swap:        0 total,        0 free,        0 used. 10090148 avail Mem
 
 ---
 
-**Что такое файловый дескриптор, какая информация в нем бывает?**
+### Что такое файловый дескриптор, какая информация в нем бывает?
 
 - Ответ
     
@@ -1159,8 +1345,7 @@ KiB Swap:        0 total,        0 free,        0 used. 10090148 avail Mem
 
 ---
 
-**Для чего нужны сигналы? Какие сигналы используются
-чаще всего? (5 - 10 штук)**
+### Для чего нужны сигналы? Какие сигналы используются чаще всего? (5 - 10 штук)
 
 - Ответ
     
@@ -1169,8 +1354,7 @@ KiB Swap:        0 total,        0 free,        0 used. 10090148 avail Mem
 
 ---
 
-**Как осуществляется обработка сигналов? Чем отличается SIGTERM от
-SIGKILL?**
+### Как осуществляется обработка сигналов? Чем отличается SIGTERM от SIGKILL?
 
 - Ответ
     
@@ -1188,8 +1372,7 @@ SIGKILL?**
 
 ---
 
-**Какой сигнал получит активный процесс при
-нажатии Ctrl+C в консоли?**
+### Какой сигнал получит активный процесс при нажатии Ctrl+C в консоли?
 
 - Ответ
     
@@ -1198,8 +1381,7 @@ SIGKILL?**
 
 ---
 
-**Что такое load average? Что показывает эта метрика? Почему load average состоит из
-трёх значений?**
+### Что такое load average? Что показывает эта метрика? Почему load average состоит из трёх значений?
 
 - Ответ
     
@@ -1221,8 +1403,7 @@ SIGKILL?**
 
 ---
 
-**Можно ли сделать так, чтобы пользователи могли получать информацию только о своих
-процессах?**
+### Можно ли сделать так, чтобы пользователи могли получать информацию только о своих процессах?
 
 - Ответ
     
@@ -1236,7 +1417,7 @@ SIGKILL?**
 
 ---
 
-**Что такое физическая память?**
+### Что такое физическая память?
 
 - Ответ
     
@@ -1247,7 +1428,7 @@ SIGKILL?**
 
 ---
 
-**Что такое виртуальная память?**
+### Что такое виртуальная память?
 
 - Ответ
     
@@ -1258,7 +1439,7 @@ SIGKILL?**
     ![memory-img](https://github.com/Swfuse/devops-interview/blob/main/imgs/Untitled%201.png)
     
 
-**Почему в htop может быть не до конца корректная сводка по потребляемой памяти**
+### Почему в htop может быть не до конца корректная сводка по потребляемой памяти
 
 - Ответ (спорный)
 Hop не всегда корректно показывает сколько памяти приложение потребляет по факту.
@@ -1268,8 +1449,7 @@ Hop не всегда корректно показывает сколько п�
 
 ---
 
-**Где в системе можно посмотреть сводку по текущему потреблению
-памяти?**
+### Где в системе можно посмотреть сводку по текущему потреблению памяти?
 
 - Ответ
     
@@ -1280,7 +1460,7 @@ Hop не всегда корректно показывает сколько п�
 
 ---
 
-**Как работает оом киллер и для чего нужен? Out of memory, oom**
+### Как работает оом киллер и для чего нужен? Out of memory, oom
 
 - Ответ
     
@@ -1299,7 +1479,7 @@ Hop не всегда корректно показывает сколько п�
 
 ---
 
-**Как процессы в системе взаимодействуют взаимодействие зобой?**
+### Как процессы в системе взаимодействуют между собой?
 
 - Ответ
     
@@ -1320,7 +1500,7 @@ Hop не всегда корректно показывает сколько п�
 
 ---
 
-**Что такое QEMU**
+### Что такое QEMU
 
 - Ответ
     
@@ -1328,15 +1508,17 @@ Hop не всегда корректно показывает сколько п�
     
     QEMU (Quick Emulator) – эмулятор различных устройств, который позволяет запускать операционные системы, предназначенные под одну архитектуру, на другой (например, ARM –> x86). Кроме процессора, QEMU эмулирует различные периферийные устройства: сетевые карты, HDD, видео карты, PCI, USB и пр.
     
+---
 
-**Что такое KVM (гипервизор)**
+### Что такое KVM (гипервизор)
 
 - Ответ
     
     KVM (Kernel-based Virtual Machine) – гипервизор (VMM – Virtual Machine Manager), работающий в виде модуля на ОС Linux. Гипервизор нужен для того, чтобы запускать некий софт в несуществующей (виртуальной) среде и при этом, скрывать от этого софта реальное физическое железо, на котором этот софт работает. Гипервизор работает в роли «прокладки» между физическим железом (хостом) и виртуальной ОС (гостем).
     
+---
 
-**Что такое qemu-kvm?**
+### Что такое qemu-kvm?
 
 - Ответ
     
@@ -1344,8 +1526,9 @@ Hop не всегда корректно показывает сколько п�
     
     Бинарный программный код на процессорах работает не просто так, а располагается на разных уровнях (кольцах / Protection rings) с разными уровнями доступа к данным, от самого привилегированного (Ring 0), до самого ограниченного, зарегулированного и «с закрученными гайками» (Ring 3).
     
+---
 
-**Что такое iowait и почему он может появляться?**
+### Что такое iowait и почему он может появляться?
 
 - **Ответ**
     
@@ -1361,8 +1544,9 @@ Hop не всегда корректно показывает сколько п�
     
     sysstat
     
+---
 
-# Диски и файловая система
+# Диски и файловая система  
 
 **Что такое блочные устройства? Какие элементарные операции
 можно с ними производить?**
@@ -1399,7 +1583,7 @@ Hop не всегда корректно показывает сколько п�
     
     
 
-**Что такое символьные устройства? Какие элементарные операции с ними можно производить?**
+### Что такое символьные устройства? Какие элементарные операции с ними можно производить?  
 
 - Ответ
   Один из типов устройств. 
@@ -1412,7 +1596,7 @@ Hop не всегда корректно показывает сколько п�
 
 ---
 
-**Что такое major and minor numbers блочных устройств, чему они соответствуют?**
+### Что такое major and minor numbers блочных устройств, чему они соответствуют?  
 
 - Ответ
     
@@ -1448,8 +1632,7 @@ Hop не всегда корректно показывает сколько п�
 
 ---
 
-**Что такое файловая система?
-Для чего она нужна?**
+### Что такое файловая система? Для чего она нужна?
 
 - Ответ
     
@@ -1464,8 +1647,7 @@ Hop не всегда корректно показывает сколько п�
 
 ---
 
-**Как создать файловую систему на блочном устройстве? Какие параметры
-можно задать при создании?**
+### Как создать файловую систему на блочном устройстве? Какие параметры можно задать при создании?
 
 - Ответ
     
@@ -1490,7 +1672,9 @@ Hop не всегда корректно показывает сколько п�
     - Дата/время.
     - Любая другая необходимая информация.
 
-**Где физически находятся inodes айноды**
+---
+
+### Где физически находятся inodes айноды
 
 - Ответ
     
@@ -1507,9 +1691,10 @@ Hop не всегда корректно показывает сколько п�
     Имена inodes (имена файлов, каталогов, устройств и т. Д.) Хранятся на диске в каталогах. В каталоге хранятся только имена и соответствующие номера inode; Фактическое дисковое пространство для именованных данных хранится в пронумерованном индексном узле, а не в каталоге.
     
     Айнода просто указывает на файл и каталог
-    
 
-**По какой причине и на какого типа системах айноды могут закончиться? И к чему это может привести?**
+---
+
+### По какой причине и на какого типа системах айноды могут закончиться? И к чему это может привести?
 
 - Ответ
     
@@ -1517,15 +1702,17 @@ Hop не всегда корректно показывает сколько п�
     
     Зависит от размера блока, на который жесткий диск бьется. И от размера жесткого диска. И также могут разные файловые системы так работать.
     
+---
 
-**Какая файловая система бывает  динамическими айнодами?**
+### Какая файловая система бывает  динамическими айнодами?
 
 - Ответ
     
     XFS
     
+---
 
-**Где хранится информация об именах файлов, директорий?**
+### Где хранится информация об именах файлов, директорий?
 
 - Ответ
     - Inodes не содержат имён файлов, только другие метаданные файла.
@@ -1539,9 +1726,7 @@ Hop не всегда корректно показывает сколько п�
 
 ---
 
-**Каким образом осуществляется
-монтирование ФС? Как можно
-посмотреть список примонтированных ФС? (2 - 3
+### Каким образом осуществляется монтирование ФС? Как можно посмотреть список примонтированных ФС? (2 - 3
 способа)**
 
 - Ответ
@@ -1574,8 +1759,7 @@ Hop не всегда корректно показывает сколько п�
 
 ---
 
-**Что такое псевдофайловая
-система?**
+### Что такое псевдофайловая система?
 
 - Ответ
     
@@ -1626,12 +1810,11 @@ Hop не всегда корректно показывает сколько п�
 
 ---
 
-**Как определить, на каком физическом жёстком диске находится раздел с файловой
-системой? Как можно идентифицировать этот носитель без выключения сервера?**
+### Как определить, на каком физическом жёстком диске находится раздел с файловой системой? Как можно идентифицировать этот носитель без выключения сервера?
 
 - Ответ неизвестен
     
-    
+---
 
 **Какую файловую систему Вы бы выбрали для работы с большим количеством файлов?**
 
@@ -1641,8 +1824,7 @@ Hop не всегда корректно показывает сколько п�
 
 ---
 
-**Как узнать, какими процессами используется раздел? (lsof, fuser, grep within
-procfs)**
+### Как узнать, какими процессами используется раздел? (lsof, fuser, grep within procfs)
 
 - Ответ
     
@@ -1653,7 +1835,7 @@ procfs)**
 
 ---
 
-**Для чего необходимы файлы /etc/fstab, /etc/mtab, /etc/mdadm/mdadm.conf?**
+### Для чего необходимы файлы /etc/fstab, /etc/mtab, /etc/mdadm/mdadm.conf?
 
 - Ответ
     
@@ -1680,7 +1862,7 @@ procfs)**
 
 ---
 
-**Отличие хардлинков от симлинков hardlinks symlinks**
+### Отличие хардлинков от симлинков hardlinks symlinks
 
 - **Ответ определения**
     
@@ -1714,8 +1896,8 @@ procfs)**
 
 ---
 
-**Что такое RAID? Какие основные типы RAID существуют, чем они
-отличаются?**
+### Что такое RAID? Какие основные типы RAID существуют, чем они
+отличаются?
 
 - Ответ
     
@@ -1859,8 +2041,7 @@ procfs)**
 
 ---
 
-**Какие средства для работы с программными RAID массивами существуют в
-linux?**
+### Какие средства для работы с программными RAID массивами существуют в linux?
 
 - Ответ
     
@@ -1871,7 +2052,7 @@ linux?**
 
 ---
 
-**Что такое LVM? Для решения каких задач он предназначен?**
+### Что такое LVM? Для решения каких задач он предназначен?
 
 - Ответ
     
@@ -1882,7 +2063,7 @@ linux?**
 
 ---
 
-**Что такое loop devices? Как их можно использовать?**
+### Что такое loop devices? Как их можно использовать?
 
 - Ответ
     
@@ -1897,7 +2078,7 @@ linux?**
 
 ---
 
-**При создании нового файла система возвращает ошибку** 
+### При создании нового файла система возвращает ошибку no space left device
 
 **no space left on device
 несмотря на то, что df
@@ -1917,8 +2098,7 @@ linux?**
 
 ---
 
-**df сообщает о наличии 20 Гб занятого пространства, подсчёт занятого файлами места при помощи du даёт результат в 20 Мб. При каких обстоятельствах может возникнуть описанная
-ситуация?(deleted files)**
+### df сообщает о наличии 20 Гб занятого пространства, подсчёт занятого файлами места при помощи du даёт результат в 20 Мб. При каких обстоятельствах может возникнуть описанная ситуация?(deleted files)
 
 - Ответ
     
@@ -1935,8 +2115,8 @@ linux?**
 
 ---
 
-**При создании нового файла пользователем система возвращает ошибку no space
-left on device несмотря на то, что df сообщает о наличии свободного места; при это
+### При создании нового файла пользователем система возвращает ошибку no space left on device 
+несмотря на то, что df сообщает о наличии свободного места; при это
 пользователь root может создавать и записывать файлы. При каких обстоятельствах может
 возникнуть описанная ситуация?(quotas)**
 
@@ -1955,7 +2135,7 @@ left on device несмотря на то, что df сообщает о нал�
 
 # Debug
 
-**Сервер не отвечает, как можно получить доступ к серверу, не находясь непосредственно в ЦОДе**
+### Сервер не отвечает, как можно получить доступ к серверу, не находясь непосредственно в ЦОДе
 
 - Ответ
     
@@ -1966,8 +2146,7 @@ left on device несмотря на то, что df сообщает о нал�
 
 ---
 
-**Веб-сервер, работающий на сервере в нашей сети, отдаёт ошибку 502. Каким образом
-можно найти причину ошибки?**
+### Веб-сервер, работающий на сервере в нашей сети, отдаёт ошибку 502. Каким образом можно найти причину ошибки?
 
 - Ответ
     
@@ -2000,7 +2179,7 @@ left on device несмотря на то, что df сообщает о нал�
 
 ---
 
-**В директории находится файл с нечитаемым содержимым. Каким образом можно узнать  формат хранения данных и предназначение файла?**
+### В директории находится файл с нечитаемым содержимым. Каким образом можно узнать  формат хранения данных и предназначение файла?
 
 - Ответ
     
@@ -2017,7 +2196,7 @@ left on device несмотря на то, что df сообщает о нал�
 
 ---
 
-**Попытка запуска исполняемого файла завершается ошибкой no such file or directory. Почему?**
+### Попытка запуска исполняемого файла завершается ошибкой no such file or directory. Почему?
 
 - Ответ
     
@@ -2031,8 +2210,7 @@ left on device несмотря на то, что df сообщает о нал�
 
 ---
 
-**Программа сообщает о том, что не может найти свой конфигурационный файл.
-Каким образом можно узнать, где она пытается его найти?**
+### Программа сообщает о том, что не может найти свой конфигурационный файл. Каким образом можно узнать, где она пытается его найти?
 
 - Ответ
     
@@ -2051,7 +2229,7 @@ left on device несмотря на то, что df сообщает о нал�
     ```
     
 
-**Что будешь делать если у команды chmod убрали права на исполнение? (chmod -x chmod)**
+### Что будешь делать если у команды chmod убрали права на исполнение? (chmod -x chmod)
 
 - Ответ
     
@@ -2090,7 +2268,7 @@ left on device несмотря на то, что df сообщает о нал�
 
 ---
 
-**База сейчас сидит и упирается в диск. И с ней ничего не сделать — больше сервер никто покупать не будет. Как сделать так, чтобы оно работало быстрее прямо сейчас?**
+### База сейчас сидит и упирается в диск. И с ней ничего не сделать — больше сервер никто покупать не будет. Как сделать так, чтобы оно работало быстрее прямо сейчас?
 
 - Ответы
     
@@ -2099,7 +2277,7 @@ left on device несмотря на то, что df сообщает о нал�
     Linux может отдавать успешную запись, когда он к себе положил в буфер, а не когда на диск засинкал. Это немного костыльный режим работы, даже скорее опасный, рискованный. Питание вырубят в этот момент, и все навернется. Но зато этот метод ускоряет запись на порядок. 
     
 
-**Почему доступной (available) памяти сейчас 2919, если свободной (free) памяти 843?**
+### Почему доступной (available) памяти сейчас 2919, если свободной (free) памяти 843?
 
 - Ответы
     - Total. Эта цифра представляет всю существующую память.
@@ -2112,12 +2290,14 @@ left on device несмотря на то, что df сообщает о нал�
     - Buffer, и Cache идентифицируют память, используемую для нужд ядра / операционной системы. Буфер и кеш складываются вместе, а сумма указывается в разделе «buff/cache».
     - Available – примерное количество оперативной памяти, доступное для запуска новых приложений без использования ими раздела подкачки. В отличие от поля free, это поле принимает в расчёт страницу cache и также то, что не вся рекуперируемая (пригодная для повторного использования) память будет возвращена для рекуперации из-за того, что элементы используются в данный момент.
 
-**Что такое разделяемая память?
+---
+
+### Что такое разделяемая память?
 Привести примеры**
 
 ---
 
-# Докеры процессы контейнеризация
+# Docker контейнеры
 
 **Что такое контейнеризация? Чем она отличается от виртуализации?**
 
@@ -2139,8 +2319,7 @@ left on device несмотря на то, что df сообщает о нал�
 
 ---
 
-**Что такое docker и какие инструменты liunx лежат в основе? Для чего он
-используется?**
+### Что такое docker и какие инструменты liunx лежат в основе? Для чего он используется?
 
 - Ответ
     
@@ -2172,8 +2351,7 @@ left on device несмотря на то, что df сообщает о нал�
 
 ---
 
-**Что такое контейнеры, образы? В чём заключаются
-концепции их использования?**
+### Что такое контейнеры, образы? В чём заключаются концепции их использования?
 
 - Ответ
     
@@ -2188,7 +2366,7 @@ left on device несмотря на то, что df сообщает о нал�
 
 ---
 
-**В каком виде хранятся образы? Для чего используются слои? Что представляет собой overlayfs?**
+### В каком виде хранятся образы? Для чего используются слои? Что представляет собой overlayfs?
 
 - Ответ
     
@@ -2201,8 +2379,7 @@ left on device несмотря на то, что df сообщает о нал�
 
 ---
 
-**Каким образом в docker реализована изоляция контейнеров друг от друга?
-Какие средства linux для этого используются?(namespace)**
+### Каким образом в docker реализована изоляция контейнеров друг от друга? Какие средства linux для этого используются?(namespace)
 
 - Ответ
     
@@ -2211,17 +2388,20 @@ left on device несмотря на то, что df сообщает о нал�
 
 ---
 
-**Почему в контейнере можно увидеть только процессы, запущенные в самом
-контейнере?**
+### Почему в контейнере можно увидеть только процессы, запущенные в самом контейнере?
 
 - Ответ
     
     
+---
+
+### В папке /var/lib/docker/ как понять какая папка к какому контейнеру принадлежит
+
+- Ответ
 
 ---
 
-**Можно ли настроить сетевое взаимодействие между двумя docker-контейнерами? Как это
-реализовано?**
+### Можно ли настроить сетевое взаимодействие между двумя docker-контейнерами? Как это реализовано?
 
 - Ответ
     
@@ -2238,7 +2418,7 @@ left on device несмотря на то, что df сообщает о нал�
 
 - Ответ
     
-    Точка вход
+    Точка входа в приложение
     
 
 **В чем отличие CMD и ENTRYPOINT**
@@ -2314,6 +2494,7 @@ left on device несмотря на то, что df сообщает о нал�
     
     CMD может перетереться просто.
     
+---
 
 **Как уменьшить размер образа докера? У нас много COPY, RUN**
 
@@ -2386,6 +2567,7 @@ left on device несмотря на то, что df сообщает о нал�
             CMD [ "rails", "s", "-b", "0.0.0.0" ]
             ```
             
+---
 
 **Что такое squash сквош?**
 
@@ -2397,7 +2579,8 @@ left on device несмотря на то, что df сообщает о нал�
     
     С одной стороны инструмент мощный. Но нужно обращаться осторожно. 
     Лучше для базового образа использовать. Заранее набросал, и вот у тебя образ.
-    
+
+---
 
 **Какие команды порождают слои?**
 
@@ -2405,6 +2588,7 @@ left on device несмотря на то, что df сообщает о нал�
     
     `RUN` порождает слои
     
+---
 
 **Что такое Docker squash?**
 
@@ -2417,10 +2601,7 @@ left on device несмотря на то, что df сообщает о нал�
 
 ---
 
-**Можно ли ограничить
-использование ресурсов (cpu,
-ram, io, network) для docker контейнера? Как это
-реализовано? (cgroup)**
+### Можно ли ограничить использование ресурсов (cpu, ram, io, network) для docker контейнера? Как это реализовано? (cgroup)**
 
 - Ответ
     
@@ -2433,8 +2614,7 @@ ram, io, network) для docker контейнера? Как это
 
 ---
 
-**Для решения каких задач
-применяется docker-compose?**
+### Для решения каких задач применяется docker-compose?
 
 - Ответ
     
@@ -2443,7 +2623,7 @@ ram, io, network) для docker контейнера? Как это
 
 ---
 
-**Что такое виртуализация? Чем виртуализация отличается от эмуляции?**
+### Что такое виртуализация? Чем виртуализация отличается от эмуляции?
 
 - Ответ
     
@@ -2458,7 +2638,7 @@ ram, io, network) для docker контейнера? Как это
     Виртуализация-это скорее создание виртуальных барьеров между несколькими виртуальными средами, работающими в одной и той же физической среде. Большая разница заключается в том, что виртуализированная среда представляет собой одну и ту же архитектуру. Виртуализированное приложение может предоставлять виртуализированные устройства, которые затем преобразуются в физические устройства, и узел виртуализации контролирует, какая виртуальная машина имеет доступ к каждому устройству или части устройства. Однако фактическое выполнение чаще всего все еще выполняется изначально, а не с помощью программного
     
 
-В чем разница между `docker stop` и `docker pause`?
+### В чем разница между `docker stop` и `docker pause`?
 
 - Ответ
     
@@ -2469,7 +2649,7 @@ ram, io, network) для docker контейнера? Как это
     docker stop - sigterm и sigkill использует к главному процессу контейнера
     
 
-**Что такое слои в докере?**
+### Что такое слои в докере?
 
 - Ответ
     
@@ -2480,10 +2660,10 @@ ram, io, network) для docker контейнера? Как это
     `FROM`
     , `RUN`
     , `COPY`
-    и т.д.) в вашем Dockerfile вызывает предыдущее образ изменения, создавая тем самым новый слой. Вы можете думать об этом как о внесении изменений при использовании git: вы добавляете изменение файла, затем еще одно, затем еще одно 
+    и т.д.) в вашем Dockerfile вызывает предыдущее образ изменения, создавая тем самым новый слой. Вы можете думать об этом как о внесении изменений при использовании git: вы добавляете изменение файла, затем еще одно, затем добавляя ещё одно, и слои накладываются один за другим.
     
 
-**В чем разница между ADD и COPY**
+### В чем разница между ADD и COPY
 
 - Ответ
     
@@ -2494,23 +2674,27 @@ ram, io, network) для docker контейнера? Как это
     **ADD** имеет функционал дополнительный, но если например копировать через него архив, то он распакуется как каталог. Это уменьшает размер образа
     
 
-**Почему latest образы использовать нежелательно?**
+### Почему latest образы использовать нежелательно?
 
 - Ответ
     
-    Сложно в отладке как минимум. Не разобраться какая именно версия закосячила. А так прод работает на определенной версии, пусть дальше на ней и работает
+    Сложно в отладке как минимум. Не разобраться какая именно версия закосячила. А так прод работает на определенной версии, пусть дальше на ней и работает.
+    Помимо этого это небезопасно. Никто не знает что выкатит разработчик в новой версии. МОжет не быть обратной совместимости в проекте.
     
 
-**В чем отличие ARG от ENV?**
+---
+
+### В чем отличие ARG от ENV?
 
 - Ответ
     
     **ENV** позволяет создавать переменные окружения, которые будут работать во время работы контейнера.
     
     **ARG** позволяет закинуть переменные, которые будут доступны во время сборки. Но они недоступны в контейнере. Однако через arg переменные можно задавать значения по умолчанию для env
-    
 
-**От кого по умолчанию запускается контейнер? Почему это плохо?**
+---
+
+### От кого по умолчанию запускается контейнер? Почему это плохо?
 
 - Ответ
     
@@ -2529,17 +2713,20 @@ ram, io, network) для docker контейнера? Как это
     
     Ну и не все запускают от рута в итоге
     
+---
 
-**Как убить контейнер изнутри?**
+### Как убить контейнер изнутри?
 
 - Ответ
     
-    Через sigkill нельзя..pth yt Нужен обработчик сигнала. Sigkill я зарегистрировать не смогу. И игнорировать этот сигнал тоже. Но можно обрабатывать  sigterm. И его использовать для выхода из приложения.
+    Через sigkill нельзя. Нужен обработчик сигнала. Sigkill я зарегистрировать не смогу. И игнорировать этот сигнал тоже. Но можно обрабатывать  sigterm. И его использовать для выхода из приложения.
     
     [https://medium.com/@andrestc/killing-a-container-from-the-inside-b4923f3a4182](https://medium.com/@andrestc/killing-a-container-from-the-inside-b4923f3a4182)
     
 
-**Возможен ли самостоятельный перезапуск контейнера?**
+---
+
+### Возможен ли самостоятельный перезапуск контейнера?
 
 - Ответ
     
@@ -2547,8 +2734,9 @@ ram, io, network) для docker контейнера? Как это
     
     `docker run --restart=always`
     
+---
 
-**Какие есть best practices для написания Dockerfile?**
+### Какие есть best practices для написания Dockerfile?
 
 - Ответ
     1. Запускать только один процесс на контейнер.
@@ -2561,17 +2749,29 @@ ram, io, network) для docker контейнера? Как это
     6. Очищать кеш пакетного менеджера и удалять ненужные файлы после выполненной инструкции.
     7. Использовать multistage build для сборки артифакта в одном контейнере и размещении его в другом.
 
-**Что такое ката kata контейнер?**
+---
+
+### Что такое ката kata контейнер?
 
 - Ответ
     
     Это иная реализация контейнеров. Которые работают в оси под открытой инициативой. И если у обычных <>, у ката qemu, kvm, опускается ниже Контейнер на стероидах. Больше для безопасности.
-    
+
+
 
 ---
 
-ДОПОЛНИТЕЛЬНО. Расскажи мне, как неподготовленному слушателю как устанавливает соединение SSH и происходит
-авторизация разными методами: по паролю и SSH-ключам.
+# **Сети сеть**
+
+**Почему latency до 8.8.8.8 всегда низкий?**
+
+- Ответ
+    
+    8.8.8.8 это не один хост. Это anycast адрес, который перенаправляет на ближайший хост, которые по всему миру.
+
+---
+
+### Расскажи мне, как неподготовленному слушателю как устанавливает соединение SSH и происходит авторизация разными методами: по паролю и SSH-ключам.
 
 [https://www.youtube.com/watch?v=f3KZ86l1p5w](https://www.youtube.com/watch?v=f3KZ86l1p5w)
 
@@ -2587,16 +2787,7 @@ ram, io, network) для docker контейнера? Как это
 
 ---
 
-### **Сети сеть**
-
-**Почему latency до 8.8.8.8 всегда низкий?**
-
-- Ответ
-    
-    8.8.8.8 это не один хост. Это anycast адрес, который перенаправляет на ближайший хост, которые по всему миру.
-    
-
-**Что такое IP и маска подсети?**
+### Что такое IP и маска подсети?
 
 - Ответ
     
@@ -2606,8 +2797,9 @@ ram, io, network) для docker контейнера? Как это
     
     Маска подсети используется протоколом TCP/IP для определения того, находится ли хост в локальной подсети или в удаленной сети.
     
+---
 
-**Что такое и зачем нужен ARP протокол?**
+### Что такое и зачем нужен ARP протокол?
 
 - Ответ
     
@@ -2616,8 +2808,9 @@ ram, io, network) для docker контейнера? Как это
     Предположим вы покупаете квартиру и надо проверить , что там никто НЕ прописан. Посылаем запрос **ARP**  в сеть и не получаем ответа , значит никто не прописан по этому адресу и можно смело покупать. То есть основной смысл НЕ получить ответ на свой 
     запрос.
     
+---
 
-**Зачем нужен VLAN?**
+### Зачем нужен VLAN?
 
 - Ответ определение
     
@@ -2627,7 +2820,7 @@ ram, io, network) для docker контейнера? Как это
     
     Реализуется коммутаторами и находится на канальном уровне.
     
-- Зачем нужен ответ
+- Зачем всё таки нужен
     
     Изоляция сетей 
     
@@ -2645,7 +2838,9 @@ ram, io, network) для docker контейнера? Как это
     - Нагрузка распределяется, чтобы вся сетка не парализовалась
     - Ограничение широковещательного трафика
 
-**Чем отличается TCP от UDP?**
+---
+
+### Чем отличается TCP от UDP?
 
 - Ответ
     
@@ -2659,9 +2854,10 @@ ram, io, network) для docker контейнера? Как это
     
     tcp перед передачей сигнала устанавливает связь между устройствами.
     udp сразу отправляет, возможна частичная потеря и несоблюдение порядка данных
-    
 
-**Как TCP устанавливает соединение?**
+---
+
+### Как TCP устанавливает соединение?
 
 - Ответ
     
@@ -2671,7 +2867,9 @@ ram, io, network) для docker контейнера? Как это
     2. Если клиент получает сегмент с флагом SYN, то он запоминает номер последовательности и посылает сегмент с флагом ACK. Дальнейший алгоритм: Если он одновременно получает и флаг ACK (что обычно и происходит), то он переходит в состояние ESTABLISHED; Если клиент получает сегмент с флагом RST, то он прекращает попытки соединиться; Если клиент не получает ответа в течение 10 секунд, то он повторяет процесс соединения заново.
     3. Если сервер в состоянии SYN-RECEIVED получает сегмент с флагом ACK, то он переходит в состояние ESTABLISHED. В противном случае после тайм-аута он закрывает сокет и переходит в состояние CLOSED. Процесс называется «трёхэтапным рукопожатием» (англ. three way handshake), так как несмотря на то что возможен процесс установления соединения с использованием четырёх сегментов (SYN в сторону сервера, ACK в сторону клиента, SYN в сторону клиента, ACK в сторону сервера), на практике для экономии времени используется три сегмента.
 
-**Как TCP поддерживает соединение?**
+---
+
+### Как TCP поддерживает соединение?
 
 - Ответ
     
@@ -2682,7 +2880,7 @@ ram, io, network) для docker контейнера? Как это
      для тайм-аута поддержания соединения составляет целых два часа!
     
 
-**Что происходит когда в браузере вводишь yandex.ru? Описать процесс**
+### Что происходит когда в браузере вводишь yandex.ru? Описать процесс
 
 - Ответы
     
@@ -2723,29 +2921,34 @@ ram, io, network) для docker контейнера? Как это
     
     После этого всё, соединение установлено
     
+---
 
-**На каком уровне работает протокол TCP?**
+### На каком уровне работает протокол TCP?
 
 - Ответы
     
     Транспортный
     
+---
 
-**На каком уровне оси работает ssh?**
+### На каком уровне оси работает ssh?
 
 - Ответы
     
     На прикладном
     
+---
 
-**Как работает DNS, зачем он нужен?**
+### Как работает DNS, зачем он нужен?
 
 - Ответ
     
-    DNS — фундаментальная технология современной интернет-среды, которая отвечает за хранение и обработку информации о доменных адресах
+    DNS — фундаментальная технология современной интернет-среды, которая отвечает за хранение и обработку информации о доменных адресах.
+    Нужен для того, чтобы соотносить айпи адреса с доменными именами.
     
+---
 
-**Как работает NAT, зачем он нужен?**
+### Как работает NAT, зачем он нужен?
 
 - Ответ
     
@@ -2760,9 +2963,10 @@ ram, io, network) для docker контейнера? Как это
     И NAT занимается тем, что переводит приватные адреса в общедоступные.
     
     Это позволяет устройству с частным адресом IPv4 обращаться к ресурсам за пределами его частной сети. NAT в сочетании с частными адресами IPv4 оказался полезным методом сохранения общедоступных IPv4-адресов.
-    
 
-**Что такое ARP, зачем нужен? Также зачем нужен IP и MAC**
+---    
+
+### Что такое ARP, зачем нужен? Также зачем нужен IP и MAC
 
 - Ответ
     
@@ -2772,8 +2976,9 @@ ram, io, network) для docker контейнера? Как это
     
     Связывает мак адрес устройства с айпи адресом.
     
+---
 
-**Что такое SNI?**
+### Что такое SNI?
 
 - Ответ
     
@@ -2783,29 +2988,31 @@ ram, io, network) для docker контейнера? Как это
     Практический смысл SNI в том, что если в настройках веб-сервера включена поддержка технологии на одном IP адресе может размещаться неограниченное количество сайтов, работающих по https.
     
 
-**Что такое TLS и SSL**
+### Что такое TLS и SSL
 
 - Ответ
     
-    
 
-Чем симметричное шифрование отличается от ассиметричного?
+
+### Чем симметричное шифрование отличается от ассиметричного?  
 
 - Ответ
     
     Принципиальное различие между этими двумя методами заключается в том, что алгоритмы симметричного шифрования используют один ключ, в то время как асимметричные используют два разных, но связанных между собой ключа
     
     алгоритмы [симметричного шифрования](https://academy.binance.com/ru/articles/what-is-symmetric-key-cryptography) используют один и тот же ключ для выполнения этой функции, алгоритм асимметричного шифрования напротив, использует один ключ для шифрования данных и другой для его дешифрования.
-    
 
-**Почему DNS использует UDP?**
+---
+
+### Почему DNS использует UDP?
 
 - Ответ
     
     Пока устраиваешь TCP-сессию, ты можешь 3 раза отправить UDP пакетик туда и получить его обратно. И никакого оверхеда.
     
+---
 
-**Как работает ICMP**
+### Как работает ICMP
 
 - **Ответ**
     
@@ -2846,11 +3053,13 @@ ram, io, network) для docker контейнера? Как это
     - Запрос ответ доступности сети (0 и 8) - доступность узлов
     - Запрос и ответ отметки времени (13 и 14) - проверка быстродействия сети
 
-**Что такое authority в DNS?**
+---
+
+### Что такое authority в DNS?
 
 - Ответ
     
-    Возможнро, речь идет об авторитативном сервере
+    Возможно, речь идет об авторитативном сервере
     
     Authoritative-Only DNS-сервер — это сервер, который заботится только о том, чтобы отвечать на запросы для зон, за которые он отвечает. Поскольку он не помогает разрешать запросы для внешних зон, он, как правило, очень быстрый и может эффективно обрабатывать много запросов.
     
@@ -2860,15 +3069,17 @@ ram, io, network) для docker контейнера? Как это
     - **Не будет отвечать на рекурсивные запросы.** Серверы с только авторитативной функцией по своему понятию не предназначены отвечать на них. Это делает его только сервером, а не клиентом в системе DNS. Любой запрос, достигающий Authoritative-Only сервера, обычно поступает от распознавателя (резолвера), получившего ссылку на него, а это означает, что Authoritative-Only сервер либо имеет полный ответ, либо сможет передать новую ссылку на сервер имён, которому была делегирована соответствующая ответственность.
     - **Не кеширует результаты запроса.** Поскольку сервер authoritative-only никогда не запрашивает информацию на других серверах для обработки запроса, то ему просто нечего кэшировать. Вся информация, которую он знает, уже находится в его системе.
     
+---
 
-**Что такое рекурсивный DNS**
+### Что такое рекурсивный DNS
 
 - Ответ
     
     Рекурсивный сервер — это DNS-сервер, который настроен на выполнение запросов к другим DNS-серверам, пока не найдёт ответ на вопрос. Он вернёт клиенту ответ на его запрос, либо сообщение об ошибке (его получит системный распознаватель, который, в свою очередь, передаст его клиентскому приложению).
     
+---
 
-**Рекурсивный и нерекурсивный запрос к серверу dns**
+### Рекурсивный и нерекурсивный запрос к серверу dns
 
 - Ответ
     
@@ -2888,8 +3099,9 @@ ram, io, network) для docker контейнера? Как это
     
     Нерекурсивный dns сервер в данном случае просто говорит - "я не знаю, но спроси у этого сервера". И клиент будет слать ещё один запрос. Понятное дело, что при медленном интернете первый вариант лучше.
     
+---
 
-**Базовая http аутентификация авторизация, как работает**
+### Базовая http аутентификация авторизация, как работает
 
 - Ответ
     
@@ -2910,10 +3122,10 @@ ram, io, network) для docker контейнера? Как это
     
     И тут в auth передается в base64
     
-    
+---
     
 
-**Как работают сертификаты? Как подтверждается соединение?**
+### Как работают сертификаты? Как подтверждается соединение?
 
 - Ответ
     
@@ -2931,7 +3143,9 @@ ram, io, network) для docker контейнера? Как это
     ![ssl-img](https://github.com/Swfuse/devops-interview/blob/main/imgs/Untitled%2013.png)
     
 
-**Опиши принцип работы ssl-шифрования**
+---
+
+### Опиши принцип работы ssl-шифрования
 
 - Ответ
     
@@ -2955,8 +3169,9 @@ ram, io, network) для docker контейнера? Как это
     
     **Шифрование с одним ключом называют симметричным.** Этот метод удобен, но не так безопасен. Поэтому браузер и делает уникальный ключ для каждого сеанса вместо того, чтобы хранить его на сервере.
     
+---
 
-**Какие стандартные коды ответов есть у веб-серверов?**
+### Какие стандартные коды ответов есть у веб-серверов?
 
 - Ответ
     - 1XX — информационные коды. Они отвечают за процесс передачи данных. Это временные коды, они информируют о том, что запрос принят и обработка будет продолжаться.
@@ -2965,7 +3180,10 @@ ram, io, network) для docker контейнера? Как это
     - 4XX — ошибка пользователя. Это значит, что запрос не может быть выполнен по его вине.
     - 5XX — ошибка сервера. Эти коды возникают из-за ошибок на стороне сервера. В данном случае пользователь всё сделал правильно, но сервер не может выполнить запрос. Для кодов этого класса сервер обязательно показывает сообщение, что не может обработать запрос и по какой причине.
 
-**Какие существуют основные типы запросов HTTP?**
+---
+
+
+### Какие существуют основные типы запросов HTTP?
 
 - Ответ
     
@@ -2997,7 +3215,7 @@ ram, io, network) для docker контейнера? Как это
 
 ---
 
-**Что такое маска подсети?**
+### Что такое маска подсети?
 
 - Ответы
     
@@ -3006,16 +3224,16 @@ ram, io, network) для docker контейнера? Как это
 
 ---
 
-## Ansible
+# Ansible
 
-**Для чего нужен ad hoc в ansible?**
+### Для чего нужен ad hoc в ansible?
 
 - Ответ
     
     Это режим работы ансибл когда запрос к серверу выполняется напрямую из командной строки, без создания дополнительных файлов.
     
 
-**Что такое роли в ansible, пример**
+### Что такое роли в ansible, пример
 
 - Ответ
     
@@ -3043,9 +3261,10 @@ ram, io, network) для docker контейнера? Как это
     Тут описывается установка ngins
     
     [https://rtfm.co.ua/ansible-roli-roles-primer/](https://rtfm.co.ua/ansible-roli-roles-primer/)
-    
 
-**Что такое идемпотентность? Приведи пример таких операций, и противоположных им**
+---  
+
+### Что такое идемпотентность? Приведи пример таких операций, и противоположных им
 
 - Ответ
     
@@ -3147,8 +3366,9 @@ ram, io, network) для docker контейнера? Как это
     
     **Iac - Infrastructure as Code - инфраструктура как код**
     
+---
 
-**Для чего нужны хендлеры, handlers?**
+### Для чего нужны хендлеры, handlers?
 
 - Ответ
     
@@ -3171,8 +3391,9 @@ ram, io, network) для docker контейнера? Как это
           service: name=nginx state=started
     ```
     
+---
 
-**В чем разница pull и push модели?**
+### В чем разница pull и push модели?
 
 - Ответы
     
@@ -3182,8 +3403,9 @@ ram, io, network) для docker контейнера? Как это
     
     Ansible чаще всего используется для push-модели управления, но умеет и pull-модель.
     
+---
 
-**В чем плюсы ансибла?**
+### В чем плюсы ансибла?
 
 - Ответы
     
@@ -3194,8 +3416,9 @@ ram, io, network) для docker контейнера? Как это
     - подробная и наглядная документация
     - большое количество модулей
     - позволяет реализовать принцип идемпотентности в управлении состояниями хостов
+---
 
-**Опишите основные примитивы Ansible**
+### Опишите основные примитивы Ansible
 
 - Ответы
     
@@ -3262,8 +3485,9 @@ ram, io, network) для docker контейнера? Как это
     
     Сбор фактов хоста занимает некоторое время, поэтому их можно кэшировать или отключить их сбор при выполнении плейбука.
     
+---
 
-**В чем разница между модулем и плагином**
+### В чем разница между модулем и плагином**
 
 - Ответ
     
@@ -3274,9 +3498,9 @@ ram, io, network) для docker контейнера? Как это
 
 ---
 
-### СУБД
+# СУБД Базы Mysql
 
-**Что такое индексы, зачем они нужны?**
+## Что такое индексы, зачем они нужны?
 
 - Ответ
     
@@ -3301,7 +3525,9 @@ ram, io, network) для docker контейнера? Как это
     [https://infostart.ru/1c/articles/444987/](https://infostart.ru/1c/articles/444987/)
     
 
-**Какая будет проблема если проставить много индексов?**
+---
+
+### Какая будет проблема если проставить много индексов?
 
 - Ответ
     
@@ -3344,9 +3570,10 @@ ram, io, network) для docker контейнера? Как это
     Но это не значит, что индексы - это плохо, без них СУБД были бы бесполезны.
     
     **Плохи индексы, которые не используются.**
-    
 
-**Как настроить мастер слейв репликацию в мускуле?**
+---
+
+### Как настроить мастер слейв репликацию в мускуле?
 
 - Ответ
     
@@ -3415,15 +3642,18 @@ ram, io, network) для docker контейнера? Как это
     SHOW SLAVE STATUSG
     ```
     
+---
 
-**В чем разница между truncate delete  и drop?**
+### В чем разница между truncate delete  и drop?
 
 - Ответ
     1. Оператор DROP используется для удаления структуры таблицы. После удаления индексы, ограничения и триггеры, зависящие от таблицы, также будут удалены, но функции и хранимые процедуры, которые зависят от таблицы, останутся, но станут недействительными.
     2. Оператор DELETE используется для удаления данных в таблице, его можно удалить с помощью условий, и все данные в таблице удаляются без условий.
     3. Оператор TRUNCATE используется для удаления всех данных в таблице.
 
-**Что такое роли в pgsql**
+---
+
+## Что такое роли в pgsql
 
 - Ответ
     
@@ -3437,16 +3667,24 @@ ram, io, network) для docker контейнера? Как это
     
     Концепция ролей включает в себя концепцию пользователей ("users") и групп ("groups"). До версии 8.1 в PostgreSQL пользователи и группы были отдельными сущностями, но теперь есть только роли. Любая роль может использоваться в качестве пользователя, группы, и того и другого.
     
+---
 
-**Почему не следует использовать утилиту mysqldump на большой активной базе данных? Какие Вы знаете альтернативы?**
+### Почему не следует использовать утилиту mysqldump на большой активной базе данных? Какие Вы знаете альтернативы? 
 
 - Ответ
 
+Потому что может произойти блокировка таблиц. И любые изменения данных будут ожидать полного окончания дампа.
+Из-за этого приложение фактически перестает работать.
+Поэтому во время снятия дампа  нужно отключить блокировку таблиц.
+
+Можно использовать ключ `--single-transaction`, который позволит прочитать базу, и потом уже делать дамп. Это создаст корректный дамп.
+`--skip-lock-tables` - помогает в случаях когда у нас есть движок MYIASAM. И это позволяет избежать несогласованности данных.
+
 ---
 
-### PYTHON
+# PYTHON
 
-**Что такое хеш таблица?**
+### Что такое хеш таблица?
 
 - Ответ
     
@@ -3454,8 +3692,9 @@ ram, io, network) для docker контейнера? Как это
     
     Это ускоряет доступ к данным, поскольку значение индекса ведет себя как ключ к значению данных. Другими словами, в хэш-таблице хранятся пары ключ-значение, но ключ генерируется с помощью функции хеширования.
     
+---
 
-**Что такое генератор, что такое итератор?**
+### Что такое генератор, что такое итератор?
 
 - Ответ
     
@@ -3474,9 +3713,10 @@ ram, io, network) для docker контейнера? Как это
         Тут есть пример использования 
         
         [https://skillbox.ru/media/code/generatory_python_chto_eto_takoe_i_zachem_oni_nuzhny/](https://skillbox.ru/media/code/generatory_python_chto_eto_takoe_i_zachem_oni_nuzhny/)
-        
 
-**В чем разница между кортежем и списком?**
+---        
+
+### В чем разница между кортежем и списком?
 
 - Ответ
     1. Список можно изменить после создания.
@@ -3484,7 +3724,9 @@ ram, io, network) для docker контейнера? Как это
     3. Список упорядочен. Он представляет собой упорядоченные последовательности объектов, как правило, одного и того же типа. Например, все имена пользователей упорядочены по дате создания: [«Seth», «Ema», «Eli»].
     4. У кортежа есть структура. В каждом индексе могут сосуществовать различные типы данных. Например, такая запись базы данных в памяти: (2, «Ema», «2020–04–16») # id, name, created_at*.*
 
-**Что такое декоратор?**
+---
+
+### Что такое декоратор?**
 
 - Ответ
     
@@ -3534,9 +3776,10 @@ ram, io, network) для docker контейнера? Как это
     ```
     
     Теперь легко добавить ведение журнала в любую функцию, которую мы пишем. Достаточно написать перед ней @logging.
-    
 
-**Какое значение принимает переменная в Python, которая не имеет значения?**
+---
+
+## Какое значение принимает переменная в Python, которая не имеет значения?
 
 - Ответ
     
@@ -3544,9 +3787,9 @@ ram, io, network) для docker контейнера? Как это
 
 ---
 
-### KUBERNETES
+# KUBERNETES
 
-**Что такое kubernetes?**
+### Что такое kubernetes?
 
 - Ответ
     
@@ -3554,8 +3797,9 @@ ram, io, network) для docker контейнера? Как это
     
     Кубер может запускать и управлять контейнерами на большом количестве хостов. А также имеет возможность это всё размещать и реплицировать.
     
+---
 
-**Какую проблему решает kubernetes?**
+### Какую проблему решает kubernetes?
 
 - Ответ
     1. Масштабирование и запуск контейнеров на большом количестве хостов
@@ -3573,15 +3817,16 @@ ram, io, network) для docker контейнера? Как это
     - CI\CD
     - Уменьшает vendor lock-in. Мы меньше зависимы от оборудования и провайдеров. Мы тут общаемся с апи кубернетеса. Он как черный ящик, которому мы говорим что делать. И он делает.
     
+---
 
-**Что такое minikube?**
+### Что такое minikube?
 
 - Ответ
     
     Локальный кластер для знакомства с кубером, или для проверки каких-либо вещей.
     
 
-Приведи пример проблемы, которая упрощает работу именно с использованием кубернетеса?
+### Приведи пример проблемы, которая упрощает работу именно с использованием кубернетеса?
 
 - Ответ
     
@@ -3597,7 +3842,9 @@ ram, io, network) для docker контейнера? Как это
     2. Контейнеры не могут “поместиться” на одном узле, и нужно думать а куда вот эти перевести и распределить
     3. При возвращении ноды в строй придётся возвращать все контейнеры. Снова нужно делать те же манипуляции.
 
-**В чем отличие statefulset от Deployment?**
+---
+
+### В чем отличие statefulset от Deployment?**
 
 - Ответ
     
@@ -3611,8 +3858,9 @@ ram, io, network) для docker контейнера? Как это
     
     Statefulset для баз используется потому что там есть темплейт pvc
     
+---
 
-**В чем отличие Deployment от Replicaset?**
+### В чем отличие Deployment от Replicaset?
 
 - Ответ
   
@@ -3624,8 +3872,9 @@ ram, io, network) для docker контейнера? Как это
   
   Иными словами - deployment просто выполняет непрерывное обновление с использованием наборов реплик.
     
+---
 
-**Что такое Readiness, Liveness, Startup пробы, какое отличие?**
+### Что такое Readiness, Liveness, Startup пробы, какое отличие?
 
 - Ответ
     
@@ -3666,16 +3915,18 @@ ram, io, network) для docker контейнера? Как это
     Штука опасная. Может вернуть ошибочно что под недоступен. И кубер пометит под как нерабочий. И это может приводить к постоянному пересозданию подов. 
     
     Некоторые советуют эту пробу вообще не юзать.
-    
 
-**Что такое оператор в kubernetes?**
+---  
+
+### Что такое оператор в kubernetes?
 
 - Ответ
     
     Это контроллер приложения, который позволяет упаковать, развернуть и управлять приложением кубернетеса. Они расширяют функционал апи куба, и автоматически настраивают, создают экземпляры приложений
     
+---
 
-**Что такое узел, нода?**
+### Что такое узел, нода?
 
 - Ответ
     
@@ -3687,8 +3938,9 @@ ram, io, network) для docker контейнера? Как это
     **Воркер** предназначены для рабочей нагрузки. Подики и приложения
     Как правило отдельные машины на каждое. В миникубе и для мастера, и для воркера одна и та же машина.
     
+---
 
-**Опиши архитектуру кубернетес кластера, из чего состоит?**
+### Опиши архитектуру кубернетес кластера, из чего состоит?
 
 - Ответ
     
@@ -3702,7 +3954,7 @@ ram, io, network) для docker контейнера? Как это
     
     ---
     
-    ### Мастер-нода
+    **Мастер-нода**
     
     **API сервер**
     
@@ -3725,7 +3977,7 @@ ram, io, network) для docker контейнера? Как это
     
     ---
     
-    ### Воркер-нода
+    ***Воркер-нода***
     
     **kublet**
     
@@ -3741,8 +3993,8 @@ ram, io, network) для docker контейнера? Как это
     
     ![kube-proxy-img](https://github.com/Swfuse/devops-interview/blob/main/imgs/Untitled%2014.png)
     
-
-**Что такое pod?**
+---
+### Что такое pod?
 
 - Ответ
     
@@ -3755,21 +4007,25 @@ ram, io, network) для docker контейнера? Как это
     ![pod-img](https://github.com/Swfuse/devops-interview/blob/main/imgs/Untitled%2015.png)
     
 
-**В чем разница между подом и контейнером?**
+---
+
+### В чем разница между подом и контейнером?**
 
 - Ответ
     
     Под это минимальная единица куба. В котором есть контейнеры. 
     
+---
 
-**Может ли под запуститься на двух разных узлах?**
+### Может ли под запуститься на двух разных узлах?
 
 - Ответ
     
     Нет. Поскольку есть поле узел. И шедулер назначает какому поду куда ехать
     
+---
 
-**Что такое ReplicaSet?**
+### Что такое ReplicaSet?
 
 - Ответ
     
@@ -3842,9 +4098,10 @@ ram, io, network) для docker контейнера? Как это
     Если я хочу чтоб контейнеры менялись, мне нужен деплоймент.
     
     Репликасет следит только за количеством контейнеров.
-    
 
-**Что такое Deployment?**
+---  
+
+### Что такое Deployment?
 
 - Ответ
     
@@ -3915,8 +4172,9 @@ ram, io, network) для docker контейнера? Как это
     kubectl run --rm -it --image amouat/network-utils test bash
     ```
     
+---
 
-**Что такое Service**
+### Что такое Service
 
 - Ответ
     
@@ -3928,8 +4186,9 @@ ram, io, network) для docker контейнера? Как это
     
     Отличается от всех других тем, что не предоставляет свой айпишник
     
+---
 
-**Какие типы service бывают?**
+### Какие типы service бывают?
 
 - Ответ
     - Без селектора
@@ -3938,7 +4197,9 @@ ram, io, network) для docker контейнера? Как это
     - LoadBalancer - использует внешний айпи адрес. И он уже перенаправляет трафик на нод порт и кластер айпи, которые создаются автоматически. Минус в том, что внешний айпи адрес стоит денег.
     - ExternalName - перенаправление трафика. Через cname в днс кластере.
 
-**Что такое Ingress**
+---
+
+### то такое Ingress
 
 - Ответ
     
@@ -3946,8 +4207,9 @@ ram, io, network) для docker контейнера? Как это
     
     Чем-то похоже на нжинкс. Который по локейшнам перенаправляет что-то куда-то.
     
+---
 
-**Что такое Job**
+### Что такое Job
 
 - Ответ
     
@@ -3978,7 +4240,9 @@ ram, io, network) для docker контейнера? Как это
     ![restart-policy-img](https://github.com/Swfuse/devops-interview/blob/main/imgs/Untitled%2018.png)
     
 
-**Что такое CronJob**
+---
+
+### Что такое CronJob
 
 - Ответ
     
@@ -3995,8 +4259,9 @@ ram, io, network) для docker контейнера? Как это
     
     ![cronjob-img](https://github.com/Swfuse/devops-interview/blob/main/imgs/Untitled%2019.png)
     
+---
 
-**Что означает версия api (apiVersion)**
+### Что означает версия api (apiVersion)
 
 - Ответ
     - v1
@@ -4010,8 +4275,9 @@ ram, io, network) для docker контейнера? Как это
     
     **Стабильные версии API** - готовы для продакшена. Совместимы с будущими версиями.
     
+---
 
-**Что такое namespace?**
+### Что такое namespace?
 
 - Ответ
     
@@ -4030,7 +4296,9 @@ ram, io, network) для docker контейнера? Как это
     - **kube-system** - пространство имён для системных служебных объектов кубернетеса.
     - **kube-public** - создаваемое автоматически пространство имён, которое доступно для чтения пользователями. Данное пространство имён обычно используется кластером, если ресурсы должны быть общедоступными.
 
-**Что такое Volume**
+---
+
+### Что такое Volume
 
 - Ответ
     
@@ -4043,9 +4311,10 @@ ram, io, network) для docker контейнера? Как это
     - Изолирует приложение от технологий хранения данных
     
     Живет только с подом
-    
 
-**Какие бывают типы файловых хранилищ**
+---   
+
+### Какие бывают типы файловых хранилищ
 
 - Ответ
     
@@ -4067,8 +4336,9 @@ ram, io, network) для docker контейнера? Как это
     
     =
     
+---
 
-**Что такое configMap?**
+### Что такое configMap?
 
 - Ответ
     
@@ -4089,8 +4359,9 @@ ram, io, network) для docker контейнера? Как это
     
     А в спеке контейнера указываем имя уже этого вольюма
     
+---
 
-**Что такое Secret**
+### Что такое Secret
 
 - **Ответ**
     
@@ -4142,8 +4413,9 @@ ram, io, network) для docker контейнера? Как это
     
     Админ создает сторадж класс, где описывается сторадж, который подключил к кластеру. Ну и с помощью плагина в ответ на запрос pvc кубер создаст pv нужного размера, и предоставит для пода.
     
+---
 
-**Что такое nodeSelector, nodeName?**
+### Что такое nodeSelector, nodeName?
 
 - Ответ
     
@@ -4162,15 +4434,17 @@ ram, io, network) для docker контейнера? Как это
     nodeName: kube-01
     ```
     
+---
 
-**DaemonSet зачем нужен для чего его обычно используют?**
+### DaemonSet зачем нужен для чего его обычно используют?**
 
 - Ответ
     
-    У него широкое распространение. Нужен для сбора логов по разным нодам. Логи как-то надо собирать. Сертификаты нод. Смотреть через демонсет можно
+    У него широкое распространение. Нужен для сбора логов по разным нодам. Логи как-то надо собирать. Сертификаты нод. Смотреть через демонсет можно такие штуки
     
+---
 
-**Что такое Taints, Tolerations?**
+### Что такое Taints, Tolerations?
 
 - Ответ
     
@@ -4193,7 +4467,7 @@ ram, io, network) для docker контейнера? Как это
     Не размещать на узле поды без соответствующих tolerations. Все работающие на узле поды
     
 
-**Что такое Requests, Limits?**
+### Что такое Requests, Limits?
 
 - Ответ
     
@@ -4211,8 +4485,9 @@ ram, io, network) для docker контейнера? Как это
     
     Можно увидеть через describe пода
     
+---
 
-**Affinity, anti-affinity**
+### Affinity, anti-affinity**
 
 - Ответ
     
@@ -4220,10 +4495,10 @@ ram, io, network) для docker контейнера? Как это
     
     Как нод селектор. Но можно заказать условия. Типа метка может быть определенных типов, перечисленных.
     
-    Еще можно указать
+---
     
 
-**Что такое Helm**
+### Что такое Helm
 
 - Ответ
     
@@ -4231,11 +4506,14 @@ ram, io, network) для docker контейнера? Как это
     Шаблонизатор для управления
     
     Пакет в helm это набор yml, архив с yml
-    
+   
+---
 
-**Через что реализованы сети в kubernetes?**
+### Через что реализованы сети в kubernetes? (need answer)
 
-**Что произойдет при изменении имейджа? Как будут докатываться изменения?**
+---
+
+### Что произойдет при изменении имейджа? Как будут докатываться изменения?
 
 - Ответ
     
@@ -4246,9 +4524,9 @@ ram, io, network) для docker контейнера? Как это
 
 ---
 
-### GIT
+# GIT
 
-**Чем `merge` отличается от `rebase`?**
+### Чем `merge` отличается от `rebase`?
 
 - Ответ
     - `git merge` - выполняет слияние коммитов из одной ветки в другую. В этом процессе изменяется только целевая ветка. История исходных веток остается неизменной.
@@ -4282,8 +4560,9 @@ ram, io, network) для docker контейнера? Как это
         2. Перемещение публичных репозиториев может быть опасным при работе в команде,
         3. Появляется больше работы,
         4. Для восстановления с удаленными ветками требуется принудительный пуш. Это приводит к обновлению всех веток, имеющих одно и то же имя, как локально, так и удаленно.
+---
 
-**Когда нужно использовать `merge`, когда `rebase`?**
+### Когда нужно использовать `merge`, когда `rebase`?
 
 - Ответ
     
@@ -4330,7 +4609,9 @@ ram, io, network) для docker контейнера? Как это
     этом нет особой необходимости, так как автор коммита известен.
     3. Не захотите ли вы вдруг отменить слияние? Возврат rebase значительно затруднен по сравнению с обычным слиянием, а иногда даже невозможен.
 
-**Чем отличается git pull и git fetch**
+---
+
+### Чем отличается git pull и git fetch
 
 - Ответ
     
@@ -4346,8 +4627,9 @@ ram, io, network) для docker контейнера? Как это
     
     Команда git fetch получает изменения с сервера и сохраняет их в каталог refs/remotes/. Это действие (fetch) не влияет на локальные ветки и текущие изменения, просто изменения с удаленного сервера скачиваются в директорию локального репозитария.
     
+---
 
-**Что такое cherry pick ?**
+### Что такое cherry pick ?
 
 - Ответ
     
@@ -4357,8 +4639,9 @@ ram, io, network) для docker контейнера? Как это
      команд git merge и git rebase, которые переносят коммиты целыми 
     цепочками.
     
+---
 
-**Какие пратики работы с гитом вы знаете? Форки**
+### Какие пратики работы с гитом вы знаете? Форки
 
 - Ответ
     
@@ -4368,8 +4651,9 @@ ram, io, network) для docker контейнера? Как это
     
     Когда обновление готово к интеграции, программист делает pull-запрос в главный репозиторий, а менеджер одобряет и вносит его.
     
+---
 
-**Что такое GitFlow?**
+### Что такое GitFlow?
 
 - Ответ
     
@@ -4387,7 +4671,7 @@ ram, io, network) для docker контейнера? Как это
 
 ---
 
-Симметричное ассиметричное
+Симметричное ассиметричное шифрование
 
 [https://youtu.be/sGFbM-X6W_4](https://youtu.be/sGFbM-X6W_4) 
 
