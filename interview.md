@@ -857,7 +857,7 @@
     
     Если есть симлинк - используется systemd.
     
-    ```jsx
+    ```
     stat /sbin/init
     File: ‘/sbin/init’ -> ‘../lib/systemd/systemd’
     ```
@@ -865,7 +865,7 @@
 
 Можно сделать ещё через процесс 1, и через файловую систему `/proc`:
 
-```jsx
+```
 root@swfuse:~# stat /proc/1/exe 
   File: /proc/1/exe -> /lib/systemd/systemd
   Size: 0         	Blocks: 0          IO Block: 1024   symbolic link
@@ -1901,7 +1901,7 @@ https://access.redhat.com/articles/3129891
     
     Хардлинк - жесткая ссылка. По своей сути является тем же файлом на который ссылается. Также счетчик в айнодах есть. Цифра 1 это оно. Счетчик имен одного и того же файла.
     
-    ```jsx
+    ```
     ls -lih | grep file
     475949 -rw-r--r--  1 root     setevoy     0B Aug 13 11:51 file1
     475950 -rw-r--r--  1 root     setevoy     0B Aug 13 11:51 file2
@@ -1912,7 +1912,7 @@ https://access.redhat.com/articles/3129891
     
     Отличить можно по наличию буквы l
     
-    ```jsx
+    ```
     ls -lih | grep sym
     475948 lrwxr-xr-x  1 root     setevoy     5B Aug 13 12:02 symlink1 -> file1
     ```
@@ -3954,7 +3954,7 @@ https://access.redhat.com/articles/3129891
     
     - Пример
         
-        ```jsx
+        ```
         readinessProbe: # Проверка готовности контейнера
           httpGet: # делаем гет запрос на 80 порт
             path: /
@@ -4102,13 +4102,13 @@ https://access.redhat.com/articles/3129891
     В этом случае будет такой вывод. 
     Название будет состоять из основной части и из случайным образом сгенерированной.
     
-    ```jsx
+    ```
     NAME                  READY   STATUS    RESTARTS   AGE
     my-replicaset-28gs2   1/1     Running   0          7m1s
     my-replicaset-qg47c   1/1     Running   0          7m1s
     ```
     
-    ```jsx
+    ```
     apiVersion: apps/v1
     kind: ReplicaSet
     metadata:
@@ -4132,7 +4132,7 @@ https://access.redhat.com/articles/3129891
     
     И вывод такой реплики:
     
-    ```jsx
+    ```
     swfuse@swfuse:~/kuber_manifests$ kubectl get replicasets -o wide
     NAME            DESIRED   CURRENT   READY   AGE   CONTAINERS   IMAGES       SELECTOR
     my-replicaset   2         2         2       10m   nginx        nginx:1.12   app=my-app
@@ -4176,7 +4176,7 @@ https://access.redhat.com/articles/3129891
 
 - Шаблон деплоймента
     
-    ```jsx
+    ```
     apiVersion: apps/v1
     kind: Deployment
     metadata:
@@ -4209,7 +4209,7 @@ https://access.redhat.com/articles/3129891
     
     Если создать деплоймент, то можно увидеть следующее
     
-    ```jsx
+    ```
     swfuse@swfuse:~/kuber_manifests$ kubectl get pods
     NAME                            READY   STATUS    RESTARTS   AGE
     my-deployment-c4c8f45fc-ltckj   1/1     Running   0          4s
@@ -4228,7 +4228,7 @@ https://access.redhat.com/articles/3129891
     
     Чтобы обратиться к айпишникам внутри кластера можно попробовать сделать следующее:
     
-    ```jsx
+    ```
     kubectl run --rm -it --image amouat/network-utils test bash
     ```
     
@@ -4487,7 +4487,7 @@ https://access.redhat.com/articles/3129891
     
     Например
     
-    ```jsx
+    ```
     # Данный под будет назначен на узел, где есть специфический тип диска
     nodeSelector:
       disktype: ssd
@@ -4758,5 +4758,4 @@ ssh
 [https://www.securitylab.ru/analytics/478912.php](https://www.securitylab.ru/analytics/478912.php)
 
 [https://www.wisereport.ru/ssh-encryption-process/](https://www.wisereport.ru/ssh-encryption-process/)
-
 
