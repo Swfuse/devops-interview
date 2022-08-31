@@ -3122,8 +3122,7 @@ https://access.redhat.com/articles/3129891
     
     - Оповещение об ошибках на сетевом уровне
     - Тестирование работоспособности сети
-    
-    ![icmp-img](https://github.com/Swfuse/devops-interview/blob/main/imgs/Untitled%208.png)
+
     
     Тип сообщения - он говорит о том, что произошло в сети. Какое действие пытается выполниться
     
