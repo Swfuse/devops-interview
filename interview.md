@@ -4694,7 +4694,8 @@ https://access.redhat.com/articles/3129891
 
 - Ответ
 
-    Кубер для реализации сетей использует различные плагины CNI (Container Networking Interface). Наиболее известные **flannel** и **calico**.
+    Кубер для реализации сетей использует различные плагины CNI (Container Networking Interface). 
+    Наиболее известные **flannel** и **calico**.
 
     Пример получения IP используя *flannel*:
     Kube-controller-manager каждому узлу присваивает podCIDR. Pod'ы каждого узла получают IP-адреса из пространства адресов в выделенном диапазоне podCIDR. Поскольку podCIDR'ы узлов не пересекаются, все pod'ы получают уникальные IP-адреса.
