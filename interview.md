@@ -212,7 +212,7 @@
         - [Что такое Requests, Limits?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-requests-limits)
         - [Affinity, anti-affinity**](#affinity-anti-affinity)
         - [Что такое Helm](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-helm)
-        - [Через что реализованы сети в kubernetes? need answer](#%D1%87%D0%B5%D1%80%D0%B5%D0%B7-%D1%87%D1%82%D0%BE-%D1%80%D0%B5%D0%B0%D0%BB%D0%B8%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D1%8B-%D1%81%D0%B5%D1%82%D0%B8-%D0%B2-kubernetes-need-answer)
+        - [Через что реализованы сети в kubernetes?](#%D1%87%D0%B5%D1%80%D0%B5%D0%B7-%D1%87%D1%82%D0%BE-%D1%80%D0%B5%D0%B0%D0%BB%D0%B8%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D1%8B-%D1%81%D0%B5%D1%82%D0%B8-%D0%B2-kubernetes-need-answer)
         - [Что произойдет при изменении имейджа? Как будут докатываться изменения?](#%D1%87%D1%82%D0%BE-%D0%BF%D1%80%D0%BE%D0%B8%D0%B7%D0%BE%D0%B9%D0%B4%D0%B5%D1%82-%D0%BF%D1%80%D0%B8-%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D0%B8-%D0%B8%D0%BC%D0%B5%D0%B9%D0%B4%D0%B6%D0%B0-%D0%BA%D0%B0%D0%BA-%D0%B1%D1%83%D0%B4%D1%83%D1%82-%D0%B4%D0%BE%D0%BA%D0%B0%D1%82%D1%8B%D0%B2%D0%B0%D1%82%D1%8C%D1%81%D1%8F-%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F)
     - [GIT](#git)
         - [Чем merge отличается от rebase?](#%D1%87%D0%B5%D0%BC-merge-%D0%BE%D1%82%D0%BB%D0%B8%D1%87%D0%B0%D0%B5%D1%82%D1%81%D1%8F-%D0%BE%D1%82-rebase)
@@ -4690,7 +4690,21 @@ https://access.redhat.com/articles/3129891
    
 ---
 
-### Через что реализованы сети в kubernetes? (need answer)
+### Через что реализованы сети в kubernetes? 
+
+- Ответ
+
+    Кубер для реализации сетей использует различные плагины CNI (Container Networking Interface). 
+    Наиболее известные **flannel** и **calico**.
+
+    Пример получения IP используя *flannel*:
+    Kube-controller-manager каждому узлу присваивает podCIDR. Pod'ы каждого узла получают IP-адреса из пространства адресов в выделенном диапазоне podCIDR. Поскольку podCIDR'ы узлов не пересекаются, все pod'ы получают уникальные IP-адреса.
+    Во время старта агент сетевого провайдера генерирует конфиг CNI. Когда pod планируется на узел, kubelet вызывает CRI-плагин для его создания. Далее, если используется containerd, плагин Containerd CRI вызывает CNI-плагин, указанный в конфиге CNI, для настройки сети pod'а. 
+    В результате pod получает IP-адрес.
+    ![flannel-netowrk](./imgs/kubernetes-flannel-network.png)
+
+    Плюсы использования *calico*
+    * поддерживает network policies
 
 ---
 
