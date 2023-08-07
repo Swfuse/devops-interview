@@ -8,8 +8,9 @@
 
 | Материал                                                                                      | Описание                                                                         |
 | --------------------------------------------------------------------------------------------- |:---------------------------------------------------------------------------------|
-| [Техническое интервью](https://github.com/Swfuse/devops-interview/blob/main/interview.md)     | Здесь собраны ответы на вопросы самых разных собеседований за последние 2 года   |
-| [Интервью с hr](https://github.com/Swfuse/devops-interview/blob/main/interview-hr-tips.md)            | Советы о том, как подготовиться к интервью, на что обратить внимание             |
+| [Техническое интервью](https://github.com/Swfuse/devops-interview/blob/main/interview.md)     |  Здесь собраны ответы на вопросы самых разных собеседований за последние 2 года  |
+| [Интервью с hr](https://github.com/Swfuse/devops-interview/blob/main/interview-hr-tips.md)    |  Советы о том, как подготовиться к интервью, на что обратить внимание            |
+| [Референсы, ссылки](https://github.com/Swfuse/devops-interview/blob/main/references.md)       |  Ссылки на полезные метариалы                                                    |
 
 
 ---
