@@ -5257,7 +5257,21 @@ overlays - тип сетей которые пересекают несколь�
 
   В коде это выглядит вот так:
 
-  ![block_state](./imgs/Block_state.png)
+  ```HCL
+  
+    terraform {
+      backend "s3" {
+        bucket = "backet_name"
+        encrypt = true
+        key    = "dev/network/terraform.tfstate"
+        region = "us-east-1"
+        dynamodb_table = "terraform_state_block_DynamoDB"
+    
+      }
+    }
+
+
+  ```
 
 
 
@@ -5285,8 +5299,8 @@ overlays - тип сетей которые пересекают несколь�
   ```HCL
 
       import {
-        id = "your_resource_id"
-        to = aws_instance.instance_for_import
+         id = "your_resource_id"
+         to = aws_instance.instance_for_import
        }
 
   ```
@@ -5325,7 +5339,27 @@ overlays - тип сетей которые пересекают несколь�
 
   Пример как это можно использовать в коде:
 
-  ![conditions_lookup](./imgs/condition_and_lookup.png)
+  ```HCL
 
+   #condition
+   resource "aws_instance" "server" {
+     instance_type = var.env == "prod" ? "t3.large" : "t3.micro"
+   
+   }
+   
+   #lookup
+   variable "ec2_types" {
+     default = {
+       "prod" = "t3.large"
+       "staging" = "t3.medium"
+       "dev" = "t3.micro"
+     }
+   }
+   
+   resource "aws_instance" "default" {
+     instance_type = lookup(var.ec2_types, "prod")
+   }
+
+  ```
 
 ----
