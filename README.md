@@ -30,7 +30,7 @@
 ## Как добавить свой вопрос
 
 1. Добавляем вопрос в формате заголовка в маркдауне `### Вопрос`, и пишем ответ
-2. Ставим расширение VSCode для генерации оглавления(Auto Markdown TOC)[https://marketplace.visualstudio.com/items?itemName=huntertran.auto-markdown-toc].
+2. Ставим расширение VSCode для генерации оглавления([Auto Markdown TOC](https://marketplace.visualstudio.com/items?itemName=huntertran.auto-markdown-toc)).
 3. Наводим курсор на текущее оглавление, или стираем его для повторной генерации.
 4. Выделяем нужный нам участок где хотим сгенерировать оглавление, жмем Ctrl+M T (Auto Markdown TOC: Insert/Update). (Также можно вызвать из меню правой кнопкой мыши)
 ![use_toc](https://github.com/Swfuse/devops-interview/blob/main/imgs/use_toc.gif)
