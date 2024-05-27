@@ -5436,20 +5436,20 @@ https://github.com/pixelb/ps_mem
     ```HCL
     
         module "vpc_prod" {
-      source     = "../../modules/vpc_and_network"
-      env        = "production"                                                
-      cidr_block = "10.100.1.0/24"  
-    
-      publick_cidr_subntet = [
-        "10.100.12.0/24",
-        "10.100.13.0/24",
-        "10.100.14.0/24",
-      ]
-      private_cidr_subnets = [
-        "10.100.21.0/24",
-        "10.100.22.0/24"
-      ]
-    }
+            source     = "../../modules/vpc_and_network"
+            env        = "production"                                                
+            cidr_block = "10.100.1.0/24"  
+          
+            publick_cidr_subntet = [
+              "10.100.12.0/24",
+              "10.100.13.0/24",
+              "10.100.14.0/24",
+            ]
+            private_cidr_subnets = [
+              "10.100.21.0/24",
+              "10.100.22.0/24"
+            ]
+        }
        #так же это могут быть модули, которые хранятся удаленно
     
     ```
@@ -5476,14 +5476,14 @@ https://github.com/pixelb/ps_mem
   ```HCL
 
       provider "aws" {
-      region = "eu-central-2"
+          region = "eu-central-2"
+        
+        
+          assume_role {
+            role_arn     = "arn:aws:iam::1234567890:role/RemoteAdministrator"
+            session_name = "terraform session"                                
     
-    
-      assume_role {
-        role_arn     = "arn:aws:iam::1234567890:role/RemoteAdministrator"
-        session_name = "terraform session"                                
-    
-    }
+      }
 
   ```
 
