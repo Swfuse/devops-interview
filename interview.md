@@ -5503,7 +5503,7 @@ https://github.com/pixelb/ps_mem
     
     **NoSchedule**
     
-    Не размещать на узле без соответсвующих tolerations
+    Не размещать на узле без соответсвующих tolerations, поды которые уже работают на узле, не будут затронуты
     
     **PreferNoSchedule**
     
@@ -5511,7 +5511,8 @@ https://github.com/pixelb/ps_mem
     
     **NoExecute**
     
-    Не размещать на узле поды без соответствующих tolerations. Все работающие на узле поды
+    Не размещать на узле поды без соответствующих tolerations. все поды которые уже есть на 
+    ноде с таким тейнтом будут мувнуты с нее
     
 
 ### Что такое Requests, Limits?
@@ -5541,6 +5542,51 @@ https://github.com/pixelb/ps_mem
     В спецификации пода указываются требования и пожелания к узлам, а также к уже существующим подам.
     
     Как нод селектор. Но можно заказать условия. Типа метка может быть определенных типов, перечисленных.
+
+    **example**:
+
+    ```yaml
+    affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          #параметр выше отвечает за то, что эти правила бдуут применяться при планировки а не при работе нод и тд
+            nodeSelectorTerms:
+            - matchExpressions: #disktype должен быть не hdd
+              - key: disktype
+                operator: NotIn
+                values:
+                - hdd
+            - matchExpressions: #RAM памяти должено быть больше чем 8гб на ноде 
+              - key: memory
+                operator: Gt
+                values:
+                - 8Gi
+            - matchExpressions: #gpu должн обыть на ноде
+              - key: gpu
+                operator: Exists
+      podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - weight: 100 #позволяет задать вес правилу и там самым можно управлять их приоритетностью
+        podAntiAffinityTerm:
+          labelSelector:
+            matchExpressions: #в целом это правило указываеьт что бы поды с меткой app = web-app были на разных хостах
+            - key: app
+              operator: In
+              values:
+              - web-app
+          #topologyKey позволяет указать на каком уровне будут применяться правила, здесь на уровне  хоста
+          topologyKey: kubernetes.io/hostname 
+      podAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+        - podAffinityTerm:
+            labelSelector: 
+              matchExpressions: #лейбл security должен быть = s1 на поде
+              - key: security
+                operator: In
+                values:
+                - s1
+            topologyKey: kubernetes.io/hostname
+    ```
     
 ---
     
