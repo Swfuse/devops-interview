@@ -2953,8 +2953,24 @@ https://github.com/pixelb/ps_mem
 - Ответ
 
    Есть утилита strace, с помощью которой можно отследить какие вызовы к ядру делает процесс приложения, которое падает
-
----
+   Её можно использовать следующим образом:  
+    ```
+    strace ./my_crashing_binary
+    strace ./my_crashing_binary 2>out.txt
+    strace -p 12345 2>out.txt
+    ```
+    Пример вывода ошибки. Здесь мы видим что идет попытка обращения к файлу, которого нет. По итогу программа падает
+    ```
+    <snip>
+    ...
+    write(1, "Hello World\n", 12) = 12
+    brk(0) = 0x940e000
+    brk(0x942f000) = 0x942f000
+    open("/myfile", O_RDONLY) = -1 ENOENT (No such file or directory)
+    --- SIGSEGV (Segmentation fault) @ 0 (0) ---
+    +++ killed by SIGSEGV (core dumped) +++
+    ---
+    ```
 
 
 ## Docker контейнеры
