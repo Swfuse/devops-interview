@@ -58,7 +58,7 @@
         - [Как заставить приложение перестать писать в файл, не завершая процесс?](#%D0%BA%D0%B0%D0%BA-%D0%B7%D0%B0%D1%81%D1%82%D0%B0%D0%B2%D0%B8%D1%82%D1%8C-%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BF%D0%B5%D1%80%D0%B5%D1%81%D1%82%D0%B0%D1%82%D1%8C-%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C-%D0%B2-%D1%84%D0%B0%D0%B9%D0%BB-%D0%BD%D0%B5-%D0%B7%D0%B0%D0%B2%D0%B5%D1%80%D1%88%D0%B0%D1%8F-%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81)
         - [Что такое CPU pinning](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-cpu-pinning)
         - [Какие алгоритмы планирования ресурсов в linux ты знаешь](#%D0%BA%D0%B0%D0%BA%D0%B8%D0%B5-%D0%B0%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC%D1%8B-%D0%BF%D0%BB%D0%B0%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F-%D1%80%D0%B5%D1%81%D1%83%D1%80%D1%81%D0%BE%D0%B2-%D0%B2-linux-%D1%82%D1%8B-%D0%B7%D0%BD%D0%B0%D0%B5%D1%88%D1%8C)
-        - [Представлен вывод команды *top*. Что означает каждая запись в выводе?](#%D0%BF%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD-%D0%B2%D1%8B%D0%B2%D0%BE%D0%B4-%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D1%8B-top-%D1%87%D1%82%D0%BE-%D0%BE%D0%B7%D0%BD%D0%B0%D1%87%D0%B0%D0%B5%D1%82-%D0%BA%D0%B0%D0%B6%D0%B4%D0%B0%D1%8F-%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D1%8C-%D0%B2-%D0%B2%D1%8B%D0%B2%D0%BE%D0%B4%D0%B5)
+        - [Представлен вывод команды top. Что означает каждая запись в выводе?](#%D0%BF%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD-%D0%B2%D1%8B%D0%B2%D0%BE%D0%B4-%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D1%8B-top-%D1%87%D1%82%D0%BE-%D0%BE%D0%B7%D0%BD%D0%B0%D1%87%D0%B0%D0%B5%D1%82-%D0%BA%D0%B0%D0%B6%D0%B4%D0%B0%D1%8F-%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D1%8C-%D0%B2-%D0%B2%D1%8B%D0%B2%D0%BE%D0%B4%D0%B5)
         - [Что такое swap файл подкачки? Зачем он нужен, и как он работает? Какие данные в него записываются?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-swap-%D1%84%D0%B0%D0%B9%D0%BB-%D0%BF%D0%BE%D0%B4%D0%BA%D0%B0%D1%87%D0%BA%D0%B8-%D0%B7%D0%B0%D1%87%D0%B5%D0%BC-%D0%BE%D0%BD-%D0%BD%D1%83%D0%B6%D0%B5%D0%BD-%D0%B8-%D0%BA%D0%B0%D0%BA-%D0%BE%D0%BD-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D0%B5%D1%82-%D0%BA%D0%B0%D0%BA%D0%B8%D0%B5-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5-%D0%B2-%D0%BD%D0%B5%D0%B3%D0%BE-%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D1%8B%D0%B2%D0%B0%D1%8E%D1%82%D1%81%D1%8F)
         - [Что показывает статус процессов? Какие статусы используются в linux?](#%D1%87%D1%82%D0%BE-%D0%BF%D0%BE%D0%BA%D0%B0%D0%B7%D1%8B%D0%B2%D0%B0%D0%B5%D1%82-%D1%81%D1%82%D0%B0%D1%82%D1%83%D1%81-%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%BE%D0%B2-%D0%BA%D0%B0%D0%BA%D0%B8%D0%B5-%D1%81%D1%82%D0%B0%D1%82%D1%83%D1%81%D1%8B-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D1%83%D1%8E%D1%82%D1%81%D1%8F-%D0%B2-linux)
         - [Что такое зомби-процесс? Как можно создать такой процесс?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-%D0%B7%D0%BE%D0%BC%D0%B1%D0%B8-%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81-%D0%BA%D0%B0%D0%BA-%D0%BC%D0%BE%D0%B6%D0%BD%D0%BE-%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D1%82%D1%8C-%D1%82%D0%B0%D0%BA%D0%BE%D0%B9-%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81)
@@ -91,7 +91,7 @@
         - [Что такое файловая система? Для чего она нужна?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-%D1%84%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2%D0%B0%D1%8F-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0-%D0%B4%D0%BB%D1%8F-%D1%87%D0%B5%D0%B3%D0%BE-%D0%BE%D0%BD%D0%B0-%D0%BD%D1%83%D0%B6%D0%BD%D0%B0)
             - [Файловая система как система хранения](#%D1%84%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2%D0%B0%D1%8F-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0-%D0%BA%D0%B0%D0%BA-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0-%D1%85%D1%80%D0%B0%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F)
         - [Как создать файловую систему на блочном устройстве? Какие параметры можно задать при создании?](#%D0%BA%D0%B0%D0%BA-%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D1%82%D1%8C-%D1%84%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2%D1%83%D1%8E-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D1%83-%D0%BD%D0%B0-%D0%B1%D0%BB%D0%BE%D1%87%D0%BD%D0%BE%D0%BC-%D1%83%D1%81%D1%82%D1%80%D0%BE%D0%B9%D1%81%D1%82%D0%B2%D0%B5-%D0%BA%D0%B0%D0%BA%D0%B8%D0%B5-%D0%BF%D0%B0%D1%80%D0%B0%D0%BC%D0%B5%D1%82%D1%80%D1%8B-%D0%BC%D0%BE%D0%B6%D0%BD%D0%BE-%D0%B7%D0%B0%D0%B4%D0%B0%D1%82%D1%8C-%D0%BF%D1%80%D0%B8-%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B8)
-        - [Что такое **inodes айноды**](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-inodes-%D0%B0%D0%B9%D0%BD%D0%BE%D0%B4%D1%8B)
+        - [Что такое inodes айноды](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-inodes-%D0%B0%D0%B9%D0%BD%D0%BE%D0%B4%D1%8B)
         - [Где физически находятся inodes айноды](#%D0%B3%D0%B4%D0%B5-%D1%84%D0%B8%D0%B7%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8-%D0%BD%D0%B0%D1%85%D0%BE%D0%B4%D1%8F%D1%82%D1%81%D1%8F-inodes-%D0%B0%D0%B9%D0%BD%D0%BE%D0%B4%D1%8B)
         - [По какой причине и на какого типа системах айноды могут закончиться? И к чему это может привести?](#%D0%BF%D0%BE-%D0%BA%D0%B0%D0%BA%D0%BE%D0%B9-%D0%BF%D1%80%D0%B8%D1%87%D0%B8%D0%BD%D0%B5-%D0%B8-%D0%BD%D0%B0-%D0%BA%D0%B0%D0%BA%D0%BE%D0%B3%D0%BE-%D1%82%D0%B8%D0%BF%D0%B0-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%D1%85-%D0%B0%D0%B9%D0%BD%D0%BE%D0%B4%D1%8B-%D0%BC%D0%BE%D0%B3%D1%83%D1%82-%D0%B7%D0%B0%D0%BA%D0%BE%D0%BD%D1%87%D0%B8%D1%82%D1%8C%D1%81%D1%8F-%D0%B8-%D0%BA-%D1%87%D0%B5%D0%BC%D1%83-%D1%8D%D1%82%D0%BE-%D0%BC%D0%BE%D0%B6%D0%B5%D1%82-%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%81%D1%82%D0%B8)
         - [Какая файловая система бывает  динамическими айнодами и что это такое, зачем нужно?](#%D0%BA%D0%B0%D0%BA%D0%B0%D1%8F-%D1%84%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2%D0%B0%D1%8F-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0-%D0%B1%D1%8B%D0%B2%D0%B0%D0%B5%D1%82--%D0%B4%D0%B8%D0%BD%D0%B0%D0%BC%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%BC%D0%B8-%D0%B0%D0%B9%D0%BD%D0%BE%D0%B4%D0%B0%D0%BC%D0%B8-%D0%B8-%D1%87%D1%82%D0%BE-%D1%8D%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-%D0%B7%D0%B0%D1%87%D0%B5%D0%BC-%D0%BD%D1%83%D0%B6%D0%BD%D0%BE)
@@ -206,6 +206,9 @@
         - [Что такое REST API и API](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-rest-api-%D0%B8-api)
         - [Динамическая маршрутизация и разные протоколы динамической маршрутизации, ebgp ibgp, константы bgp. На чём сейчас принято строить bgp-пиринги. Что такое blackhole.](#%D0%B4%D0%B8%D0%BD%D0%B0%D0%BC%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F-%D0%BC%D0%B0%D1%80%D1%88%D1%80%D1%83%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F-%D0%B8-%D1%80%D0%B0%D0%B7%D0%BD%D1%8B%D0%B5-%D0%BF%D1%80%D0%BE%D1%82%D0%BE%D0%BA%D0%BE%D0%BB%D1%8B-%D0%B4%D0%B8%D0%BD%D0%B0%D0%BC%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B9-%D0%BC%D0%B0%D1%80%D1%88%D1%80%D1%83%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8-ebgp-ibgp-%D0%BA%D0%BE%D0%BD%D1%81%D1%82%D0%B0%D0%BD%D1%82%D1%8B-bgp-%D0%BD%D0%B0-%D1%87%D1%91%D0%BC-%D1%81%D0%B5%D0%B9%D1%87%D0%B0%D1%81-%D0%BF%D1%80%D0%B8%D0%BD%D1%8F%D1%82%D0%BE-%D1%81%D1%82%D1%80%D0%BE%D0%B8%D1%82%D1%8C-bgp-%D0%BF%D0%B8%D1%80%D0%B8%D0%BD%D0%B3%D0%B8-%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-blackhole)
             - [eBGP и iBGP](#ebgp-%D0%B8-ibgp)
+            - [Константы BGP](#%D0%BA%D0%BE%D0%BD%D1%81%D1%82%D0%B0%D0%BD%D1%82%D1%8B-bgp)
+            - [Построение BGP-пирингов](#%D0%BF%D0%BE%D1%81%D1%82%D1%80%D0%BE%D0%B5%D0%BD%D0%B8%D0%B5-bgp-%D0%BF%D0%B8%D1%80%D0%B8%D0%BD%D0%B3%D0%BE%D0%B2)
+            - [Blackhole](#blackhole)
         - [Расскажи про модель TCP IP](#%D1%80%D0%B0%D1%81%D1%81%D0%BA%D0%B0%D0%B6%D0%B8-%D0%BF%D1%80%D0%BE-%D0%BC%D0%BE%D0%B4%D0%B5%D0%BB%D1%8C-tcp-ip)
         - [Чем отличаются балансировщики L4 и L7? Что умеет балансировщик L7, чего не умеет L4?](#%D1%87%D0%B5%D0%BC-%D0%BE%D1%82%D0%BB%D0%B8%D1%87%D0%B0%D1%8E%D1%82%D1%81%D1%8F-%D0%B1%D0%B0%D0%BB%D0%B0%D0%BD%D1%81%D0%B8%D1%80%D0%BE%D0%B2%D1%89%D0%B8%D0%BA%D0%B8-l4-%D0%B8-l7-%D1%87%D1%82%D0%BE-%D1%83%D0%BC%D0%B5%D0%B5%D1%82-%D0%B1%D0%B0%D0%BB%D0%B0%D0%BD%D1%81%D0%B8%D1%80%D0%BE%D0%B2%D1%89%D0%B8%D0%BA-l7-%D1%87%D0%B5%D0%B3%D0%BE-%D0%BD%D0%B5-%D1%83%D0%BC%D0%B5%D0%B5%D1%82-l4)
     - [Ansible](#ansible)
@@ -278,6 +281,15 @@
         - [Через что реализованы сети в kubernetes?](#%D1%87%D0%B5%D1%80%D0%B5%D0%B7-%D1%87%D1%82%D0%BE-%D1%80%D0%B5%D0%B0%D0%BB%D0%B8%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D1%8B-%D1%81%D0%B5%D1%82%D0%B8-%D0%B2-kubernetes)
         - [Что произойдет при изменении имейджа? Как будут докатываться изменения?](#%D1%87%D1%82%D0%BE-%D0%BF%D1%80%D0%BE%D0%B8%D0%B7%D0%BE%D0%B9%D0%B4%D0%B5%D1%82-%D0%BF%D1%80%D0%B8-%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D0%B8-%D0%B8%D0%BC%D0%B5%D0%B9%D0%B4%D0%B6%D0%B0-%D0%BA%D0%B0%D0%BA-%D0%B1%D1%83%D0%B4%D1%83%D1%82-%D0%B4%D0%BE%D0%BA%D0%B0%D1%82%D1%8B%D0%B2%D0%B0%D1%82%D1%8C%D1%81%D1%8F-%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F)
         - [Что такое headless service ?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-headless-service-)
+    - [GITLAB CI/CD](#gitlab-cicd)
+        - [У тебя 5 проектов на каком то одном языке программрования. Как организовать пайплайны, чтобы избежать дублирования конфигурации?](#%D1%83-%D1%82%D0%B5%D0%B1%D1%8F-5-%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%BE%D0%B2-%D0%BD%D0%B0-%D0%BA%D0%B0%D0%BA%D0%BE%D0%BC-%D1%82%D0%BE-%D0%BE%D0%B4%D0%BD%D0%BE%D0%BC-%D1%8F%D0%B7%D1%8B%D0%BA%D0%B5-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F-%D0%BA%D0%B0%D0%BA-%D0%BE%D1%80%D0%B3%D0%B0%D0%BD%D0%B8%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-%D0%BF%D0%B0%D0%B9%D0%BF%D0%BB%D0%B0%D0%B9%D0%BD%D1%8B-%D1%87%D1%82%D0%BE%D0%B1%D1%8B-%D0%B8%D0%B7%D0%B1%D0%B5%D0%B6%D0%B0%D1%82%D1%8C-%D0%B4%D1%83%D0%B1%D0%BB%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F-%D0%BA%D0%BE%D0%BD%D1%84%D0%B8%D0%B3%D1%83%D1%80%D0%B0%D1%86%D0%B8%D0%B8)
+        - [Как запускать тесты только при merge request?](#%D0%BA%D0%B0%D0%BA-%D0%B7%D0%B0%D0%BF%D1%83%D1%81%D0%BA%D0%B0%D1%82%D1%8C-%D1%82%D0%B5%D1%81%D1%82%D1%8B-%D1%82%D0%BE%D0%BB%D1%8C%D0%BA%D0%BE-%D0%BF%D1%80%D0%B8-merge-request)
+        - [Если ты в before_script переопределишь переменную, будет ли она доступна в script?](#%D0%B5%D1%81%D0%BB%D0%B8-%D1%82%D1%8B-%D0%B2-before_script-%D0%BF%D0%B5%D1%80%D0%B5%D0%BE%D0%BF%D1%80%D0%B5%D0%B4%D0%B5%D0%BB%D0%B8%D1%88%D1%8C-%D0%BF%D0%B5%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D1%83%D1%8E-%D0%B1%D1%83%D0%B4%D0%B5%D1%82-%D0%BB%D0%B8-%D0%BE%D0%BD%D0%B0-%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%BD%D0%B0-%D0%B2-script)
+        - [Какие есть способы контролировать запуск job в GitLab CI?](#%D0%BA%D0%B0%D0%BA%D0%B8%D0%B5-%D0%B5%D1%81%D1%82%D1%8C-%D1%81%D0%BF%D0%BE%D1%81%D0%BE%D0%B1%D1%8B-%D0%BA%D0%BE%D0%BD%D1%82%D1%80%D0%BE%D0%BB%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-%D0%B7%D0%B0%D0%BF%D1%83%D1%81%D0%BA-job-%D0%B2-gitlab-ci)
+        - [У тебя 5 проектов на каком то одном языке программрования. Как организовать пайплайны, чтобы избежать дублирования конфигурации?](#%D1%83-%D1%82%D0%B5%D0%B1%D1%8F-5-%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%BE%D0%B2-%D0%BD%D0%B0-%D0%BA%D0%B0%D0%BA%D0%BE%D0%BC-%D1%82%D0%BE-%D0%BE%D0%B4%D0%BD%D0%BE%D0%BC-%D1%8F%D0%B7%D1%8B%D0%BA%D0%B5-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F-%D0%BA%D0%B0%D0%BA-%D0%BE%D1%80%D0%B3%D0%B0%D0%BD%D0%B8%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-%D0%BF%D0%B0%D0%B9%D0%BF%D0%BB%D0%B0%D0%B9%D0%BD%D1%8B-%D1%87%D1%82%D0%BE%D0%B1%D1%8B-%D0%B8%D0%B7%D0%B1%D0%B5%D0%B6%D0%B0%D1%82%D1%8C-%D0%B4%D1%83%D0%B1%D0%BB%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F-%D0%BA%D0%BE%D0%BD%D1%84%D0%B8%D0%B3%D1%83%D1%80%D0%B0%D1%86%D0%B8%D0%B8)
+        - [Как запускать тесты только при merge request?](#%D0%BA%D0%B0%D0%BA-%D0%B7%D0%B0%D0%BF%D1%83%D1%81%D0%BA%D0%B0%D1%82%D1%8C-%D1%82%D0%B5%D1%81%D1%82%D1%8B-%D1%82%D0%BE%D0%BB%D1%8C%D0%BA%D0%BE-%D0%BF%D1%80%D0%B8-merge-request)
+        - [Если ты в before_script переопределишь переменную, будет ли она доступна в script?](#%D0%B5%D1%81%D0%BB%D0%B8-%D1%82%D1%8B-%D0%B2-before_script-%D0%BF%D0%B5%D1%80%D0%B5%D0%BE%D0%BF%D1%80%D0%B5%D0%B4%D0%B5%D0%BB%D0%B8%D1%88%D1%8C-%D0%BF%D0%B5%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D1%83%D1%8E-%D0%B1%D1%83%D0%B4%D0%B5%D1%82-%D0%BB%D0%B8-%D0%BE%D0%BD%D0%B0-%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%BD%D0%B0-%D0%B2-script)
+        - [Какие есть способы контролировать запуск job в GitLab CI?](#%D0%BA%D0%B0%D0%BA%D0%B8%D0%B5-%D0%B5%D1%81%D1%82%D1%8C-%D1%81%D0%BF%D0%BE%D1%81%D0%BE%D0%B1%D1%8B-%D0%BA%D0%BE%D0%BD%D1%82%D1%80%D0%BE%D0%BB%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-%D0%B7%D0%B0%D0%BF%D1%83%D1%81%D0%BA-job-%D0%B2-gitlab-ci)
     - [GIT](#git)
         - [Чем merge отличается от rebase?](#%D1%87%D0%B5%D0%BC-merge-%D0%BE%D1%82%D0%BB%D0%B8%D1%87%D0%B0%D0%B5%D1%82%D1%81%D1%8F-%D0%BE%D1%82-rebase)
         - [Когда нужно использовать merge, когда rebase?](#%D0%BA%D0%BE%D0%B3%D0%B4%D0%B0-%D0%BD%D1%83%D0%B6%D0%BD%D0%BE-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-merge-%D0%BA%D0%BE%D0%B3%D0%B4%D0%B0-rebase)
@@ -6013,6 +6025,100 @@ https://github.com/pixelb/ps_mem
     curl http://common-service
     ```
 ---
+
+## GITLAB CI/CD
+
+### У тебя 5 проектов на каком то одном языке программрования. Как организовать пайплайны, чтобы избежать дублирования конфигурации?
+- Ответ
+    1. Вынести общие задачи (build, test, lint) в отдельный YAML-файл.
+    2. В проектах использовать include:.
+    3. Использовать шаблоны, extends, rules, only, except.
+
+### Как запускать тесты только при merge request?
+- Ответ
+    - Использовать директиву `rules` :
+       ```
+        rules:
+            - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+        ```
+        Пример:
+        ```
+            test_job:
+                stage: test
+                script:
+                    - echo "Running tests"
+                rules:
+                    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+        ```
+        
+    Подробнее:
+    https://docs.gitlab.com/ci/pipelines/merge_request_pipelines/
+
+### Если ты в before_script переопределишь переменную, будет ли она доступна в script?
+- Ответ:
+    - Да. Все секции before_script, script, after_script — выполняются в рамках одной shell-сессии в пределах одной job.
+
+    ```
+    job_with_variable:
+        before_script:
+            - echo "HELLO=world" >> variables.env
+            - source variables.env
+            - echo "HELLO from before_script: $HELLO"
+        script:
+            - source variables.env
+            - echo "HELLO from script: $HELLO"
+    ```
+### Какие есть способы контролировать запуск job в GitLab CI?
+- Ответ:
+    -  Да, можно. Обычно это делается с помощью:
+        1. rules, only, except, переменные (CI_COMMIT_BRANCH, CI_PIPELINE_SOURCE), , paths, changes.
+        2. Наиболее гибкий способ — rules: с логическими условиями.## GITLAB CI/CD
+
+### У тебя 5 проектов на каком то одном языке программрования. Как организовать пайплайны, чтобы избежать дублирования конфигурации?
+- Ответ
+    1. Вынести общие задачи (build, test, lint) в отдельный YAML-файл.
+    2. В проектах использовать include:.
+    3. Использовать шаблоны, extends, rules, only, except.
+
+### Как запускать тесты только при merge request?
+- Ответ
+    - Использовать директиву `rules` :
+       ```
+        rules:
+            - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+        ```
+        Пример:
+        ```
+            test_job:
+                stage: test
+                script:
+                    - echo "Running tests"
+                rules:
+                    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+        ```
+        
+    Подробнее:
+    https://docs.gitlab.com/ci/pipelines/merge_request_pipelines/
+
+### Если ты в before_script переопределишь переменную, будет ли она доступна в script?
+- Ответ:
+    - Да. Все секции before_script, script, after_script — выполняются в рамках одной shell-сессии в пределах одной job.
+
+    ```
+    job_with_variable:
+        before_script:
+            - echo "HELLO=world" >> variables.env
+            - source variables.env
+            - echo "HELLO from before_script: $HELLO"
+        script:
+            - source variables.env
+            - echo "HELLO from script: $HELLO"
+    ```
+### Какие есть способы контролировать запуск job в GitLab CI?
+- Ответ:
+    -  Да, можно. Обычно это делается с помощью:
+        1. rules, only, except, переменные (CI_COMMIT_BRANCH, CI_PIPELINE_SOURCE), , paths, changes.
+        2. Наиболее гибкий способ — rules: с логическими условиями.
 
 ## GIT
 
