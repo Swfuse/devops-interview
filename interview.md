@@ -1,4 +1,5 @@
 ![memes](https://github.com/Swfuse/devops-interview/blob/main/imgs/memes.jpg)  
+![memes](https://github.com/Swfuse/devops-interview/blob/main/imgs/memes.jpg)  
 <!-- TOC -->
 
 - [Вопросы админам 2.0](#%D0%B2%D0%BE%D0%BF%D1%80%D0%BE%D1%81%D1%8B-%D0%B0%D0%B4%D0%BC%D0%B8%D0%BD%D0%B0%D0%BC-20)
@@ -282,14 +283,13 @@
         - [Что произойдет при изменении имейджа? Как будут докатываться изменения?](#%D1%87%D1%82%D0%BE-%D0%BF%D1%80%D0%BE%D0%B8%D0%B7%D0%BE%D0%B9%D0%B4%D0%B5%D1%82-%D0%BF%D1%80%D0%B8-%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D0%B8-%D0%B8%D0%BC%D0%B5%D0%B9%D0%B4%D0%B6%D0%B0-%D0%BA%D0%B0%D0%BA-%D0%B1%D1%83%D0%B4%D1%83%D1%82-%D0%B4%D0%BE%D0%BA%D0%B0%D1%82%D1%8B%D0%B2%D0%B0%D1%82%D1%8C%D1%81%D1%8F-%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F)
         - [Что такое headless service ?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-headless-service-)
     - [GITLAB CI/CD](#gitlab-cicd)
-        - [У тебя 5 проектов на каком то одном языке программрования. Как организовать пайплайны, чтобы избежать дублирования конфигурации?](#%D1%83-%D1%82%D0%B5%D0%B1%D1%8F-5-%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%BE%D0%B2-%D0%BD%D0%B0-%D0%BA%D0%B0%D0%BA%D0%BE%D0%BC-%D1%82%D0%BE-%D0%BE%D0%B4%D0%BD%D0%BE%D0%BC-%D1%8F%D0%B7%D1%8B%D0%BA%D0%B5-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F-%D0%BA%D0%B0%D0%BA-%D0%BE%D1%80%D0%B3%D0%B0%D0%BD%D0%B8%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-%D0%BF%D0%B0%D0%B9%D0%BF%D0%BB%D0%B0%D0%B9%D0%BD%D1%8B-%D1%87%D1%82%D0%BE%D0%B1%D1%8B-%D0%B8%D0%B7%D0%B1%D0%B5%D0%B6%D0%B0%D1%82%D1%8C-%D0%B4%D1%83%D0%B1%D0%BB%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F-%D0%BA%D0%BE%D0%BD%D1%84%D0%B8%D0%B3%D1%83%D1%80%D0%B0%D1%86%D0%B8%D0%B8)
-        - [Как запускать тесты только при merge request?](#%D0%BA%D0%B0%D0%BA-%D0%B7%D0%B0%D0%BF%D1%83%D1%81%D0%BA%D0%B0%D1%82%D1%8C-%D1%82%D0%B5%D1%81%D1%82%D1%8B-%D1%82%D0%BE%D0%BB%D1%8C%D0%BA%D0%BE-%D0%BF%D1%80%D0%B8-merge-request)
-        - [Если ты в before_script переопределишь переменную, будет ли она доступна в script?](#%D0%B5%D1%81%D0%BB%D0%B8-%D1%82%D1%8B-%D0%B2-before_script-%D0%BF%D0%B5%D1%80%D0%B5%D0%BE%D0%BF%D1%80%D0%B5%D0%B4%D0%B5%D0%BB%D0%B8%D1%88%D1%8C-%D0%BF%D0%B5%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D1%83%D1%8E-%D0%B1%D1%83%D0%B4%D0%B5%D1%82-%D0%BB%D0%B8-%D0%BE%D0%BD%D0%B0-%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%BD%D0%B0-%D0%B2-script)
-        - [Какие есть способы контролировать запуск job в GitLab CI?](#%D0%BA%D0%B0%D0%BA%D0%B8%D0%B5-%D0%B5%D1%81%D1%82%D1%8C-%D1%81%D0%BF%D0%BE%D1%81%D0%BE%D0%B1%D1%8B-%D0%BA%D0%BE%D0%BD%D1%82%D1%80%D0%BE%D0%BB%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-%D0%B7%D0%B0%D0%BF%D1%83%D1%81%D0%BA-job-%D0%B2-gitlab-ci)
-        - [У тебя 5 проектов на каком то одном языке программрования. Как организовать пайплайны, чтобы избежать дублирования конфигурации?](#%D1%83-%D1%82%D0%B5%D0%B1%D1%8F-5-%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%BE%D0%B2-%D0%BD%D0%B0-%D0%BA%D0%B0%D0%BA%D0%BE%D0%BC-%D1%82%D0%BE-%D0%BE%D0%B4%D0%BD%D0%BE%D0%BC-%D1%8F%D0%B7%D1%8B%D0%BA%D0%B5-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F-%D0%BA%D0%B0%D0%BA-%D0%BE%D1%80%D0%B3%D0%B0%D0%BD%D0%B8%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-%D0%BF%D0%B0%D0%B9%D0%BF%D0%BB%D0%B0%D0%B9%D0%BD%D1%8B-%D1%87%D1%82%D0%BE%D0%B1%D1%8B-%D0%B8%D0%B7%D0%B1%D0%B5%D0%B6%D0%B0%D1%82%D1%8C-%D0%B4%D1%83%D0%B1%D0%BB%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F-%D0%BA%D0%BE%D0%BD%D1%84%D0%B8%D0%B3%D1%83%D1%80%D0%B0%D1%86%D0%B8%D0%B8)
-        - [Как запускать тесты только при merge request?](#%D0%BA%D0%B0%D0%BA-%D0%B7%D0%B0%D0%BF%D1%83%D1%81%D0%BA%D0%B0%D1%82%D1%8C-%D1%82%D0%B5%D1%81%D1%82%D1%8B-%D1%82%D0%BE%D0%BB%D1%8C%D0%BA%D0%BE-%D0%BF%D1%80%D0%B8-merge-request)
-        - [Если ты в before_script переопределишь переменную, будет ли она доступна в script?](#%D0%B5%D1%81%D0%BB%D0%B8-%D1%82%D1%8B-%D0%B2-before_script-%D0%BF%D0%B5%D1%80%D0%B5%D0%BE%D0%BF%D1%80%D0%B5%D0%B4%D0%B5%D0%BB%D0%B8%D1%88%D1%8C-%D0%BF%D0%B5%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D1%83%D1%8E-%D0%B1%D1%83%D0%B4%D0%B5%D1%82-%D0%BB%D0%B8-%D0%BE%D0%BD%D0%B0-%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%BD%D0%B0-%D0%B2-script)
-        - [Какие есть способы контролировать запуск job в GitLab CI?](#%D0%BA%D0%B0%D0%BA%D0%B8%D0%B5-%D0%B5%D1%81%D1%82%D1%8C-%D1%81%D0%BF%D0%BE%D1%81%D0%BE%D0%B1%D1%8B-%D0%BA%D0%BE%D0%BD%D1%82%D1%80%D0%BE%D0%BB%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-%D0%B7%D0%B0%D0%BF%D1%83%D1%81%D0%BA-job-%D0%B2-gitlab-ci)
+        - [Каковы ключевые компоненты GitLab CI/CD?](#%D0%BA%D0%B0%D0%BA%D0%BE%D0%B2%D1%8B-%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%B2%D1%8B%D0%B5-%D0%BA%D0%BE%D0%BC%D0%BF%D0%BE%D0%BD%D0%B5%D0%BD%D1%82%D1%8B-gitlab-cicd)
+        - [Что такое before_script и after_script в GitLab CI/CD?/CD?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-before_script-%D0%B8-after_script-%D0%B2-gitlab-cicdcd)
+        - [У вас есть 5 проектов на одном языке программирования. Как организовать пайплайны, чтобы избежать дублирования конфигурации?](#%D1%83-%D0%B2%D0%B0%D1%81-%D0%B5%D1%81%D1%82%D1%8C-5-%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%BE%D0%B2-%D0%BD%D0%B0-%D0%BE%D0%B4%D0%BD%D0%BE%D0%BC-%D1%8F%D0%B7%D1%8B%D0%BA%D0%B5-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F-%D0%BA%D0%B0%D0%BA-%D0%BE%D1%80%D0%B3%D0%B0%D0%BD%D0%B8%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-%D0%BF%D0%B0%D0%B9%D0%BF%D0%BB%D0%B0%D0%B9%D0%BD%D1%8B-%D1%87%D1%82%D0%BE%D0%B1%D1%8B-%D0%B8%D0%B7%D0%B1%D0%B5%D0%B6%D0%B0%D1%82%D1%8C-%D0%B4%D1%83%D0%B1%D0%BB%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F-%D0%BA%D0%BE%D0%BD%D1%84%D0%B8%D0%B3%D1%83%D1%80%D0%B0%D1%86%D0%B8%D0%B8)
+        - [Как запускать тесты только при создании merge request?](#%D0%BA%D0%B0%D0%BA-%D0%B7%D0%B0%D0%BF%D1%83%D1%81%D0%BA%D0%B0%D1%82%D1%8C-%D1%82%D0%B5%D1%81%D1%82%D1%8B-%D1%82%D0%BE%D0%BB%D1%8C%D0%BA%D0%BE-%D0%BF%D1%80%D0%B8-%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B8-merge-request)
+        - [Если в before_script переопределить переменную, будет ли она доступна в script?pt?](#%D0%B5%D1%81%D0%BB%D0%B8-%D0%B2-before_script-%D0%BF%D0%B5%D1%80%D0%B5%D0%BE%D0%BF%D1%80%D0%B5%D0%B4%D0%B5%D0%BB%D0%B8%D1%82%D1%8C-%D0%BF%D0%B5%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D1%83%D1%8E-%D0%B1%D1%83%D0%B4%D0%B5%D1%82-%D0%BB%D0%B8-%D0%BE%D0%BD%D0%B0-%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%BD%D0%B0-%D0%B2-scriptpt)
+        - [Какие существуют способы контроля запуска job в GitLab CI?](#%D0%BA%D0%B0%D0%BA%D0%B8%D0%B5-%D1%81%D1%83%D1%89%D0%B5%D1%81%D1%82%D0%B2%D1%83%D1%8E%D1%82-%D1%81%D0%BF%D0%BE%D1%81%D0%BE%D0%B1%D1%8B-%D0%BA%D0%BE%D0%BD%D1%82%D1%80%D0%BE%D0%BB%D1%8F-%D0%B7%D0%B0%D0%BF%D1%83%D1%81%D0%BA%D0%B0-job-%D0%B2-gitlab-ci)
+        - [Что такое кэширование в GitLab CI/CD?](#%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-%D0%BA%D1%8D%D1%88%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D0%B2-gitlab-cicd)
     - [GIT](#git)
         - [Чем merge отличается от rebase?](#%D1%87%D0%B5%D0%BC-merge-%D0%BE%D1%82%D0%BB%D0%B8%D1%87%D0%B0%D0%B5%D1%82%D1%81%D1%8F-%D0%BE%D1%82-rebase)
         - [Когда нужно использовать merge, когда rebase?](#%D0%BA%D0%BE%D0%B3%D0%B4%D0%B0-%D0%BD%D1%83%D0%B6%D0%BD%D0%BE-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-merge-%D0%BA%D0%BE%D0%B3%D0%B4%D0%B0-rebase)
@@ -6028,97 +6028,376 @@ https://github.com/pixelb/ps_mem
 
 ## GITLAB CI/CD
 
-### У тебя 5 проектов на каком то одном языке программрования. Как организовать пайплайны, чтобы избежать дублирования конфигурации?
+### Каковы ключевые компоненты GitLab CI/CD?
+
 - Ответ
-    1. Вынести общие задачи (build, test, lint) в отдельный YAML-файл.
-    2. В проектах использовать include:.
-    3. Использовать шаблоны, extends, rules, only, except.
+    - Ключевые компоненты включают в себя:
 
-### Как запускать тесты только при merge request?
+    **Файл .gitlab-ci.yml:**
+    - Определяет конфигурацию конвейера
+    - Содержит описание всех job, stages, переменных и правил
+    - Должен находиться в корне репозитория
+
+    **Runners:**
+    - Выполняют задания (jobs)
+    - Могут быть shared (общие), group (групповые) или specific (проектные)
+    - Поддерживают различные executors (Docker, Shell, Kubernetes и др.)
+
+    **Задания (Jobs) и этапы (Stages):**
+    - **Jobs** - отдельные задачи с командами для выполнения
+    - **Stages** - группируют jobs и определяют порядок их выполнения
+    - Jobs в одном stage выполняются параллельно
+    - Stages выполняются последовательно
+
+    **Конвейеры (Pipelines):**
+    - Автоматизируют рабочие процессы от написания кода до развертывания
+    - Запускаются автоматически при push, merge request или по расписанию
+    - Состоят из одного или нескольких stages
+
+    **Пример базовой структуры:**
+
+    ```yaml
+    stages:
+      - build
+      - test
+      - deploy
+
+    variables:
+      NODE_VERSION: "18"
+
+    build_job:
+      stage: build
+      script:
+        - npm install
+        - npm run build
+      artifacts:
+        paths:
+          - dist/
+
+    test_job:
+      stage: test
+      script:
+        - npm run test
+      coverage: '/Coverage: \d+\.\d+%/'
+
+    deploy_job:
+      stage: deploy
+      script:
+        - npm run deploy
+      only:
+        - main
+    ```
+
+---
+
+### Что такое before_script и after_script в GitLab CI/CD?/CD?
+
 - Ответ
-    - Использовать директиву `rules` :
-       ```
-        rules:
-            - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
-        ```
-        Пример:
-        ```
-            test_job:
-                stage: test
-                script:
-                    - echo "Running tests"
-                rules:
-                    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
-        ```
-        
-    Подробнее:
-    https://docs.gitlab.com/ci/pipelines/merge_request_pipelines/
+    - `before_script` - выполняет команды перед основным скриптом каждой job
+    - `after_script` - выполняет команды после основного скрипта каждой job
 
-### Если ты в before_script переопределишь переменную, будет ли она доступна в script?
-- Ответ:
-    - Да. Все секции before_script, script, after_script — выполняются в рамках одной shell-сессии в пределах одной job.
+    **Особенности использования:**
 
-    ```
-    job_with_variable:
-        before_script:
-            - echo "HELLO=world" >> variables.env
-            - source variables.env
-            - echo "HELLO from before_script: $HELLO"
-        script:
-            - source variables.env
-            - echo "HELLO from script: $HELLO"
-    ```
-### Какие есть способы контролировать запуск job в GitLab CI?
-- Ответ:
-    -  Да, можно. Обычно это делается с помощью:
-        1. rules, only, except, переменные (CI_COMMIT_BRANCH, CI_PIPELINE_SOURCE), , paths, changes.
-        2. Наиболее гибкий способ — rules: с логическими условиями.## GITLAB CI/CD
+    **before_script:**
+    - Выполняется в той же shell-сессии, что и script
+    - Если завершается с ошибкой, job помечается как failed
+    - Переменные, установленные здесь, доступны в script
 
-### У тебя 5 проектов на каком то одном языке программрования. Как организовать пайплайны, чтобы избежать дублирования конфигурации?
+    **after_script:**
+    - Выполняется в отдельной shell-сессии
+    - Всегда выполняется, даже если script завершился с ошибкой
+    - Переменные из script и before_script недоступны
+    - Не влияет на статус job
+
+    **Пример использования:**
+
+    ```yaml
+    job_example:
+      before_script:
+        - echo "Setting up environment"
+        - export DATABASE_URL="test://localhost"
+        - npm install
+      script:
+        - echo "Running main script"
+        - npm run test
+      after_script:
+        - echo "Cleaning up"
+        - docker stop test-container || true
+        - rm -rf temp-files/
+
+    # Глобальные before_script и after_script для всех job
+    default:
+      before_script:
+        - echo "Global setup"
+      after_script:
+        - echo "Global cleanup"
+
+    # Переопределение глобальных настроек в конкретной job
+    custom_job:
+      before_script:
+        - echo "Custom setup only"
+      script:
+        - echo "Custom script"
+      # after_script наследуется от default
+    ```
+
+---
+
+### У вас есть 5 проектов на одном языке программирования. Как организовать пайплайны, чтобы избежать дублирования конфигурации?
+
 - Ответ
-    1. Вынести общие задачи (build, test, lint) в отдельный YAML-файл.
-    2. В проектах использовать include:.
-    3. Использовать шаблоны, extends, rules, only, except.
+    - Для избежания дублирования конфигурации используйте следующие подходы:
+        1. **Создание общих шаблонов** - вынесите повторяющиеся задачи (`build`, `test`, `lint`) в отдельный YAML-файл
+        2. **Использование `include`** - подключайте общие конфигурации в проектах
+        3. **Применение шаблонов** - используйте `extends`, `rules`, переменные окружения
 
-### Как запускать тесты только при merge request?
+    **Пример структуры:**
+
+    ```yaml
+    # common-templates.yml
+    .build_template:
+      stage: build
+      script:
+        - npm install
+        - npm run build
+      artifacts:
+        paths:
+          - dist/
+
+    .test_template:
+      stage: test
+      script:
+        - npm run test
+      coverage: '/Coverage: \d+\.\d+%/'
+
+    # В каждом проекте .gitlab-ci.yml
+    include:
+      - project: 'templates/ci-templates'
+        file: 'common-templates.yml'
+
+    build_job:
+      extends: .build_template
+
+    test_job:
+      extends: .test_template
+    ```
+
+---
+
+### Как запускать тесты только при создании merge request?
+
 - Ответ
-    - Использовать директиву `rules` :
-       ```
-        rules:
-            - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
-        ```
-        Пример:
-        ```
-            test_job:
-                stage: test
-                script:
-                    - echo "Running tests"
-                rules:
-                    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
-        ```
-        
-    Подробнее:
-    https://docs.gitlab.com/ci/pipelines/merge_request_pipelines/
+    - Используйте директиву `rules` с условием проверки источника пайплайна:
 
-### Если ты в before_script переопределишь переменную, будет ли она доступна в script?
-- Ответ:
-    - Да. Все секции before_script, script, after_script — выполняются в рамках одной shell-сессии в пределах одной job.
+    ```yaml
+    test_job:
+      stage: test
+      script:
+        - echo "Running tests for merge request"
+        - npm run test
+      rules:
+        - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    ```
 
-    ```
-    job_with_variable:
-        before_script:
-            - echo "HELLO=world" >> variables.env
-            - source variables.env
-            - echo "HELLO from before_script: $HELLO"
-        script:
-            - source variables.env
-            - echo "HELLO from script: $HELLO"
-    ```
-### Какие есть способы контролировать запуск job в GitLab CI?
-- Ответ:
-    -  Да, можно. Обычно это делается с помощью:
-        1. rules, only, except, переменные (CI_COMMIT_BRANCH, CI_PIPELINE_SOURCE), , paths, changes.
-        2. Наиболее гибкий способ — rules: с логическими условиями.
+    **Дополнительные варианты контроля:**
+
+    ```yaml
+    # Запуск только для MR в определенную ветку
+    test_mr_to_main:
+      script:
+        - npm run test
+      rules:
+        - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main"'
+
+    # Запуск при изменении определенных файлов
+    test_on_changes:
+      script:
+        - npm run test
+      rules:
+        - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+          changes:
+            - "src/**/*"
+            - "tests/**/*"
+    ```
+
+    **Документация:** https://docs.gitlab.com/ci/pipelines/merge_request_pipelines/
+
+---
+
+### Если в before_script переопределить переменную, будет ли она доступна в script?pt`?
+
+- Ответ
+    - Да, переменная будет доступна. Все секции `before_script`, `script` и `after_script` выполняются в рамках одной shell-сессии в пределах одной job.
+
+    **Пример:**
+
+    ```yaml
+    job_with_variable:
+      variables:
+        ORIGINAL_VAR: "initial_value"
+      before_script:
+        - export MODIFIED_VAR="modified_in_before_script"
+        - echo "MODIFIED_VAR in before_script: $MODIFIED_VAR"
+      script:
+        - echo "MODIFIED_VAR in script: $MODIFIED_VAR"  # Будет доступна
+        - echo "ORIGINAL_VAR: $ORIGINAL_VAR"           # Тоже доступна
+      after_script:
+        - echo "MODIFIED_VAR in after_script: $MODIFIED_VAR"  # И здесь тоже
+    ```
+
+    **Важно:** Переменные, определенные в одной job, не передаются в другие job без использования артефактов или других механизмов.
+
+---
+
+### Какие существуют способы контроля запуска job в GitLab CI?
+
+- Ответ
+    - Существует несколько механизмов для контроля выполнения job:
+
+    **1. Rules (рекомендуемый способ)**
+    
+    Наиболее гибкий и современный подход:
+
+    ```yaml
+    deploy_job:
+      script:
+        - echo "Deploying to production"
+      rules:
+        - if: '$CI_COMMIT_BRANCH == "main"'
+        - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+          when: manual
+        - when: never
+    ```
+
+    **2. Only/Except (устаревший)**
+    
+    ```yaml
+    build_job:
+      script:
+        - echo "Building application"
+      only:
+        - main
+        - develop
+      except:
+        - tags
+    ```
+
+    **3. Встроенные переменные**
+    - `$CI_COMMIT_BRANCH` - название текущей ветки
+    - `$CI_PIPELINE_SOURCE` - источник запуска пайплайна
+    - `$CI_COMMIT_TAG` - тег коммита
+    - `$CI_MERGE_REQUEST_TARGET_BRANCH_NAME` - целевая ветка MR
+
+    **4. Changes и Paths**
+    
+    ```yaml
+    test_frontend:
+      script:
+        - npm run test
+      rules:
+        - changes:
+            - "frontend/**/*"
+            - "package.json"
+    ```
+
+    **5. Manual jobs**
+    
+    ```yaml
+    deploy_production:
+      script:
+        - echo "Deploying to production"
+      when: manual
+      only:
+        - main
+    ```
+
+    **6.Через `when`**
+    - `when: always` - всегда выполнять
+    - `when: on_success` - только при успехе предыдущих job (по умолчанию)
+    - `when: on_failure` - только при провале предыдущих job
+    - `when: manual` - запуск вручную
+    - `when: never` - никогда не выполнять
+
+
+
+### Что такое кэширование в GitLab CI/CD?
+
+- Ответ
+    - Кэширование позволяет сохранять файлы и директории между запусками job или пайплайнов для ускорения выполнения и сокращения времени сборки.
+
+    **Основные принципы:**
+    - **Цель** - избежать повторной загрузки зависимостей (node_modules, vendor/, .m2/, etc.)
+    - **Область действия** - может использоваться внутри одного пайплайна или между разными пайплайнами
+    - **Ключ кэша** - определяет уникальность и условия обновления кэша
+
+    **Пример базового кэширования:**
+
+    ```yaml
+    variables:
+      npm_config_cache: "$CI_PROJECT_DIR/.npm"
+
+    cache:
+      key: "$CI_COMMIT_REF_NAME"
+      paths:
+        - node_modules/
+        - .npm/
+
+    install_dependencies:
+      stage: build
+      script:
+        - npm ci --cache .npm --prefer-offline
+      cache:
+        key: "$CI_COMMIT_REF_NAME-$CI_JOB_NAME"
+        paths:
+          - node_modules/
+        policy: pull-push  # Загружает и сохраняет кэш
+
+    test_job:
+      stage: test
+      script:
+        - npm run test
+      cache:
+        key: "$CI_COMMIT_REF_NAME-install_dependencies"
+        paths:
+          - node_modules/
+        policy: pull  # Только загружает кэш
+    ```
+
+    **Стратегии кэширования:**
+
+    ```yaml
+    # По содержимому файлов (рекомендуется)
+    cache:
+      key:
+        files:
+          - package-lock.json
+      paths:
+        - node_modules/
+
+    # По ветке
+    cache:
+      key: "$CI_COMMIT_REF_NAME"
+      paths:
+        - vendor/
+
+    # Глобальный кэш
+    cache:
+      key: "global-cache"
+      paths:
+        - .m2/repository/
+    ```
+
+    **Политики кэширования:**
+    - `pull-push` (по умолчанию) - загружает перед job, сохраняет после
+    - `pull` - только загружает существующий кэш
+    - `push` - только сохраняет кэш после выполнения
+
+    **Важные моменты:**
+    - Кэш не гарантирован - может быть очищен в любой момент
+    - Для критически важных файлов используйте артефакты, а не кэш
+    - Кэш работает быстрее артефактов, но менее надежен
+
+---
 
 ## GIT
 
