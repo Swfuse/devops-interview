@@ -11,7 +11,7 @@
 | [Техническое интервью](https://github.com/Swfuse/devops-interview/blob/main/interview.md)     |  Здесь собраны ответы на вопросы самых разных собеседований за последние 2 года  |
 | [Интервью с hr](https://github.com/Swfuse/devops-interview/blob/main/interview-hr-tips.md)    |  Советы о том, как подготовиться к интервью, на что обратить внимание            |
 | [Референсы, ссылки](https://github.com/Swfuse/devops-interview/blob/main/references.md)       |  Ссылки на полезные метариалы                                                    |
-| [Топ вопросов](https://docs.google.com/spreadsheets/d/1WPOMAkQFL1zkAC6Uvt5lk7lwpeNkVaaaX07OPyzu0fk/edit?usp=sharing) | Субъективный рейтинг популярных вопросов по баллам от 0 до 10 |
+| [Топ вопросов](https://docs.google.com/spreadsheets/d/1SDSGFK0Hcv_nXMwlfxpikECHUCrfIOxixOlAm7MAHs8/edit?gid=0#gid=0) | Субъективный рейтинг популярных вопросов по баллам от 0 до 10 |
 
 
 ---
