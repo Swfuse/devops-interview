@@ -1,6 +1,6 @@
-#Senior DevOps #sunmait.com
-7k$ net
-Январь 2024
+#Senior DevOps #moonmait.com
+
+
 
 Общие вопросы
 1. расскажи о себе
