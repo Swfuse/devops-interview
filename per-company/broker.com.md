@@ -1,4 +1,4 @@
-senior devops atme.com 9k usd net
+senior devops brocker.com 9k usd net
 
 
 - Как Контейнеры отличаются от виртуализации
