@@ -1,4 +1,4 @@
-DevOps Engineer (Index Search)
+DevOps Engineer 
 
 #СберТех #Middle
 
